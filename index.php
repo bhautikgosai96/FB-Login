@@ -11,7 +11,7 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 
 // app directory could be anything but website URL must match the URL given in the developers.facebook.com/apps
-define('APP_URL', 'http://sohaibilyas.com/APP_DIR/');
+define('APP_URL', 'https://bhautikng143.herokuapp.com/');
 
 $permissions = ['manage_pages']; // optional
 
