@@ -45,8 +45,8 @@ if (isset($accessToken)) {
 	}
 	// getting basic info about user
 	try {
-		$profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
-		$profile = $profile_request->getGraphNode()->asArray();
+		$profile_request = $fb->get('/me');
+		$profile = $profile_request->getGraphNode();
 	} catch(Facebook\Exceptions\FacebookResponseException $e) {
 		// When Graph returns an error
 		echo 'Graph returned an error: ' . $e->getMessage();
@@ -62,9 +62,8 @@ if (isset($accessToken)) {
 
 	// printing $profile array on the screen which holds the basic info about user
 	echo "Hello";
-	echo $profile->getName();
-	echo "hi";
-	print_r($profile);
+    echo 'Logged in as ' . $profile->getName();
+	//print_r($profile);
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 } else {
 	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
