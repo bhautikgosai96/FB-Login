@@ -63,6 +63,7 @@ if (isset($accessToken)) {
 	// printing $profile array on the screen which holds the basic info about user
 	echo "Hello";
 	echo $profile->getName();
+	echo "hi";
 	print_r($profile);
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 } else {
