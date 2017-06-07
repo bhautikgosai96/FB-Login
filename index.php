@@ -60,6 +60,25 @@ if (isset($accessToken)) {
 
     echo "Logged in as " . $profile->getName();
 	//print_r($profile);
+
+	// getting profile picture of the user
+    	try {
+    		$requestPicture = $fb->get('/me/picture?redirect=false&height=300'); //getting user picture
+    		$requestProfile = $fb->get('/me'); // getting basic info
+    		$picture = $requestPicture->getGraphUser();
+    		$profile = $requestProfile->getGraphUser();
+    	} catch(Facebook\Exceptions\FacebookResponseException $e) {
+    		// When Graph returns an error
+    		echo 'Graph returned an error: ' . $e->getMessage();
+    		exit;
+    	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+    		// When validation fails or other local issues
+    		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+    		exit;
+    	}
+
+    	// showing picture on the screen
+    	echo "<img src='".$picture['url']."'/>";
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 } else {
 	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
