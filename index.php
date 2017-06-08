@@ -82,7 +82,7 @@ if (isset($accessToken)) {
     	echo "<img src='".$picture['url']."'/>";
     	//echo "";
 
-    	echo "<html>
+    	/*<html>
     	    <head>
     	        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     	        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -101,7 +101,7 @@ if (isset($accessToken)) {
                         </div>
                    </div>
     	    </body>
-    	</html>";
+    	</html>*/
 
     	echo "success";
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
