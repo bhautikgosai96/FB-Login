@@ -58,7 +58,7 @@ if (isset($accessToken)) {
 
 	// printing $profile array on the screen which holds the basic info about user
 
-    echo "Logged in as " . $profile->getName();
+    //echo "Logged in as " . $profile->getName();
 	//print_r($profile);
 
 	// getting profile picture of the user
@@ -78,7 +78,30 @@ if (isset($accessToken)) {
     	}
 
     	// showing picture on the screen
-    	echo "<img src='".$picture['url']."'/>";
+    	//echo "<img src='".$picture['url']."'/>";
+    	//echo "";
+    	?>
+    	<html>
+    	    <head>
+    	        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    	        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	    </head>
+    	    <body>
+                   <div class="container">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-5">
+                                <img src="<?php echo '$picture['url']'; ?>"/>
+                            </div>
+                            <div class="col-md-offset-1 col-md-5">
+                                <?php echo $profile->getName(); ?>
+                            </div>
+                        </div>
+                   </div>
+    	    </body>
+    	</html>
+    	<?php
     	echo "success";
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 } else {
@@ -87,3 +110,4 @@ if (isset($accessToken)) {
 	$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
+?>
