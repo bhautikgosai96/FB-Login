@@ -81,7 +81,7 @@ if (isset($accessToken)) {
     	// showing picture on the screen
     	echo "<img src='".$picture['url']."'/>";
     	//echo "";
-    	?>
+
     	/*<html>
     	    <head>
     	        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -102,7 +102,7 @@ if (isset($accessToken)) {
                    </div>
     	    </body>
     	</html>*/
-    	<?php
+
     	echo "success";
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 } else {
@@ -111,4 +111,3 @@ if (isset($accessToken)) {
 	$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
-?>
