@@ -58,7 +58,7 @@ if (isset($accessToken)) {
 
 	// printing $profile array on the screen which holds the basic info about user
 
-    //echo "Logged in as " . $profile->getName();
+    echo "Logged in as " . $profile->getName();
 	//print_r($profile);
 
 	// getting profile picture of the user
@@ -78,10 +78,10 @@ if (isset($accessToken)) {
     	}
 
     	// showing picture on the screen
-    	//echo "<img src='".$picture['url']."'/>";
+    	echo "<img src='".$picture['url']."'/>";
     	//echo "";
     	?>
-    	<html>
+    	/*<html>
     	    <head>
     	        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     	        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -100,7 +100,7 @@ if (isset($accessToken)) {
                         </div>
                    </div>
     	    </body>
-    	</html>
+    	</html>*/
     	<?php
     	echo "success";
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
