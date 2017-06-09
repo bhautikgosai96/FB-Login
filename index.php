@@ -88,11 +88,11 @@ if (isset($accessToken)) {
                 <p><?php echo $profile->getName(); ?></p>
     	    </body>
     	</html>
-
+<?php
         echo " ";
     	echo "success";
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
-<?php
+
 } else {
 	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
 	$permissions = ['email'];
