@@ -28,7 +28,7 @@ if(isset($_SESSION['facebook_access_token'])){
 
 // Get photo albums of Facebook page using Facebook Graph API
 $fields = "id,name,description,link,cover_photo,count";
-$fb_page_id = "600228316674560";
+$fb_page_id = "6429603637678731258-0";
 $graphAlbLink = "https://graph.facebook.com/v2.9/{$fb_page_id}/albums?fields={$fields}&access_token={$access_token}";
 
 $jsonData = file_get_contents($graphAlbLink);
