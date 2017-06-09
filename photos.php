@@ -17,4 +17,15 @@
 
   // Facebook photos content
   $fbPhotoData = $fbPhotoObj['data'];
+
+  foreach($fbPhotoData as $data){
+      $imageData = end($data['images']);
+      $imgSource = isset($imageData['source'])?$imageData['source']:'';
+      $name = isset($data['name'])?$data['name']:'';
+
+      echo "<div class='fb-album'>";
+      echo "<img src='{$imgSource}' alt=''>";
+      echo "<h3>{$name}</h3>";
+      echo "</div>";
+  }
   ?>
