@@ -59,6 +59,7 @@ foreach($fbAlbumData as $data){
     echo "<p><span style='color:#888;'>{$photoCount} / <a href='{$link}' target='_blank'>View on Facebook</a></span></p>";
     echo "<p>{$description}</p>";
     echo "</div>";
+    echo "";
 }
 ?>
 
