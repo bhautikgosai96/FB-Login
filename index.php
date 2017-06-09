@@ -81,7 +81,7 @@ if (isset($accessToken)) {
     	// showing picture on the screen
     	//echo "<img src='".$picture['url']."'/>";
     	echo "image";
-
+?>
     	<html>
     	    <body>
                 <img src="<?php echo $picture['url']; ?>"/>
@@ -92,9 +92,11 @@ if (isset($accessToken)) {
         echo " ";
     	echo "success";
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
+<?php
 } else {
 	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
 	$permissions = ['email'];
 	$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
+?>
