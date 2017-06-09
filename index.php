@@ -59,7 +59,7 @@ if (isset($accessToken)) {
 
 	// printing $profile array on the screen which holds the basic info about user
 
-    echo "Logged in as " . $profile->getName();
+    //echo "Logged in as " . $profile->getName();
 	//print_r($profile);
 
 	// getting profile picture of the user
@@ -80,12 +80,12 @@ if (isset($accessToken)) {
 
     	// showing picture on the screen
     	//echo "<img src='".$picture['url']."'/>";
-    	echo "image";
+    	//echo "image";
 ?>
     	<html>
     	    <body>
                 <img src="<?php echo $picture['url']; ?>"/>
-                <p><?php echo $profile->getName(); ?></p>
+                <p>Your Name is <?php echo $profile->getName(); ?></p>
     	    </body>
     	</html>
 <?php
