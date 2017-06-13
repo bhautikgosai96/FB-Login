@@ -162,4 +162,5 @@ if (isset($accessToken)) {
 	$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
-?>*/
+?>
+*/
