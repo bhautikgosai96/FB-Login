@@ -110,7 +110,7 @@ if (isset($accessToken)) {
     		print_r($albums_array);
     		echo "<br>";
     		$array_length =count($albums_array);
-
+            echo $array_length;
 } else {
 	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
 	$permissions = ['email'];
