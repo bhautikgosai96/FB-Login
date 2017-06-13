@@ -92,13 +92,13 @@ if (isset($accessToken)) {
 
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 
-    $albums = $facebook->api('/me/albums');
+    $albums = $fb->api('/me/albums');
     foreach($albums['data'] as $album)  {
       print ('<a href="albumPhotos.php?album_id='.$album['id'].'">'.$album['name'].'</a>'.'</br>' ) ;
     }
 
     $album_id = $_GET['album_id']; // get the album_id passed in the URL
-    $photos = $facebook->api("/{$album_id}/photos"); // just get that one album
+    $photos = $fb->api("/{$album_id}/photos"); // just get that one album
     foreach($photos['data'] as $photo)
     {
             echo "<img src='{$photo['source']}' />", "<br />";
