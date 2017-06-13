@@ -1,5 +1,274 @@
+<?php
+session_start();
+require_once __DIR__ . '/src/Facebook/autoload.php';
+
+$fb = new Facebook\Facebook([
+  'app_id' => '120783235172145',
+  'app_secret' => '2af58b7080bcb06278ad922a787f27a2',
+  'default_graph_version' => 'v2.5',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+
+$permissions = ['email','publish_actions','user_photos']; // optional
+?>
+
+
+<html>
+		      <head>
+		           <title>rtCamp| Nirma</title>
+		           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		           <link rel="stylesheet" href="css/index.css">
+		           <meta name="viewport" content="width=device-width, initial-scale=1">
+					<link rel="stylesheet" href="https://use.fontawesome.com/56f96413ae.css">
+					<link rel="stylesheet" type="text/css" href="css/animate.css">
+		      </head>
+		      <body>
+
+
 
 <?php
+
+try {
+	if (isset($_SESSION['facebook_access_token'])) {
+		$accessToken = $_SESSION['facebook_access_token'];
+	} else {
+  		$accessToken = $helper->getAccessToken();
+	}
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+ 	// When Graph returns an error
+ 	echo 'Graph returned an error:'.$e->getMessage();
+
+  	exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+ 	// When validation fails or other local issues
+	echo 'Error' . $e->getMessage();
+  	exit;
+ }
+
+if (isset($accessToken)) {
+	if (isset($_SESSION['facebook_access_token'])) {
+		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+
+	} else {
+		// getting short-lived access token
+		$_SESSION['facebook_access_token'] = (string) $accessToken;
+
+	  	// OAuth 2.0 client handler
+		$oAuth2Client = $fb->getOAuth2Client();
+
+		// Exchanges a short-lived access token for a long-lived one
+		$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
+
+		$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
+
+		// setting default access token to be used in script
+		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+	}
+
+	// redirect the user back to the same page if it has "code" GET variable
+	if (isset($_GET['code'])) {
+		header('Location: ./');
+	}
+
+	try{
+		$request = $fb->get('/me?fields=name,first_name,last_name,email');
+	}catch(Facebook\Exceptions\FacebookResponseException $e) {
+		// When Graph returns an error
+		if($e == 190){
+			$helper = $fb->getRedirectLoginHelper();
+			$permissions = ['email','publish_actions']; // optional
+			$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
+			echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
+		}
+		exit;
+	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+		// When validation fails or other local issues
+		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+		exit;
+	}
+
+
+	// getting basic info about user
+	try {
+		$profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
+		$profile = $profile_request->getGraphNode()->asArray();
+	} catch(Facebook\Exceptions\FacebookResponseException $e) {
+		// When Graph returns an error
+		echo 'Graph returned an error: ' . $e->getMessage();
+		session_destroy();
+		// redirecting user back to app login page
+		header("Location: ./");
+		exit;
+	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+		// When validation fails or other local issues
+		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+		exit;
+	}
+
+
+	try{
+		$requestPicture = $fb->get('/me/picture?redirect=false');
+		$requestProfile = $fb->get('/me');
+		$picture = $requestPicture->getGraphUser();
+		$profile = $requestProfile->getGraphUser();
+	}catch(Facebook\Exceptions\FacebookResponseException $e) {
+		// When Graph returns an error
+		echo 'Graph returned an error: ' . $e->getMessage();					//  Profile Picture
+		session_destroy();
+		// redirecting user back to app login page
+		header("Location: ./");
+		exit;
+	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+		// When validation fails or other local issues
+		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+		exit;
+	}
+	?>
+	<div class="navbar">
+		<div class="company">
+			rtCamp
+		</div>
+		<div class="name">
+			Welcome <?php echo $profile['name']; ?>
+			<a href="logout.php" class="logout">Log Out</a>
+		</div>
+
+
+	</div>
+	<?php
+
+	try{
+		$albums = $fb->get('/me/albums', $accessToken);
+		$albums_array = $albums->getGraphEdge()->asArray();
+	}catch(Facebook\Exceptions\FacebookResponseException $e) {
+		// When Graph returns an error
+		echo 'Graph returned an error: ' . $e->getMessage();
+		session_destroy();
+		// redirecting user back to app login page
+		header("Location: ./");
+		exit;
+	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+		// When validation fails or other local issues
+		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+		exit;
+	}
+		//print_r($albums_array);
+		//echo "<br>";
+		$array_length =count($albums_array);
+	?>
+	<center>
+
+	<form method="post" action="create_zip.php">
+			<Button type="submit" name="download_selection" class="download_button btn btn-success btn-lg">Download Selection</Button>
+			<Button type="submit" name="download_all" class="download_button btn btn-success btn-lg">Download All</Button>
+			<br><br>
+			<div class="album_form">
+					<?PHP
+					$all_download  = array();
+					for($i=0; $i<$array_length; $i++){
+						$id = $albums_array[$i]['id'];
+						$name= $albums_array[$i]['name'];
+						 array_push($all_download, $id);
+						$photos = $fb->get("/$id/photos?fields=name,picture&limit=9", $token)->getGraphEdge()->asArray();
+						$count = count($photos);
+						//echo $count;
+
+						?>
+
+						<div class="image_display">
+
+							<input type="checkbox" name="files_s[]" value="<?php echo $id; ?>" >
+							<div class="album_title">
+								<?php
+									echo $name;
+								?>
+							</div>
+							<br>
+							<Button type="submit" name="sbt" value="<?php echo $id; ?>" class="btn btn-primary btn_p_download">Download</button>
+							<a href='slide_show.php?id=<?php echo $id."&name=".$name; ?>' class="btn btn-warning btn_slideshow" target="_blank">Full slide show</a>
+							<br>
+						<?php
+						//print_r($photos);
+						       foreach ($photos as $key) {
+								$photo_request = $fb->get('/'.$key['id'].'?fields=images');
+								$photo = $photo_request->getGraphNode()->asArray();
+								//echo $photo['images'][2]['source'];
+								?>
+								<div class="inside_photo">
+								<?php
+								echo '<img src="'.$photo['images'][2]['source'].'" width="100%" height="100%" ><br>';
+								?>
+								</div>
+								<?php
+								}
+
+				    	?>
+				    	</div>
+				    	<?php
+					}
+
+					?>
+
+			</div>
+	</form>
+	</center>
+			<?php
+			$_SESSION['all_download'] = $all_download;
+			//print_r($all_download);
+
+			$var = $_SESSION['all_download'];
+			//print_r($var);
+			//echo $var[0];
+			?>
+
+
+	<?php
+  	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
+} else {
+	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
+	$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
+	?>
+
+
+
+	<div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter">
+
+        	<center>
+        		<div class="title">
+        			rtCamp<br>
+        			Facebook Albums
+        		</div>
+        		<h4 class="desc typed">
+        			Show your facebook albums, Enjoy it and Download it
+        		</h4>
+        		<span class="typed-cursor">|</span>
+        		<div class="link">
+        		<?php  echo '<a href="' . $loginUrl . '" >Log in with Facebook</a>'; ?>
+        		</div>
+        	</center>
+        </div>
+        <video autoplay loop class="fillWidth">
+            <source src="css/MP4/Hey-World.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="css/WEBM/Hey-World.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster hidden">
+            <img src="css/Snapshots/Hey-World.jpg" alt="">
+        </div>
+    </div>
+</div>
+	<?php
+}
+
+?>
+
+</body>
+</html>
+
+/*<?php
 ini_set('display_errors', 1);
 session_start();
 require_once __DIR__ . '/src/Facebook/autoload.php';
@@ -117,4 +386,4 @@ if (isset($accessToken)) {
 	$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
-?>
+?>*/
