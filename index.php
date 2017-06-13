@@ -1,4 +1,4 @@
-<?php
+/*<?php
 if(!session_id()){
     session_start();
 }
@@ -6,7 +6,7 @@ if(!session_id()){
 /*
  * Get access token using Facebook Graph API
  */
-if(isset($_SESSION['facebook_access_token'])){
+/*if(isset($_SESSION['facebook_access_token'])){
     // Get access token from session
     $access_token = $_SESSION['facebook_access_token'];
 }else{
@@ -61,9 +61,9 @@ foreach($fbAlbumData as $data){
     echo "</div>";
     echo "";
 }
-?>
+?>*/
 
-/*<?php
+<?php
 ini_set('display_errors', 1);
 session_start();
 require_once __DIR__ . '/src/Facebook/autoload.php';
@@ -163,4 +163,3 @@ if (isset($accessToken)) {
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
 ?>
-*/
