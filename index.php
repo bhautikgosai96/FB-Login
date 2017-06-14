@@ -1,14 +1,30 @@
-
-
-
 <?php
+
+$fb = new Facebook\Facebook([
+  'app_id' => '120783235172145', // Replace {app-id} with your app id
+  'app_secret' => '2af58b7080bcb06278ad922a787f27a2',
+  'default_graph_version' => 'v2.9',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email','user_photos']; // Optional permissions
+$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/fb-callback.php', $permissions);
+
+echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+
+?>
+
+
+
+/*<?php
 ini_set('display_errors', 1);
 session_start();
 require_once __DIR__ . '/src/Facebook/autoload.php';
 $fb = new Facebook\Facebook([
   'app_id' => '120783235172145',
   'app_secret' => '2af58b7080bcb06278ad922a787f27a2',
-  'default_graph_version' => 'v2.5',
+  'default_graph_version' => 'v2.9',
   ]);
 $helper = $fb->getRedirectLoginHelper();
 
@@ -93,7 +109,9 @@ if (isset($accessToken)) {
 <?php
 
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
-
+        $request = new FacebookRequest($session,'GET','/{album-id}');
+        $response = $request->execute();
+        $graphObject = $response->getGraphObject();
 
 } else {
 	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
@@ -101,4 +119,4 @@ if (isset($accessToken)) {
 	$loginUrl = $helper->getLoginUrl('https://bhautikng143.herokuapp.com/index.php', $permissions);
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
-?>
+?>*/
