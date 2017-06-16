@@ -57,7 +57,7 @@ $fb = new Facebook\Facebook([
 
         	$list = array_merge($list,$graphEdge);
 
-        	echo json_encode($list);
+        	//echo json_encode($list);
        //echo $obj;
 
       //echo $graphEdge;
