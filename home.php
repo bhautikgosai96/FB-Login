@@ -28,7 +28,7 @@ $fb = new Facebook\Facebook([
        //$ob = $response -> getGraphObject() -> AsArray();
 
 
-       //echo json_encode($graphEdge);
+       echo json_encode($graphEdge);
 
         // User profile picture
         try {

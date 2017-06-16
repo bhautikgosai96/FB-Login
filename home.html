@@ -19,24 +19,15 @@
 
     app.controller('fbCtrl',function($scope,$http,$window){
         $scope.init= function(){
-        $scope.name = null;
-            $scope.picture = null;
-            $scope.farray = [];
+
             $http.get('home.php')
                     .then(function(response){
                         //alert('Called');
                         //console.log("hi");
                         $scope.data = response.data;
 
-                        /*$scope.name = $scope.data[0];
-                        $scope.picture = $scope.data[1];
-
-                        for(i=2;i<=$scope.data.length;i++){
-                            $scope.farray = $scope.data[i];
-                        }*/
                         console.log(response);
-                        //console.log($scope.name);
-                        //console.log($scope.picture);
+
                     });
 
         };
