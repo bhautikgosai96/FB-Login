@@ -50,7 +50,7 @@ $fb = new Facebook\Facebook([
             	}
 
             $name = $profile['name'];
-            $photo = $profile['url'];
+            $photo = $picture['url'];
             echo json_encode($photo);
         	// showing picture on the screen
 
