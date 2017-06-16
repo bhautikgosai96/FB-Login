@@ -8,7 +8,7 @@
 <body ng-app="fbApp">
 <p>welcome user</p>
 <div ng-controller="fbCtrl" ng-init="init()">
-    <div ng-repeat="x in data" ng-if="x.photo_count > 0">
+    <div ng-repeat="x in farray" ng-if="x.photo_count > 0">
         <h4 >{{x.name }}</h4>
         <h4 > Total images : {{x.photo_count}}</h4>
         <img ng-src ="{{ x.picture.url }}" width="100%" height="100%" class="img-responsive" style="min-height:252px; max-height:252px;"/>
@@ -19,15 +19,24 @@
 
     app.controller('fbCtrl',function($scope,$http,$window){
         $scope.init= function(){
-
+        $scope.name = null;
+            $scope.picture = null;
+            $scope.farray = [];
             $http.get('home.php')
                     .then(function(response){
                         //alert('Called');
                         //console.log("hi");
                         $scope.data = response.data;
 
-                        console.log(response);
+                        $scope.name = $scope.data[0];
+                        $scope.picture = $scope.data[1];
 
+                        for(i=2;i<=$scope.data.length;i++){
+                            $scope.farray = $scope.data[i];
+                        }
+                        console.log(response);
+                        console.log($scope.name);
+                        console.log($scope.picture);
                     });
 
         };
