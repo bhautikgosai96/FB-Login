@@ -28,11 +28,29 @@ $fb = new Facebook\Facebook([
        //$ob = $response -> getGraphObject() -> AsArray();
 
 
-       echo json_encode($graphEdge);
+       //echo json_encode($graphEdge);
 
         // User profile picture
+            try{
+            		$requestPicture = $fb->get('/me/picture?redirect=false');
+            		$requestProfile = $fb->get('/me');
+            		$picture = $requestPicture->getGraphUser();
+            		$profile = $requestProfile->getGraphUser();
+            	}catch(Facebook\Exceptions\FacebookResponseException $e) {
+            		// When Graph returns an error
+            		echo 'Graph returned an error: ' . $e->getMessage();					//  Profile Picture
+            		session_destroy();
+            		// redirecting user back to app login page
+            		header("Location: ./");
+            		exit;
+            	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+            		// When validation fails or other local issues
+            		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            		exit;
+            	}
 
-
+            $name = $profile['name'];
+            echo json_encode($name);
         	// showing picture on the screen
 
        //echo $obj;
