@@ -16,12 +16,14 @@
         <img ng-src ="{{ x.picture.url }}" width="50%" height="100%" class="img-responsive" style="min-height:252px; max-height:252px;"/>
     </div>-->
     <div class="w3-container">
-        <div class="w3-card-4" style="width:50%" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
-            <img ng-src ="{{ x.picture.url }}" style="width:100%">
-            <div class="w3-container">
-                <h4 >{{x.name }}</h4>
-                <h4 > Total images : {{x.photo_count}}</h4>
-                <button class="w3-button w3-white w3-border w3-border-blue">Show Full Screen</button>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-4 w3-card-4" style="width:50%" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
+                <img ng-src ="{{ x.picture.url }}" style="width:100%">
+                <div class="w3-container">
+                    <h4 >{{x.name }}</h4>
+                    <h4 > Total images : {{x.photo_count}}</h4>
+                    <button class="w3-button w3-white w3-border w3-border-blue">Show Full Screen</button>
+                </div>
             </div>
         </div>
     </div>
