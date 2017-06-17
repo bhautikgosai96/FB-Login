@@ -27,10 +27,10 @@
                         //alert('Called');
                         //console.log("hi");
                         $scope.data = response.data;
-                        $photo = response.data;
-                        $photo = $photo.slice(1,-1);
+                        $scope.photo = response.data;
+                        $scope.photo = $photo.slice(1,-1);
                         console.log(response);
-                        console.log($photo);
+                        console.log($scope.photo);
                     });
 
         };
