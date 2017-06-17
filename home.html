@@ -17,8 +17,8 @@
     </div>-->
     <div class="w3-container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-4 w3-card-4" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
-                <img ng-src ="{{ x.picture.url }}" style="width:100%">
+            <div class="col-md-offset-1 col-md-3" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
+                <img ng-src ="{{ x.picture.url }}">
                 <div class="w3-container">
                     <h4 >{{x.name }}</h4>
                     <h4 > Total images : {{x.photo_count}}</h4>
