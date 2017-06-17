@@ -54,6 +54,8 @@ $fb = new Facebook\Facebook([
             $lst = array();
 
             $lst[0] = $name;
+
+            $lst = array_merge($lst,$graphEdge);
             echo json_encode($lst);
         	// showing picture on the screen
 
