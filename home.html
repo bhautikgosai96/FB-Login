@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Title</title>
 </head>
 <body ng-app="fbApp">
@@ -17,8 +20,8 @@
     </div>-->
     <div class="w3-container">
         <div class="row">
-
-                <div class=" w3-card-4" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
+            <div class="col-md-offset-1 col-md-3" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
+                <div class=" w3-card-4" >
                     <img ng-src ="{{ x.picture.url }}">
                     <div class="w3-container">
                         <h4 >{{x.name }}</h4>
