@@ -21,15 +21,24 @@
 
     app.controller('fbCtrl',function($scope,$http,$window){
         $scope.init= function(){
-            $photo = null;
+            $scope.profileName = null;
+            $scope.albumnList = [];
             $http.get('home.php')
                     .then(function(response){
                         //alert('Called');
                         //console.log("hi");
                         $scope.data = response.data;
+                        $scope.profileName = $scope.data[0];
+                        var i;
+
+                        for(i=1;i<=$scope.data.length;i++){
+                            $scope.albumnList[i-1] = $scope.data[i];
+                        }
                         //$scope.photo = response.data;
                         //$scope.photo = $scope.photo.slice(1,-1);
                         console.log(response);
+                        console.log($scope.profileName);
+                        cpnsole.log($scope.albumnList);
                         //console.log($scope.photo);
                     });
 
