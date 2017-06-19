@@ -6,7 +6,7 @@
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
 
-    <script src="slideShow.js"></script>
+
 
     <!-- adding  css files -->
     <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -28,6 +28,18 @@
     </div>
 </div>
 </div>
+
+<script>
+    var app = angular.module('fbApp', ['ui.bootstrap','ngStorage']);
+
+    app.controller('slide',function($scope,$http,$localStorage,$window){
+
+        $scope.photo = $localStorage.gallery;
+        $scope.interval = 2000;
+
+
+    });
+</script>
 </body>
 
 </html>
