@@ -17,8 +17,8 @@
     <h2>Hello</h2>
     <div class="offsetspan6">
         <carousel interval="interval">
-            <slide ng-repeat="slide in photo" active="slide.active">
-                <img class="image-circle" ng-src="{{slide.images.source}}"    style="margin:auto;"/>
+            <slide ng-repeat="slide in image" active="slide.active">
+                <img class="image-circle" ng-src="{{slide}}"    style="margin:auto;"/>
                 {{slide.images.source}}
             </slide>
         </carousel>
@@ -30,14 +30,14 @@
     var app = angular.module('fbApp', ['ui.bootstrap','ngStorage']);
 
     app.controller('slide',function($scope,$http,$localStorage,$window){
-
+        $scope.image = [];
         $scope.photo = $localStorage.gallery;
         for(i=0;i<$scope.photo.length;i++)
         {
-            console.log( $scope.photo[i].images[1].source);
+            $scope.image.push( $scope.photo[i].images[1].source);
 
         }
-        console.log($scope.photo);
+        console.log($scope.image);
         $scope.interval = 2000;
 
 
