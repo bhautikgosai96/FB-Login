@@ -32,6 +32,11 @@
     app.controller('slide',function($scope,$http,$localStorage,$window){
 
         $scope.photo = $localStorage.gallery;
+        for(i=0;i<$scope.photo.length;i++)
+        {
+            console.log( $scope.photo[i].images[1].source);
+
+        }
         console.log($scope.photo);
         $scope.interval = 2000;
 
