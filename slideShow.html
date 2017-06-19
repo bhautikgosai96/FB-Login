@@ -16,13 +16,10 @@
 <div class="container" ng-controller="slide">
     <h2>Hello</h2>
     <div class="offsetspan6">
-        <carousel interval="myInterval">
+        <carousel interval="interval">
             <slide ng-repeat="slide in photo" active="slide.active">
-                <img class="image-circle" ng-src="{{slide.image}}"    style="margin:auto;"/>
-                <div class="carousel-caption">
-                    <h4>Slide {{$index}}</h4>
-                    <p>{{slide.text}}</p>
-                </div>
+                <img class="image-circle" ng-src="{{slide.images.source}}"    style="margin:auto;"/>
+                {{slide.images.source}}
             </slide>
         </carousel>
     </div>
