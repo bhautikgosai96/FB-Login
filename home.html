@@ -26,7 +26,7 @@
                     <div class="w3-container">
                         <h4 >{{x.name }}</h4>
                         <h4 > Total images : {{x.photo_count}}</h4>
-                        <button class="w3-button w3-white w3-border w3-border-blue">Show Full Screen</button><br>
+                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="slideShow()">Show Full Screen</button><br>
                         <button class="w3-button w3-white w3-border w3-border-blue">Download</button>
                     </div>
                 </div>
@@ -60,6 +60,10 @@
                         //console.log($scope.photo);
                     });
 
+        };
+
+        $scope.slideShow = function(){
+            $window.open('slideShow.html');
         };
     });
 </script>
