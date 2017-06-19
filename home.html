@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,7 +27,7 @@
                     <div class="w3-container">
                         <h4 >{{x.name }}</h4>
                         <h4 > Total images : {{x.photo_count}}</h4>
-                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="slideShow()">Show Full Screen</button><br>
+                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="slideShow(x.photos)">Show Full Screen</button><br>
                         <button class="w3-button w3-white w3-border w3-border-blue">Download</button>
                     </div>
                 </div>
@@ -35,9 +36,9 @@
     </div>
 </div>
 <script>
-    var app = angular.module('fbApp',[]);
+    var app = angular.module('fbApp',['ngStorage']);
 
-    app.controller('fbCtrl',function($scope,$http,$window){
+    app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
         $scope.init= function(){
             $scope.profileName = null;
             $scope.albumnList = [];
@@ -62,7 +63,8 @@
 
         };
 
-        $scope.slideShow = function(){
+        $scope.slideShow = function(photo){
+            $localStorage.gallery = photo;
             $window.open('slideShow.html');
         };
     });

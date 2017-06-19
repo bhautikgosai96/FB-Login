@@ -1,9 +1,9 @@
 //angular.module('myApp', ['ui.bootstrap']);
-var app = angular.module('fbApp', ['ui.bootstrap']);
+var app = angular.module('fbApp', ['ui.bootstrap','ngStorage']);
 
 
 // Controller  for Carousel
-function CarouselCtrl($scope) {
+/*function CarouselCtrl($scope) {
 
 // initializing the time Interval
     $scope.myInterval = 1000;
@@ -20,4 +20,12 @@ function CarouselCtrl($scope) {
     var slides = $scope.slides;
     console.log(slides);
 
-} // Controller Ends here
+} */// Controller Ends here
+
+app.controller('slide',function($scope,$http,$localStorage,$window){
+
+    $scope.photo = $localStorage.gallery;
+    $scope.interval = 2000;
+
+
+});

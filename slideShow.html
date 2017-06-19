@@ -4,6 +4,8 @@
     <!-- adding  script files -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"> </script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+
     <script src="slideShow.js"></script>
 
     <!-- adding  css files -->
@@ -11,11 +13,11 @@
 
 </head>
 <body ng-app="fbApp" >
-<div class="container" ng-controller="CarouselCtrl">
+<div class="container" ng-controller="slide">
     <h2>Hello</h2>
     <div class="offsetspan6">
         <carousel interval="myInterval">
-            <slide ng-repeat="slide in slides" active="slide.active">
+            <slide ng-repeat="slide in photo" active="slide.active">
                 <img class="image-circle" ng-src="{{slide.image}}"    style="margin:auto;"/>
                 <div class="carousel-caption">
                     <h4>Slide {{$index}}</h4>
