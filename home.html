@@ -36,6 +36,7 @@
         </div>
     </div>
 </div>
+    {{downloadLink}}
 <script>
     var app = angular.module('fbApp',['ngStorage']);
 
@@ -85,8 +86,10 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function mySuccess(response) {
-                console.log(response);
-                console.log("success");
+                console.log(data);
+                var base_url = window.location.origin;
+                alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
+                $scope.downloadLink= base_url+'/'+data[0] ;
 
             }, function myError(response) {
                 console.log(response);
