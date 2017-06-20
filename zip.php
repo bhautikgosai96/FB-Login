@@ -24,7 +24,7 @@ if(file_exists($filename)){
     readfile($filename);
     unlink($filename);
 }
-echo json_encode("successfull");
+echo json_encode($filename);
 /*
 $temp=[];
 foreach($img as $file){
