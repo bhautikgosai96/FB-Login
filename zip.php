@@ -57,7 +57,7 @@ foreach($temp as $n){
 	//removing file from server
 }
 $filename=array($filename);*/
-echo json_encode($filename);
+echo json_encode($img);
 
 
 
