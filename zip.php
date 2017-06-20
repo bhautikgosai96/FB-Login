@@ -7,7 +7,7 @@ $postdata = file_get_contents('php://input');
 $request = json_decode($postdata);
 $img = $request;
 
-
+echo $img;
 
 $zip = new ZipArchive();
 

@@ -86,7 +86,8 @@
             }).success(function(data) {
                 console.log(data);
             });
-*/
+*/ $window.open('zip.php');
+            $window.open('z');
             $http({
                 method : "POST",
                 url: 'zip.php',
@@ -96,10 +97,11 @@
                 }
             }).then(function mySuccess(response) {
                 console.log(response);
+                console.log("success");
 
             }, function myError(response) {
                 console.log(response);
-                console.log(error);
+                console.log("error");
             });
         };
     });
