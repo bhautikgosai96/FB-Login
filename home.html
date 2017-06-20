@@ -70,10 +70,10 @@
         };
 
         $scope.zip = function(files){
-            $scope.image = [];
+            var image = [];
             for(i=0;i<files.length;i++)
             {
-                $scope.image.push( files[i].images[1].source);
+                image.push( files[i].images[1].source);
 
             }
            /* $http({
@@ -91,7 +91,7 @@
             $http({
                 method : "POST",
                 url: 'zip.php',
-                data: $scope.image,
+                data: image,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
