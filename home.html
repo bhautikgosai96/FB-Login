@@ -88,9 +88,10 @@
                 }
             }).then(function mySuccess(data) {
                 console.log(data);
+                console.log(data.data);
                 var base_url = window.location.origin;
                 alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
-                $scope.downloadLink= base_url+'/'+data[0] ;
+                $scope.downloadLink= base_url+'/'+data.data[0] ;
 
             }, function myError(response) {
                 console.log(response);
