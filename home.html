@@ -95,7 +95,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function mySuccess(response) {
-                console.log(data);
+                console.log(response);
                 var base_url = window.location.origin;
                 alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
                 $scope.downloadLink= base_url+'/'+data[0] ;
