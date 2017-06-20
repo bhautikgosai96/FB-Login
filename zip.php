@@ -17,14 +17,14 @@ foreach($image as $file){
 }
 
 $zip->close();
-echo json_encode($image);
+
 if(file_exists($filename)){
     header('Content-type: application/zip');
     header('Content-Disposition: attachment; filename="'.$filename.'"');
-
+    readfile($filename);
     unlink($filename);
 }
-
+echo json_encode("successfull");
 /*
 $temp=[];
 foreach($img as $file){
