@@ -76,7 +76,7 @@
                 $scope.image.push( files[i].images[1].source);
 
             }
-            $http({
+           /* $http({
                 method: 'POST',
                 url: 'zip.php',
                 data: $scope.image,
@@ -85,6 +85,20 @@
                 }
             }).success(function(data) {
                 console.log(data);
+            });
+*/
+            $http({
+                method : "POST",
+                url: 'zip.php',
+                data: $scope.image,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function mySuccess(response) {
+                console.log(response);
+            }, function myError(response) {
+                console.log(response);
+                console.log(error);
             });
         };
     });
