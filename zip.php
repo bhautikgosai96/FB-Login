@@ -1,31 +1,27 @@
 <?php
 
-$errors = array();
-$data = array();
+$image = json_decode(file_get_contents("php://input"));
 
-$postdata = file_get_contents('php://input');
-$request = json_decode($postdata);
-$img = $request;
 
-echo $img;
+
+
 
 $zip = new ZipArchive();
 
-$filename = time().'.zip';
-if($zip->open($filename, ZipArchive::CREATE)!==TRUE)
-    die ("Could not open archive");
+$filename = time().".zip";
+$zip->open($filename, ZipArchive::CREATE);
 
 
-foreach($img as $file){
-    $zip->addfile($file)
+foreach($image as $file){
+    $zip->addfile($file);
 }
 
 $zip->close();
-
+echo json_encode($image);
 if(file_exists($filename)){
     header('Content-type: application/zip');
     header('Content-Disposition: attachment; filename="'.$filename.'"');
-    readfile($filename);
+
     unlink($filename);
 }
 
@@ -57,7 +53,7 @@ foreach($temp as $n){
 	//removing file from server
 }
 $filename=array($filename);*/
-echo json_encode($img);
+
 
 
 

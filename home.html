@@ -76,18 +76,7 @@
                 image.push( files[i].images[1].source);
 
             }
-           /* $http({
-                method: 'POST',
-                url: 'zip.php',
-                data: $scope.image,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).success(function(data) {
-                console.log(data);
-            });
-*/
-
+            console.log(image);
             $http({
                 method : "POST",
                 url: 'zip.php',
