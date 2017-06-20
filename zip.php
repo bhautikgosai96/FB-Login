@@ -23,6 +23,10 @@ if(createZip($files, $zip_file))
 else
     echo json_encode('Unable to create the '. $zip_file. ' file');
 
-
+header('Content-type: application/zip');
+header('Content-disposition: filename="'. $zip_file. '"');
+header('Content-length:'. filesize($zip_file));
+readfile($zip_file);
+exit();
 
 ?>
