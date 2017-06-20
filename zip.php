@@ -11,11 +11,25 @@ $img = $request;
 
 $zip = new ZipArchive();
 
-$filename = 'uploads/'.time().'.zip';
-if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
+$filename = time().'.zip';
+if($zip->open($filename, ZipArchive::CREATE)!==TRUE)
     die ("Could not open archive");
 
 
+foreach($img as $file){
+    $zip->addfile($file)
+}
+
+$zip->close();
+
+if(file_exists($filename)){
+    header('Content-type: application/zip');
+    header('Content-Disposition: attachment; filename="'.$filename.'"');
+    readfile($filename);
+    unlink($filename);
+}
+
+/*
 $temp=[];
 foreach($img as $file){
 
@@ -42,7 +56,7 @@ foreach($temp as $n){
 	unlink($n);
 	//removing file from server
 }
-$filename=array($filename);
+$filename=array($filename);*/
 echo json_encode($filename);
 
 
