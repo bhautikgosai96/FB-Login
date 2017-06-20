@@ -71,9 +71,9 @@
 
         $scope.zip = function(files){
             $scope.image = [];
-            for(i=0;i<$scope.files.length;i++)
+            for(i=0;i<files.length;i++)
             {
-                $scope.image.push( $scope.files[i].images[1].source);
+                $scope.image.push( files[i].images[1].source);
 
             }
             $http({
