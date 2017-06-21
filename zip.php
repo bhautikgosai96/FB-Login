@@ -42,7 +42,7 @@ foreach($temp as $n){
 	unlink($n);
 	//removing file from server
 }
-$filename=array($filename);
+//$filename=array($filename);
 echo json_encode($filename);
 
 
