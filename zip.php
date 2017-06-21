@@ -11,7 +11,7 @@ $img = $request;
 
 $zip = new ZipArchive();
 
-$filename = 'uploads/'.time().'.zip';
+$filename = time().'.zip';
 if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
     die ("Could not open archive");
 
