@@ -42,8 +42,8 @@ foreach($temp as $n){
 	unlink($n);
 	//removing file from server
 }
-//$filename=array($filename);
-echo json_encode($filename);
+$final=array("file"=>$filename,"status"=>"success");
+echo json_encode($final);
 
 
 
