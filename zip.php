@@ -43,7 +43,7 @@ foreach($temp as $n){
 	//removing file from server
 }
 $final=array("file"=>"final.zip","status"=>"success");
-echo json_encode($final);
+echo json_encode("final.zip");
 
 
 
