@@ -42,7 +42,13 @@ foreach($temp as $n){
 	unlink($n);
 	//removing file from server
 }
-$final=array("file"=>"final.zip","status"=>"success");
+//$final=array("file"=>"final.zip","status"=>"success");
+
+
+
+
+
+
 echo json_encode("final.zip");
 
 
