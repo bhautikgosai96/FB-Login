@@ -95,9 +95,11 @@
             }).then(function mySuccess(data) {
                 console.log(data);
                 console.log(data.data);
+                var str = data.data.substr(0,8);
+                console.log(str);
                 var base_url = window.location.origin;
                 alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
-                $scope.downloadLink= base_url+'/'+data.data ;
+                $scope.downloadLink= base_url+'/'+str;
                 console.log(base_url);
 
             }, function myError(response) {
