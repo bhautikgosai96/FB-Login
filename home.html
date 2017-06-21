@@ -36,7 +36,8 @@
         </div>
     </div>
 </div>
-    {{downloadLink}}
+    <button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>
+    <hr>
 
 <script>
     var app = angular.module('fbApp',['ngStorage']);
@@ -70,6 +71,11 @@
             $localStorage.gallery = photo;
             $window.open('slideShow.html');
         };
+
+        $scope.DownloadReady =function(){
+
+            $window.open($scope.downloadLink);
+        }
 
         $scope.zip = function(files){
             var image = [];
