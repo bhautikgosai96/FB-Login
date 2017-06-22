@@ -22,7 +22,7 @@ foreach($img as $file){
 
 	$download_file = file_get_contents($file);
 
-	$name =basename($file);
+	$name = "img.jpg";
 	array_push($temp,$name);
 	file_put_contents($name,$download_file);
 
