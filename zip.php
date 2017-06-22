@@ -17,13 +17,12 @@ if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
 
 
 $temp=[];
-$count = 0;
 foreach($img as $file){
 
-    $count++;
+
 	$download_file = file_get_contents($file);
 
-	$name =$count'.jpg';
+	$name =basename($file);
 	array_push($temp,$name);
 	file_put_contents($name,$download_file);
 
@@ -49,7 +48,7 @@ foreach($temp as $n){
 
 
 
-//echo "a";
+
 echo json_encode("final.zip");
 
 
