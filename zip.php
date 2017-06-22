@@ -17,12 +17,13 @@ if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
 
 
 $temp=[];
+$count = 0;
 foreach($img as $file){
 
-
+    $count++;
 	$download_file = file_get_contents($file);
 
-	$name =basename($file);
+	$name =$count'.jpg';
 	array_push($temp,$name);
 	file_put_contents($name,$download_file);
 
