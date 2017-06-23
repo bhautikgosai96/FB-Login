@@ -57,7 +57,7 @@
                         var i;
 
                         for(i=1;i<=$scope.data.length;i++){
-                            $scope.albumnList[i-1] = $scope.data[i];
+                            $scope.albumnList.push($scope.data[i]);
                         }
                         //$scope.photo = response.data;
                         //$scope.photo = $scope.photo.slice(1,-1);
