@@ -36,6 +36,7 @@
         </div>
     </div>
 </div>
+    <button class="w3-button w3-white w3-border w3-border-blue" ng-click="downloadAll()">Download All Album</button>
     <a ng-show="downloadLink" href="{{downloadLink}}" download>download from here</a>
     <!--<button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>-->
 
@@ -78,6 +79,11 @@
             $window.open($scope.downloadLink);
         }
 
+        $scope.downloadAll = function(){
+
+            console.log($scope.data);
+
+        };
         $scope.zip = function(files){
             var image = [];
             for(i=0;i<files.length;i++)
