@@ -102,11 +102,13 @@
 
                 var albumn = lst[i];
                 albumnData.name = albumn.name;
-                console.log("albumn nmae;"+albumnData.name);
+                console.log("albumn nmae:"+albumnData.name);
+                console.log(albumn);
                 var j;
-                for(j=0;j<albumn.length;j++){
+                var albumnPhoto = albumn.photo;
+                for(j=0;j<albumnPhoto.length;j++){
 
-                    albumnData.image.push(albumn[j].images[1].source);
+                    albumnData.image.push(albumnPhoto[j].images[1].source);
                 }
 
                 allAlbumnList.push(albumnData);
