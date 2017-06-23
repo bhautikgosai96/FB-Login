@@ -77,12 +77,40 @@
         $scope.DownloadReady =function(){
 
             $window.open($scope.downloadLink);
-        }
+        };
 
         $scope.downloadAll = function(){
 
             console.log($scope.albumnList);
+            var lst = $scope.albumnList;
+            var len = lst.length;
 
+            if(len<=0){
+                alert("There is no album.");
+                return;
+            };
+
+            var allAlbumnList = [];
+            var i;
+            for(i=0;i<=len;i++){
+
+                var albumnData = {
+                    name:'',
+                    image:[]
+                };
+
+                albumnData.name = lst[i].name;
+                var albumn = lst[i];
+                var j;
+                for(j=0;j<=albumn.length;j++){
+
+                    albumnData.image.push(albumn[j].images[1].source);
+                }
+
+                allAlbumnList.push(albumnData);
+            }
+
+            console.log(allAlbumnList);
         };
         $scope.zip = function(files){
             var image = [];
