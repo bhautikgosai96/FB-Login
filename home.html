@@ -107,8 +107,9 @@
                 var j;
                 var albumnPhoto = albumn.photos;
 
-                if(albumnPhoto.length>0){
-                    for (j = 0; j < albumnPhoto.length; j++) {
+                var albumnPhotoLenght = albumnPhoto.length;
+                if(albumnPhotoLenght>0){
+                    for (j = 0; j < albumnPhotoLenght; j++) {
 
                         albumnData.image.push(albumnPhoto[j].images[1].source);
                     }
