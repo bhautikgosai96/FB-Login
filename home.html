@@ -107,15 +107,13 @@
                 var j;
                 var albumnPhoto = albumn.photos;
 
-                try {
+                if(albumnPhoto.length>0){
                     for (j = 0; j < albumnPhoto.length; j++) {
 
                         albumnData.image.push(albumnPhoto[j].images[1].source);
                     }
 
                     allAlbumnList.push(albumnData);
-                }catch (e){
-
                 }
             }
 
