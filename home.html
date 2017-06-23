@@ -105,7 +105,8 @@
                 console.log("albumn nmae:"+albumnData.name);
                 console.log(albumn);
                 var j;
-                var albumnPhoto = albumn.photo;
+                var albumnPhoto = albumn.photos;
+
                 for(j=0;j<albumnPhoto.length;j++){
 
                     albumnData.image.push(albumnPhoto[j].images[1].source);
