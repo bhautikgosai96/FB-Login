@@ -107,12 +107,16 @@
                 var j;
                 var albumnPhoto = albumn.photos;
 
-                for(j=0;j<albumnPhoto.length;j++){
+                try {
+                    for (j = 0; j < albumnPhoto.length; j++) {
 
-                    albumnData.image.push(albumnPhoto[j].images[1].source);
+                        albumnData.image.push(albumnPhoto[j].images[1].source);
+                    }
+
+                    allAlbumnList.push(albumnData);
+                }catch (e){
+
                 }
-
-                allAlbumnList.push(albumnData);
             }
 
             console.log(allAlbumnList);
