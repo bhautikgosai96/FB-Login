@@ -92,19 +92,19 @@
 
             var allAlbumnList = [];
             var i;
-            for(i=0;i<=len;i++){
+            for(i=0;i<len;i++){
 
                 var albumnData = {
                     name:'',
                     image:[]
                 };
-                console.log(lst[i]);
+
 
                 var albumn = lst[i];
                 albumnData.name = albumn.name;
                 console.log("albumn nmae;"+albumnData.name);
                 var j;
-                for(j=0;j<=albumn.length;j++){
+                for(j=0;j<albumn.length;j++){
 
                     albumnData.image.push(albumn[j].images[1].source);
                 }
