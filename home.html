@@ -98,9 +98,11 @@
                     name:'',
                     image:[]
                 };
+                console.log(lst[i]);
 
-                albumnData.name = lst[i].name;
                 var albumn = lst[i];
+                albumnData.name = albumn.name;
+                console.log("albumn nmae;"+albumnData.name);
                 var j;
                 for(j=0;j<=albumn.length;j++){
 
