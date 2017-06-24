@@ -8,13 +8,13 @@ $request = json_decode($postdata);
 
 $zip = new ZipArchive();
 
-$filename = 'final.zip';
+$filename = 'finalAll.zip';
 if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
     die ("Could not open archive");
 
 
 $temp=[];
-$count = 0;
+
 foreach($request as $file){
 
     $img=$k->image;
@@ -22,14 +22,19 @@ foreach($request as $file){
 
     $fname = mkdir($aName);
     $count = 0;
+
+    $fp = fopen($fname,"wb");
+
+
     foreach($img as $i){
         $download_file = file_get_contents($file);
         $count = $count + 1;
         $name = "img-".$count.".jpg";
         file_put_contents($name,$download_file);
-        file_put_contents($fname,$name);
+        $content = $name;
+        fwrite($fp,$content);
     }
-
+    fclose($fp);
 	array_push($temp,$fname);
 	$zip->addFile($fname);
 }
