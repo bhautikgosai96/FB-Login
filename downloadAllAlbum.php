@@ -8,7 +8,7 @@ $request = json_decode($postdata);
 
 $zip = new ZipArchive();
 
-$filename = "finalAll.zip";
+$filename = "f.zip";
 if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
     die ("Could not open archive");
 
@@ -29,7 +29,7 @@ foreach($request as $k){
         $name = "img-".$count.".jpg";
         array_push($temp,$name);
         file_put_contents($name,$download_file);
-        move_uploaded_file($name,$aName);
+
 
     }
 
@@ -47,7 +47,7 @@ foreach($temp as $n){
 	//removing file from server
 }
 
-echo json_encode("finalAll.zip");
+echo json_encode($aName);
 
 
 
