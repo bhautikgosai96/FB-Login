@@ -8,7 +8,7 @@ $request = json_decode($postdata);
 
 $zip = new ZipArchive();
 
-$filename = "f.zip";
+$filename = "finalAll.zip";
 if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
     die ("Could not open archive");
 
@@ -48,7 +48,7 @@ foreach($temp as $n){
 	//removing file from server
 }
 
-echo json_encode("f.zip");
+echo json_encode("finalAll.zip");
 
 
 
