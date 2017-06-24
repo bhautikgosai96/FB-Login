@@ -104,24 +104,23 @@
 
                 var albumn = lst[i];
                 albumnData.albumnName = albumn.name;
-                console.log("albumn nmae:"+albumnData.albumnName);
-                console.log(albumn);
+
                 var j;
+                console.log(allAlbumnList);
                 var albumnPhoto = albumn.photos;
 
 
-                if(albumn.lenght>0){
+
                     for (j = 0; j < albumn.length; j++) {
 
                         albumnData.image.push(albumnPhoto[j].images[1].source);
                     }
                     console.log(albumnData);
                     allAlbumnList.push(albumnData);
-                }
-                console.log(allAlbumnList);
+
             }
 
-            console.log(allAlbumnList);
+
 
             $http({
                 method : "POST",
