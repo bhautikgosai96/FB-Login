@@ -38,6 +38,7 @@
 </div>
     <button class="w3-button w3-white w3-border w3-border-blue" ng-click="downloadAll()">Download All Album</button>
     <a ng-show="downloadLink" href="{{downloadLink}}" download>download from here</a>
+    <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>download All Album from here</a>
     <!--<button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>-->
 
 
@@ -133,7 +134,7 @@
                 console.log("success");
                 var base_url = window.location.origin;
                 alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
-                $scope.downloadLink= base_url+'/';
+                $scope.downloadAllLink= base_url+'/'+data.data;
                 console.log(base_url);
 
             }, function myError(response) {
