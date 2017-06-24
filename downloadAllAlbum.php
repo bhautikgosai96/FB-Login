@@ -20,23 +20,21 @@ foreach($request as $file){
     $img=$k->image;
     $aName=$k->albumnName;
 
-    $fname = mkdir($aName);
     $count = 0;
 
-    $fp = fopen($fname,"wb");
-
-
     foreach($img as $i){
-        $download_file = file_get_contents($file);
+       $download_file = file_get_contents($file);
         $count = $count + 1;
         $name = "img-".$count.".jpg";
+        array_push($temp,$name);
         file_put_contents($name,$download_file);
-        $content = $name;
-        fwrite($fp,$content);
+        if(!isset($aName))
+        	$zip->addFile($name);
+        else
+        	$zip->addFile($name,$aName.'/'.$name);
     }
-    fclose($fp);
-	array_push($temp,$fname);
-	$zip->addFile($fname);
+
+
 }
 
 $zip->close();
