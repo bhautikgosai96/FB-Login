@@ -31,7 +31,7 @@ foreach($request as $k){
         file_put_contents($name,$download_file);
 
         $fp = fopen($aName,"wb");
-        fwrite($fp,$content);
+        fwrite($fp,$name);
         fclose($fp);
 
     }
