@@ -29,9 +29,8 @@ foreach($request as $k){
         $name = "img-".$count.".jpg";
         array_push($temp,$name);
         file_put_contents($name,$download_file);
-        $fp = fopen($aName,"wb");
-        fwrite($fp,$name);
-        fclose($fp);
+        move_uploaded_file($name,$aName);
+
     }
 
     $zip->addFile($aName);
