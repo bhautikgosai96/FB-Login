@@ -26,7 +26,7 @@ foreach($request as $k){
     foreach($img as $i){
        $download_file = file_get_contents($i);
         $count = $count + 1;
-        $name = "img-".$count.".jpg";
+        $name = $aName."-".$count.".jpg";
         array_push($temp,$name);
         file_put_contents($name,$download_file);
 
