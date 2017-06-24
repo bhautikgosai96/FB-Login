@@ -101,15 +101,15 @@
 
 
                 var albumn = lst[i];
-                albumnData.albumnNname = albumn.name;
+                albumnData.albumnName = albumn.name;
                 console.log("albumn nmae:"+albumnData.albumnName);
                 console.log(albumn);
                 var j;
                 var albumnPhoto = albumn.photos;
 
-                var albumnPhotoLenght = albumn.photo_count;
-                if(albumnPhotoLenght>0){
-                    for (j = 0; j < albumnPhotoLenght; j++) {
+
+                if(albumn.lenght>0){
+                    for (j = 0; j < albumn.length; j++) {
 
                         albumnData.image.push(albumnPhoto[j].images[1].source);
                     }
@@ -119,6 +119,27 @@
             }
 
             console.log(allAlbumnList);
+
+            $http({
+                method : "POST",
+                url: 'downloadAllAlbumn.php',
+                data: allAlbumnList,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function mySuccess(data) {
+                console.log(data);
+                console.log(data.data);
+                console.log("success");
+                var base_url = window.location.origin;
+                alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
+                $scope.downloadLink= base_url+'/';
+                console.log(base_url);
+
+            }, function myError(response) {
+                console.log(response);
+                console.log("error");
+            });
         };
         $scope.zip = function(files){
             var image = [];
