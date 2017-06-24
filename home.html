@@ -93,24 +93,19 @@
             };
 
             var allAlbumnList = [];
-            var albumnData = {
-                albumnName:'',
-                image:[]
-            };
+
             var i;
             for(i=0;i<len;i++){
-
-
-
-
+                var albumnData = {
+                    albumnName:'',
+                    image:[]
+                };
                 var albumn = lst[i];
                 albumnData.albumnName = albumn.name;
 
                 var j;
                 console.log(allAlbumnList);
                 var albumnPhoto = albumn.photos;
-
-
 
                     for (j = 0; j < albumnPhoto.length; j++) {
 
