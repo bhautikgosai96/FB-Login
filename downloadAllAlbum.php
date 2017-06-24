@@ -15,7 +15,7 @@ if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
 
 $temp=[];
 
-foreach($request as $file){
+foreach($request as $k){
 
     $img=$k->image;
     $aName=$k->albumnName;
@@ -23,7 +23,7 @@ foreach($request as $file){
     $count = 0;
 
     foreach($img as $i){
-       $download_file = file_get_contents($file);
+       $download_file = file_get_contents($i);
         $count = $count + 1;
         $name = "img-".$count.".jpg";
         array_push($temp,$name);
