@@ -47,7 +47,7 @@ foreach($temp as $n){
 	//removing file from server
 }
 
-echo json_encode($img);
+echo json_encode("f.zip");
 
 
 
