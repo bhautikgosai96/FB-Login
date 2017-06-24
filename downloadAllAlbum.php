@@ -20,9 +20,9 @@ foreach($request as $k){
     $img=$k->image;
     $aName=$k->albumnName;
 
-    mkdir($aName);
+
     $count = 0;
-    $open = opendir($aName);
+
     foreach($img as $i){
        $download_file = file_get_contents($i);
         $count = $count + 1;
@@ -30,10 +30,10 @@ foreach($request as $k){
         array_push($temp,$name);
         file_put_contents($name,$download_file);
 
-        copy($name,$aName);
+        $zip->addFile($name,$aName.'/'.$name);
 
     }
-    closedir($open);
+
     $zip->addFile($aName);
 
 }
