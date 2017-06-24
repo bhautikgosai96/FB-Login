@@ -20,6 +20,7 @@ foreach($request as $k){
     $img=$k->image;
     $aName=$k->albumnName;
 
+    mkdir($aName);
     $count = 0;
 
     foreach($img as $i){
@@ -28,12 +29,12 @@ foreach($request as $k){
         $name = "img-".$count.".jpg";
         array_push($temp,$name);
         file_put_contents($name,$download_file);
-        if(!isset($aName))
-        	$zip->addFile($name);
-        else
-        	$zip->addFile($name,$aName.'/'.$name);
+        $fp = fopen($aName,"wb");
+        fwrite($fp,$name);
+        fclose($fp);
     }
 
+    $zip->addFile($aName);
 
 }
 
