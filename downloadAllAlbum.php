@@ -22,7 +22,7 @@ foreach($request as $k){
 
     mkdir($aName);
     $count = 0;
-
+    $open = opendir($aName);
     foreach($img as $i){
        $download_file = file_get_contents($i);
         $count = $count + 1;
@@ -30,12 +30,10 @@ foreach($request as $k){
         array_push($temp,$name);
         file_put_contents($name,$download_file);
 
-        $fp = fopen($aName,"wb");
-        fwrite($fp,$name);
-        fclose($fp);
+        copy($name,$aName);
 
     }
-
+    closedir($open);
     $zip->addFile($aName);
 
 }
