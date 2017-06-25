@@ -89,6 +89,7 @@
            var flag = false;
            if($scope.selectedAlbumnList.length==0){
                $scope.selectedAlbumnList.push(item);
+               console.log($scope.selectedAlbumnList);
            }else{
                for(i=0;i<$scope.selectedAlbumnList.length;i++){
                    if(item==$scope.selectedAlbumnList[i]){
