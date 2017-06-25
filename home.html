@@ -93,16 +93,19 @@
                for(i=0;i<$scope.selectedAlbumnList.length;i++){
                    if(item==$scope.selectedAlbumnList[i]){
                        flag = true;
+
                        return;
                    }else{
                        flag = false;
                    }
                }
-
+               console.log(flag);
                if(flag){
                    $scope.selectedAlbumnList.pop(item);
+                   console.log($scope.selectedAlbumnList);
                }else{
                    $scope.selectedAlbumnList.push(item);
+                   console.log($scope.selectedAlbumnList);
                }
            }
 
