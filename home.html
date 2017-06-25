@@ -86,15 +86,32 @@
         $scope.selectedAlbumnList = [];
        $scope.selectAlbumn = function(item){
 
+           var albumnData = {
+               albumnName:'',
+               image:[]
+           };
+
+           var albumn = item;
+           albumnData.albumnName = albumn.name;
+           var j;
+           var albumnPhoto = albumn.photos;
+
+           for (j = 0; j < albumnPhoto.length; j++) {
+
+               albumnData.image.push(albumnPhoto[j].images[1].source);
+           }
+
+
+
            var i;
            var index;
            var flag = false;
            if($scope.selectedAlbumnList.length==0){
-               $scope.selectedAlbumnList.push(item);
+               $scope.selectedAlbumnList.push(albumnData);
                console.log($scope.selectedAlbumnList);
            }else{
                for(i=0;i<$scope.selectedAlbumnList.length;i++){
-                   if(angular.equals(item,$scope.selectedAlbumnList[i])){
+                   if(angular.equals(albumnData,$scope.selectedAlbumnList[i])){
                        flag = true;
                         index = i;
                        return;
@@ -107,7 +124,7 @@
                    $scope.selectedAlbumnList.splice(index,1);
                    console.log($scope.selectedAlbumnList);
                }else{
-                   $scope.selectedAlbumnList.push(item);
+                   $scope.selectedAlbumnList.push(albumnData);
                    console.log($scope.selectedAlbumnList);
                }
            }
