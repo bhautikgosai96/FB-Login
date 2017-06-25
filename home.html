@@ -104,7 +104,7 @@
 
 
            var i;
-           var index;
+           var index=0;
            var flag = false;
            if($scope.selectedAlbumnList.length==0){
                $scope.selectedAlbumnList.push(albumnData);
@@ -116,12 +116,13 @@
                    if(albumnData.albumnName===$scope.selectedAlbumnList[i].albumnName){
                        flag = true;
                         index = i;
-                       return;
+                       return flag;
                    }else{
                        flag = false;
                    }
                }
                console.log(flag);
+                console.log(index);
                if(flag){
                    $scope.selectedAlbumnList.splice(index,1);
                    console.log($scope.selectedAlbumnList);
