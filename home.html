@@ -111,7 +111,9 @@
                console.log($scope.selectedAlbumnList);
            }else{
                for(i=0;i<$scope.selectedAlbumnList.length;i++){
-                   if(angular.equals(albumnData,$scope.selectedAlbumnList[i])){
+                    console.log(albumnData.albumnName);
+                   console.log($scope.selectedAlbumnList[i].albumnName);
+                   if(albumnData.albumnName===$scope.selectedAlbumnList[i].albumnName){
                        flag = true;
                         index = i;
                        return;
