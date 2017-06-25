@@ -8,7 +8,7 @@ $request = json_decode($postdata);
 
 $zip = new ZipArchive();
 
-$filename = time()".zip";
+$filename = "Albumn-".time()".zip";
 if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
     die ("Could not open archive");
 
