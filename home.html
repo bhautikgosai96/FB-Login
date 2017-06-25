@@ -30,6 +30,8 @@
                         <h4 > Total images : {{x.photo_count}}</h4>
                         <button class="w3-button w3-white w3-border w3-border-blue" ng-click="slideShow(x.photos)">Show Full Screen</button><br>
                         <button class="w3-button w3-white w3-border w3-border-blue" ng-click="zip(x.photos)">Download</button>
+                        <input type="checkbox"
+                               ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
                 </div>
 
@@ -37,6 +39,7 @@
     </div>
 </div>
     <button class="w3-button w3-white w3-border w3-border-blue" ng-click="downloadAll()">Download All Album</button>
+    <button class="w3-button w3-white w3-border w3-border-blue" ng-click="downloadSelectedAll()">Download Selected Album</button>
     <a ng-show="downloadLink" href="{{downloadLink}}" download>download from here</a>
     <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>download All Album from here</a>
     <!--<button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>-->
@@ -80,6 +83,35 @@
             $window.open($scope.downloadLink);
         };
 
+        $scope.selectedAlbumnList = [];
+       $scope.selectAlbumn = function(item){
+        var i;
+           var flag = false;
+           if($scope.selectedAlbumnList.length==0){
+               $scope.selectedAlbumnList.push(item);
+           }else{
+               for(i=0;i<$scope.selectedAlbumnList.length;i++){
+                   if(item==$scope.selectedAlbumnList[i]){
+                       flag = true;
+                       return;
+                   }else{
+                       flag = false;
+                   }
+               }
+
+               if(flag){
+                   $scope.selectedAlbumnList.pop(item);
+               }else{
+                   $scope.selectedAlbumnList.push(item);
+               }
+           }
+
+       };
+
+
+        $scope.downloadSelectedAll = function(){
+          console.log("selected list: "+$scope.selectedAlbumnList);
+        };
 
         $scope.downloadAll = function(){
 
