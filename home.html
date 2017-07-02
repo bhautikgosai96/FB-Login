@@ -32,7 +32,7 @@
                         <h4 > Total images : {{x.photo_count}}</h4>
                         <button class="w3-button w3-white w3-border w3-border-blue" ng-click="slideShow(x.photos)">Show Full Screen</button><br>
                         <button class="w3-button w3-white w3-border w3-border-blue" ng-click="zip(x.photos)">Download</button>
-                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="movePicasa(x)">Add to Picasa</button>
+                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="movePicasa(x.photos)">Add to Picasa</button>
                         <input type="checkbox"
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
