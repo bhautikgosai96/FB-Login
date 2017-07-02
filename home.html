@@ -279,7 +279,7 @@
             }
             $http({
                 method: 'POST',
-                url: 'uploadPicasa.php',
+                url: 'sendAlbumn.php',
                 data: albumData,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -288,6 +288,11 @@
                 console.log(data);
                 console.log("successfully uploaded to picasa");
                 $scope.picasa = true;
+
+                var base_url = window.location.origin;
+
+
+                $window.open(base_url+'/uploadPicasa.php');
 
             }, function myError(response) {
                 console.log(response);

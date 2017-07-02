@@ -1,14 +1,14 @@
 <?php
 require_once 'lib/picasa/autoload.php';
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
-$postdata = file_get_contents('php://input');
-$request = json_decode($postdata);
 
-$img=$request->img;
-$albumName=$request->name;
 
 session_start();
 $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
+
+$albumName=$_SESSION['picasaAlbum'];
+
+$img=$_SESSION['picasaImg'];
 
 if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
