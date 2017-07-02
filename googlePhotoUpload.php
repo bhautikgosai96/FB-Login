@@ -22,7 +22,7 @@ require_once 'lib/Zend/Loader.php';
 $query = $gp->newAlbumQuery();
 
 $query->setUser("default");
-$query->setAlbumName("sample.albumname");
+$query->setAlbumName("first");
 
 $albumFeed = $gp->getAlbumFeed($query);
 foreach ($albumFeed as $albumEntry) {
