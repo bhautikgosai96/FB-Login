@@ -12,30 +12,14 @@ $request = json_decode($postdata);
       Zend_Loader::loadClass('Zend_Gdata_Photos');
       Zend_Loader::loadClass('Zend_Http_Client');
 
-      $svc = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-            $user = "bhautikng143@gmail.com";
-            $pass = "Kevin7872#";
-            $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $svc);
-            $gphoto = new Zend_Gdata_Photos($client);
+     $serviceName = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
 
+     $user = "bhautikng143@gmail.com";
+     $pass = "Kevin7872#";
 
-            $albumName = "FirstAlbumn";
+     $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
 
-        try{
-            $photo = $gphoto->newPhotoEntry();
+     $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
 
-             $file = $gphoto->newMediaFileSource($request);
-             $file->setContentType("image/jpeg");
-             $photo->setMediaSource($file);
-
-              $album = $gphoto->newAlbumQuery();
-              $album->setUser($user);
-              $album->setAlbumName($albumName);
-
-              $gphoto->insertPhotoEntry($photo, $album->getQueryUrl());
-            }catch (Zend_Gdata_App_Exception $e) {
-                     echo "Error: " . $e->getResponse();
-           }
-
-           echo json_decode("error");
+     echo "success";
 ?>
