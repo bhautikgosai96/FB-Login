@@ -1,12 +1,11 @@
 <?php
 
-require_once 'Zend/Loader.php';
+require_once 'lib/Zend/Loader.php';
 
 $postdata = file_get_contents('php://input');
 $request = json_decode($postdata);
 
-$img=$request->img;
-$an=$request->albumnName;
+
 
       Zend_Loader::loadClass('Zend_Gdata');
       Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
@@ -20,12 +19,12 @@ $an=$request->albumnName;
             $gphoto = new Zend_Gdata_Photos($client);
 
 
-            $albumName = $an;
+            $albumName = "FirstAlbumn";
 
         try{
             $photo = $gphoto->newPhotoEntry();
 
-             $file = $gphoto->newMediaFileSource($img[0]);
+             $file = $gphoto->newMediaFileSource($request);
              $file->setContentType("image/jpeg");
              $photo->setMediaSource($file);
 

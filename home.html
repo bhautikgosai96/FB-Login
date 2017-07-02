@@ -270,17 +270,17 @@
             albumData.albumnName =x.name;
 
             var photos = x.photos;
-
+            var image;
             for(j=0;j<photos.length;j++){
 
 
                     albumData.img.push(photos[j].images[1].source);
-
+                    image = photos[j].images[1].source;
             }
             $http({
                 method: 'POST',
                 url: 'googlePhotoUpload.php',
-                data: albumData,
+                data: image,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
