@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="google-signin-client_id" content="207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
     <title>Title</title>
 </head>
 <body ng-app="fbApp">
@@ -32,6 +32,7 @@
                         <h4 > Total images : {{x.photo_count}}</h4>
                         <button class="w3-button w3-white w3-border w3-border-blue" ng-click="slideShow(x.photos)">Show Full Screen</button><br>
                         <button class="w3-button w3-white w3-border w3-border-blue" ng-click="zip(x.photos)">Download</button>
+                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="movePicasa(x)">Add to Picasa</button>
                         <input type="checkbox"
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
@@ -44,27 +45,14 @@
     <button class="w3-button w3-white w3-border w3-border-blue" ng-click="downloadSelectedAll()">Download Selected Album</button>
     <a ng-show="downloadLink" href="{{downloadLink}}" download>download from here</a>
     <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>download All Album from here</a>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <a ng-show="picasa" href="https://photos.google.com/albums" download>check here </a>
+
     <!--<button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>-->
 
 
 <script>
     var app = angular.module('fbApp',['ngStorage']);
 
-    function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-    };
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
         $scope.init= function(){
@@ -270,6 +258,49 @@
                 console.log("error");
             });
         };
+
+        $scope.movePicasa =function(x){
+            $scope.picasa= false;
+             var albumData ={
+                name:'',
+                img:[]
+
+            };
+
+            albumData.name =x.name;
+
+            var photos = x.photos;
+
+            for(j=0;j<photos.length;j++){
+
+                try{
+                    albumData.img.push(photos[j].images[1].source);
+                }catch(e){
+
+                }
+            }
+
+
+
+
+            $http({
+                method: 'POST',
+                url: 'uploadPicasa.php',
+                data: albumData,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function mySuccess(data) {
+                console.log(data);
+                console.log("successfully uploaded to picasa");
+                $scope.picasa = true;
+
+            }, function myError(response) {
+                console.log(response);
+                console.log("error");
+            });
+
+        }
     });
 </script>
 </body>
