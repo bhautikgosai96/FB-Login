@@ -19,6 +19,13 @@ require_once 'lib/Zend/Loader.php';
      $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
 
      $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
+$query = $gp->newAlbumQuery();
 
-    echo "success";
+$query->setUser("default");
+$query->setAlbumName("sample.albumname");
+
+$albumFeed = $gp->getAlbumFeed($query);
+foreach ($albumFeed as $albumEntry) {
+    echo $albumEntry->title->text . "<br />\n";
+}
 ?>
