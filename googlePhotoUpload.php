@@ -2,8 +2,7 @@
 
 require_once 'lib/Zend/Loader.php';
 
-$postdata = file_get_contents('php://input');
-$request = json_decode($postdata);
+
 
 
 
@@ -21,5 +20,5 @@ $request = json_decode($postdata);
 
      $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
 
-     echo "success";
+    echo "success";
 ?>
