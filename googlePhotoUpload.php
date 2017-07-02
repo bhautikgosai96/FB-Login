@@ -35,7 +35,7 @@ $request = json_decode($postdata);
               $gphoto->insertPhotoEntry($photo, $album->getQueryUrl());
             }catch (Zend_Gdata_App_Exception $e) {
                      echo "Error: " . $e->getResponse();
-                   }
+           }
 
            echo json_decode("error");
 ?>
