@@ -37,5 +37,5 @@ $request = json_decode($postdata);
                      echo "Error: " . $e->getResponse();
                    }
 
-           echo json_decode($gphoto);
+           echo json_decode("error");
 ?>
