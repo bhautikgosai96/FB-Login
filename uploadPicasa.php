@@ -53,13 +53,13 @@ if(isset($albumName) and isset($img)){
     session_destroy();
     echo "<script>alert('Album successfully uploaded')</script>";
 
-    echo json_encode("Album successfully uploaded");
+
 //header("Location: https://picasaweb.google.com/home");
 }else{
 
 
 echo "<script>alert('Please try again')</script>";
-echo json_encode("Please try again");
+
 
 }
 ?>
