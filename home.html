@@ -261,8 +261,9 @@
 
         $scope.movePicasa =function(x){
 
-
-            $scope.picasa= false;
+            var base_url = window.location.origin;
+            $window.open(base_url+'/googlePhotoUpload.php');
+           /* $scope.picasa= false;
              var albumData ={
                 albumnName:'',
                 img:[]
@@ -299,7 +300,7 @@
             }, function myError(response) {
                 console.log(response);
                 console.log("error");
-            });
+            });*/
 
         }
     });
