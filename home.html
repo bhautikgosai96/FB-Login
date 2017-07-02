@@ -260,7 +260,12 @@
         };
 
         $scope.movePicasa =function(x){
-            $scope.picasa= false;
+            var base_url = window.location.origin;
+
+
+            $window.open(base_url+'/add.php');
+
+          /*  $scope.picasa= false;
              var albumData ={
                 albumnName:'',
                 img:[]
@@ -298,7 +303,7 @@
                 console.log(response);
                 console.log("error");
             });
-
+            */
         }
     });
 </script>
