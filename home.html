@@ -260,12 +260,9 @@
         };
 
         $scope.movePicasa =function(x){
-            var base_url = window.location.origin;
 
 
-            $window.open(base_url+'/add.php');
-
-          /*  $scope.picasa= false;
+            $scope.picasa= false;
              var albumData ={
                 albumnName:'',
                 img:[]
@@ -275,17 +272,17 @@
             albumData.albumnName =x.name;
 
             var photos = x.photos;
-            var image;
+
             for(j=0;j<photos.length;j++){
 
 
                     albumData.img.push(photos[j].images[1].source);
-                    image = photos[j].images[1].source;
+
             }
             $http({
                 method: 'POST',
-                url: 'googlePhotoUpload.php',
-                data: image,
+                url: 'sendAlbumn.php',
+                data: albumData,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -294,16 +291,16 @@
                 console.log("successfully uploaded to picasa");
                 $scope.picasa = true;
 
-                //var base_url = window.location.origin;
+                var base_url = window.location.origin;
 
 
-                //$window.open(base_url+'/uploadPicasa.php');
+                $window.open(base_url+'/uploadPicasa.php');
 
             }, function myError(response) {
                 console.log(response);
                 console.log("error");
             });
-            */
+
         }
     });
 </script>
