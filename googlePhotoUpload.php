@@ -23,7 +23,7 @@
   <body>
     <?php
     // load library
-    require_once 'Zend/Loader.php';
+    require_once 'lib/Zend/Loader.php';
     Zend_Loader::loadClass('Zend_Gdata');
     Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
     Zend_Loader::loadClass('Zend_Gdata_Photos');
