@@ -34,15 +34,9 @@ $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
     //var_dump($url);
 
     // http://dantri.vcmedia.vn/Uploaded/2011/04/08/9f5anh%205.JPG
-    $filename = [];
 
-    $url = $uploader->transload('http://www.w3resource.com/w3r_images/php-isset-function.png');
-    array_push($filename,$url);
-
-
-
-    $filename=array($filename);
-
+    $url = $uploader->upload('http://www.w3resource.com/w3r_images/php-isset-function.png');
+    //$url = $uploader->transload('http://www.w3resource.com/w3r_images/php-isset-function.png');
 
 //    $_SESSION['picasaUpload'] =$filename;
 
