@@ -16,7 +16,7 @@
       $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
 
 $username = "default";
-$filename = "cricket2.jpg";
+$filename = "/cricket2.jpg";
 $photoName = "My Test Photo";
 $photoCaption = "The first photo I uploaded to Picasa Web Albums via PHP.";
 $photoTags = "beach, sunshine";
