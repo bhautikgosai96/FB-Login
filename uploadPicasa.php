@@ -3,12 +3,12 @@ require_once 'lib/picasa/autoload.php';
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
 include 'sendAlbumn.php';
 echo "hello";
-//session_start();
+session_start();
 //$cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
 
-$albumName=$_SESSION['picasaAlbum'];
+$albumName=$_GET['picasaAlbum'];
 
-$img=$_SESSION['picasaImg'];
+$img=$_GET['picasaImg'];
 echo $albumName;
 echo $img;
 /*if(isset($albumName) and isset($img)){
