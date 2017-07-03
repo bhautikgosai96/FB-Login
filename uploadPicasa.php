@@ -9,7 +9,8 @@ $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
 $albumName=$_SESSION['picasaAlbum'];
 
 $img=$_SESSION['picasaImg'];
-
+echo $albumName;
+echo $img;
 if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
         'cacher'         => $cacher,
@@ -42,7 +43,7 @@ if(isset($albumName) and isset($img)){
     foreach($img as $file){
     $url = $uploader->transload($file);
     array_push($filename,$url);
-    }
+
 
 
     $filename=array($filename);
