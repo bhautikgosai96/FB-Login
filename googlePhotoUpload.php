@@ -39,7 +39,7 @@
     // generate query to get album feed
     $query = $gphoto->newAlbumQuery();
     $query->setUser("default");
-    $query->setAlbumName("France2008");
+    $query->setAlbumName("First");
 
     // get and parse album feed
     // get album name and number of photos
