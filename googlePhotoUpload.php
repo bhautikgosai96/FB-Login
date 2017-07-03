@@ -20,7 +20,7 @@
         $entry->setSummary($gp->newSummary("This is an album."));
 
         $createdEntry = $gp->insertAlbumEntry($entry);
-      echo 'Albumn successfully added!';
+      echo 'Albumn successfully added!!';
 ?>
 /*<?php
     $userid = 'bhautikng143@gmail.com';
