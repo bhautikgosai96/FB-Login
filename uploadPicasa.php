@@ -6,12 +6,7 @@ require_once 'lib/picasa/autoload.php';
 session_start();
 $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
 
-$albumName=$_SESSION['picasaAlbum'];
 
-$img=$_SESSION['picasaImg'];
-echo $albumName;
-echo $img;
-if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
         'cacher'         => $cacher,
         'api_key'        => '207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com',
@@ -21,7 +16,7 @@ if(isset($albumName) and isset($img)){
         // create a new album for storage every 2000 photos
         // (due Google Picasa's limitation)
         'album_id'               => null,
-        'auto_album_title'       => $albumName,
+        'auto_album_title'       => "MyAlbumn",
         'auto_album_access'      => 'public',
         'auto_album_description' => 'App created by sagar bhatt',
 
@@ -40,8 +35,8 @@ if(isset($albumName) and isset($img)){
 
     // http://dantri.vcmedia.vn/Uploaded/2011/04/08/9f5anh%205.JPG
     $filename = [];
-    foreach($img as $file){
-    $url = $uploader->transload($file);
+
+    $url = $uploader->transload('http://www.w3resource.com/w3r_images/php-isset-function.png');
     array_push($filename,$url);
 
 
@@ -56,11 +51,5 @@ if(isset($albumName) and isset($img)){
 
 
 //header("Location: https://picasaweb.google.com/home");
-}else{
 
-
-echo "<script>alert('Please try again')</script>";
-
-
-}
 ?>
