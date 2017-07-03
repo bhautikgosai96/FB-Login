@@ -21,7 +21,7 @@
             echo "Error: " . $e->getMessage();
         }
 
-        echo json_encode($userFeed);
+        echo $userFeed;
 ?>
 /*<?php
     $userid = 'bhautikng143@gmail.com';
