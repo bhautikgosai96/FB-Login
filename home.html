@@ -261,8 +261,15 @@
 
         $scope.movePicasa =function(x){
 
-            var base_url = window.location.origin;
-            $window.open(base_url+'/googlePhotoUpload.php');
+            //var base_url = window.location.origin;
+            //$window.open(base_url+'/googlePhotoUpload.php');
+
+            $http.get('googlePhotoUpload.php')
+                    .then(function(response){
+
+                        console.log(response);
+
+                    });
             //$window.open(base_url+'/add.php');
            /* $scope.picasa= false;
              var albumData ={

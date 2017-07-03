@@ -13,14 +13,15 @@
       $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
 
       // update the second argument to be CompanyName-ProductName-Version
-      $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
+      $gp = new Zend_Gdata_Photos($client);
 
-        $entry = new Zend_Gdata_Photos_AlbumEntry();
-        $entry->setTitle($gp->newTitle("New album"));
-        $entry->setSummary($gp->newSummary("This is an album."));
+        try {
+            $userFeed = $gp->getUserFeed("sample.user");
+        } catch (Zend_Gdata_App_Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
 
-        $createdEntry = $gp->insertAlbumEntry($entry);
-      echo 'Albumn successfully added!!';
+        echo json_encode($userFeed);
 ?>
 /*<?php
     $userid = 'bhautikng143@gmail.com';
