@@ -10,7 +10,9 @@ $albumName=$_SESSION['picasaAlbum'];
 
 $img=$_SESSION['picasaImg'];
 echo $albumName;
-echo $img;
+foreach($img as $file){
+echo $file;
+}
 /*if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
         'cacher'         => $cacher,
