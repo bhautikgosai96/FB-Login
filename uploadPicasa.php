@@ -11,7 +11,7 @@ $albumName=$_SESSION['picasaAlbum'];
 $img=$_SESSION['picasaImg'];
 echo $albumName;
 echo $img;
-if(isset($albumName) and isset($img)){
+/*if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
         'cacher'         => $cacher,
         'api_key'        => '207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com',
@@ -62,5 +62,5 @@ if(isset($albumName) and isset($img)){
 echo "<script>alert('Please try again')</script>";
 
 
-}
+}*/
 ?>
