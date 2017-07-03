@@ -1,31 +1,19 @@
 <?php
+    $userid = 'bhautikng143@gmail.com';
 
-require_once 'lib/Zend/Loader.php';
+    // build feed URL
+    $feedURL = "http://picasaweb.google.com/data/feed/api/user/$userid?kind=album";
 
+    // read feed into SimpleXML object
+    $sxml = simplexml_load_file($feedURL);
 
-
-
-
-      Zend_Loader::loadClass('Zend_Gdata');
-      Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
-      Zend_Loader::loadClass('Zend_Gdata_Photos');
-      Zend_Loader::loadClass('Zend_Http_Client');
-
-     $serviceName = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
-
-     $user = "bhautikng143@gmail.com";
-     $pass = "Kevin7872#";
-
-     $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
-
-     $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
-$query = $gp->newAlbumQuery();
-
-$query->setUser("default");
-$query->setAlbumName("first");
-
-$albumFeed = $gp->getAlbumFeed($query);
-foreach ($albumFeed as $albumEntry) {
-    echo $albumEntry->title->text . "<br />\n";
-}
-?>
+    // get album names and number of photos in each
+    echo "<ul>";
+    foreach ($sxml->entry as $entry) {
+      $title = $entry->title;
+      $gphoto = $entry->children('http://schemas.google.com/photos/2007');
+      $numphotos = $gphoto->numphotos;
+      echo "<li>$title - $numphotos photo(s)</li>\n";
+    }
+    echo "</ul>";
+    ?>
