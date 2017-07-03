@@ -27,7 +27,7 @@ $photoTags = "beach, sunshine";
 $albumId = "default";
 
 $fd = $gp->newMediaFileSource($filename);
-$fd->setContentType("image/jpeg");
+$fd->setContentType("image/jpg");
 
 // Create a PhotoEntry
 $photoEntry = $gp->newPhotoEntry();
