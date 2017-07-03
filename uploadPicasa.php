@@ -1,19 +1,16 @@
 <?php
-//require_once 'lib/picasa/autoload.php';
+require_once 'lib/picasa/autoload.php';
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
 
-echo "hello";
+
 session_start();
-//$cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
+$cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
 
 $albumName=$_SESSION['picasaAlbum'];
 
 $img=$_SESSION['picasaImg'];
-echo $albumName;
-foreach($img as $file){
-echo $file;
-}
-/*if(isset($albumName) and isset($img)){
+
+if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
         'cacher'         => $cacher,
         'api_key'        => '207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com',
@@ -64,5 +61,5 @@ echo $file;
 echo "<script>alert('Please try again')</script>";
 
 
-}*/
+}
 ?>
