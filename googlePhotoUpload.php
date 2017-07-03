@@ -1,24 +1,4 @@
 
-<html>
-  <head>
-    <title>Listing album contents</title>
-    <style>
-    body {
-      font-family: Verdana;
-    }
-    h2 {
-      color: red;
-      text-decoration: none;
-    }
-    span.attr {
-      font-weight: bolder;
-    }
-    img {
-      float: left;
-    }
-    </style>
-  </head>
-  <body>
     <?php
     // load library
     require_once 'lib/Zend/Loader.php';
@@ -46,37 +26,12 @@
     } catch (Zend_Gdata_App_Exception $e) {
       echo "Error: " . $e->getResponse();
     }
-    ?>
-    <h1><?php echo $feed->getTitle(); ?></h1>
-    <?php echo $feed->getTotalResults(); ?> photo(s) found.
-    <p/>
 
-    <?php
-    // process each photo entry
-    // print each entry's title, size, dimensions, tags, and thumbnail image
-    foreach ($feed as $entry) {
-      $title = $entry->getTitle();
-      $summary = $entry->getSummary();
-      $thumbnail = $entry->getMediaGroup()->getThumbnail();
-      $tags = $entry->getMediaGroup()->getKeywords();
-      $size = $entry->getGphotoSize();
-      $height = $entry->getGphotoHeight();
-      $width = $entry->getGphotoWidth();
-
-      echo "<h2>$summary</h2>\n";
-      echo "<table><tr><td><img src=\"" .
-      $thumbnail[1]->url . "\"/></td>\n";
-      echo "<td><span class=\"attr\">File</span>: $title
-      <br />\n";
-      echo "<span class=\"attr\">Size</span>: $size bytes
-      ($height x $width) <br />\n";
-      echo "<span class=\"attr\">Tags</span>: $tags
-      </td></tr></table>\n";
-    }
+    echo $feed->getTitle();
+    echo $feed->getTotalResults();
     ?>
 
-  </body>
-</html>
+
 
 
 
