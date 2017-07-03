@@ -15,7 +15,7 @@
       // update the second argument to be CompanyName-ProductName-Version
       $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
 
-$username = "default";
+//$username = "default";
 $filename = "/cricket2.jpg";
 $photoName = "My Test Photo";
 $photoCaption = "The first photo I uploaded to Picasa Web Albums via PHP.";
@@ -45,7 +45,7 @@ $photoEntry->mediaGroup->keywords = $keywords;
 // We use the AlbumQuery class to generate the URL for the album
 $albumQuery = $gp->newAlbumQuery();
 
-$albumQuery->setUser($username);
+$albumQuery->setUser($user);
 $albumQuery->setAlbumId($albumId);
 
 // We insert the photo, and the server returns the entry representing
