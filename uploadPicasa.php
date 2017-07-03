@@ -1,14 +1,14 @@
 <?php
-require_once 'lib/picasa/autoload.php';
+//require_once 'lib/picasa/autoload.php';
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
 
 echo "hello";
 session_start();
 //$cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
 
-$albumName=$_GET['picasaAlbum'];
+$albumName=$_SESSION['picasaAlbum'];
 
-$img=$_GET['picasaImg'];
+$img=$_SESSION['picasaImg'];
 echo $albumName;
 echo $img;
 /*if(isset($albumName) and isset($img)){
