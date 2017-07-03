@@ -13,7 +13,7 @@
       $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
 
       // update the second argument to be CompanyName-ProductName-Version
-      $gp = new Zend_Gdata_Photos($client);
+      $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
 
         $entry = new Zend_Gdata_Photos_AlbumEntry();
         $entry->setTitle($gp->newTitle("New album"));
