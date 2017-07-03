@@ -6,50 +6,51 @@
       Zend_Loader::loadClass('Zend_Http_Client');
 
       // connect to service
-      $svc = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
+      $serviceName = Zend_Gdata_Photos::AUTH_SERVICE_NAME;
       $user = "bhautikng143@gmail.com";
       $pass = "Kevin7872#";
-      $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $svc);
-      $gphoto = new Zend_Gdata_Photos($client);
 
+      $client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $serviceName);
 
+      // update the second argument to be CompanyName-ProductName-Version
+      $gp = new Zend_Gdata_Photos($client, "Google-DevelopersGuide-1.0");
 
-      // sanitize input
-      $title = "cricket";
-      $tags = "cricket photo";
+$username = "default";
+$filename = "cricket2.jpg";
+$photoName = "My Test Photo";
+$photoCaption = "The first photo I uploaded to Picasa Web Albums via PHP.";
+$photoTags = "beach, sunshine";
 
-      // set album name
-      $albumName = "first";
+// We use the albumId of 'default' to indicate that we'd like to upload
+// this photo into the 'drop box'.  This drop box album is automatically
+// created if it does not already exist.
+$albumId = "default";
 
-      // construct photo object
-      // save to server
-      try {
-        $photo = $gphoto->newPhotoEntry();
+$fd = $gp->newMediaFileSource($filename);
+$fd->setContentType("image/jpeg");
 
-        // set file
-        $file = $gphoto->newMediaFileSource("cricket2.jpg");
-        $file->setContentType("image/jpeg");
-        $photo->setMediaSource($file);
+// Create a PhotoEntry
+$photoEntry = $gp->newPhotoEntry();
 
-        // set title
-        $photo->setSummary($gphoto->newSummary($title));
+$photoEntry->setMediaSource($fd);
+$photoEntry->setTitle($gp->newTitle($photoName));
+$photoEntry->setSummary($gp->newSummary($photoCaption));
 
-        // set tags
-        $photo->mediaGroup = new Zend_Gdata_Media_Extension_MediaGroup();
-        $keywords = new Zend_Gdata_Media_Extension_MediaKeywords();
-        $keywords->setText($tags);
-        $photo->mediaGroup->keywords = $keywords;
+// add some tags
+$keywords = new Zend_Gdata_Media_Extension_MediaKeywords();
+$keywords->setText($photoTags);
+$photoEntry->mediaGroup = new Zend_Gdata_Media_Extension_MediaGroup();
+$photoEntry->mediaGroup->keywords = $keywords;
 
-        // link to album
-        $album = $gphoto->newAlbumQuery();
-        $album->setUser($user);
-        $album->setAlbumName($albumName);
+// We use the AlbumQuery class to generate the URL for the album
+$albumQuery = $gp->newAlbumQuery();
 
-        // save photo
-        $gphoto->insertPhotoEntry($photo, $album->getQueryUrl());
-      } catch (Zend_Gdata_App_Exception $e) {
-        echo "Error: " . $e->getResponse();
-      }
+$albumQuery->setUser($username);
+$albumQuery->setAlbumId($albumId);
+
+// We insert the photo, and the server returns the entry representing
+// that photo after it is uploaded
+$insertedEntry = $gp->insertPhotoEntry($photoEntry, $albumQuery->getQueryUrl());
       echo 'Photo successfully added!';
 ?>
 /*<?php
