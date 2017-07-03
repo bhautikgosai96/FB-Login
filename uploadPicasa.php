@@ -2,8 +2,8 @@
 require_once 'lib/picasa/autoload.php';
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
 
-
-session_start();
+echo "hello";
+//session_start();
 $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
 
 $albumName=$_SESSION['picasaAlbum'];
