@@ -261,12 +261,12 @@
 
         $scope.movePicasa =function(x){
 
-            //var base_url = window.location.origin;
-           // $window.open(base_url+'/googlePhotoUpload.php');
+            var base_url = window.location.origin;
+            $window.open(base_url+'/googlePhotoUpload.php');
 
 
             //$window.open(base_url+'/add.php');
-            $scope.picasa= false;
+            /*$scope.picasa= false;
              var albumData ={
                 albumnName:'',
                 img:[]
@@ -303,7 +303,7 @@
             }, function myError(response) {
                 console.log(response);
                 console.log("errorr");
-            });
+            });*/
 
         }
     });
