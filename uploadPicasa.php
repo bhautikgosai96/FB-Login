@@ -1,14 +1,16 @@
 <?php
 require_once 'lib/picasa/autoload.php';
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
-
-
 session_start();
 $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
+
 
 $albumName=$_SESSION['picasaAlbum'];
 
 $img=$_SESSION['picasaImg'];
+
+
+
 
 if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
@@ -52,7 +54,6 @@ if(isset($albumName) and isset($img)){
 
     session_destroy();
     echo "<script>alert('Album successfully uploaded')</script>";
-
 
 //header("Location: https://picasaweb.google.com/home");
 }else{
