@@ -5,10 +5,10 @@ session_start();
 $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
 
 
-//$albumName=$_SESSION['picasaAlbum'];
-$albumName="dsaaf";
-//$img=$_SESSION['picasaImg'];
-$img=["ads","asda"];
+$albumName=$_SESSION['picasaAlbum'];
+//$albumName="dsaaf";
+$img=$_SESSION['picasaImg'];
+//$img=["ads","asda"];
 
 
 
