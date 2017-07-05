@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/picasa/autoload.php';
+require '../vendor/autoload.php';;
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
 session_start();
 $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
