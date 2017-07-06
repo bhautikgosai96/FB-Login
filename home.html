@@ -20,7 +20,7 @@
 
 <div ng-controller="fbCtrl" ng-init="init()">
     <h3>welcome {{profileName}}</h3>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <div class="g-signin2" ng-click="onSignIn()" data-theme="dark"></div>
    <!-- <div ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
         <h4 >{{x.name }}</h4>
         <h4 > Total images : {{x.photo_count}}</h4>
@@ -59,7 +59,7 @@
 
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
-        function onSignIn(googleUser) {
+        $scope.onSignIn = function(googleUser) {
             // Useful data for your client-side scripts:
             var profile = googleUser.getBasicProfile();
             console.log("ID: " + profile.getId()); // Don't send this directly to your server!
