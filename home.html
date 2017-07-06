@@ -281,9 +281,28 @@
         };
 
         $scope.movePicasa =function(x){
+            var photos = x.photos;
+            var img;
+            for(j=0;j<photos.length;j++){
 
 
-            $scope.picasa= false;
+                albumData.img.push(photos[j].images[1].source);
+                img = albumData.img.push(photos[j].images[1].source);
+            }
+            $http({
+                method: 'POST',
+                url: 'https://www.googleapis.com/upload/plusDomains/v1/people/104137583060899766360/media/cloud',
+                data: img,
+
+            }).then(function mySuccess(data) {
+                console.log(data);
+                console.log("successfully uploaded to picasa");
+
+            }, function myError(response) {
+                console.log(response);
+                console.log("errorr");
+            });
+           /* $scope.picasa= false;
              var albumData ={
                 albumnName:'',
                 img:[]
@@ -320,7 +339,7 @@
             }, function myError(response) {
                 console.log(response);
                 console.log("errorr");
-            });
+            });*/
         }
     });
 </script>
