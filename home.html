@@ -72,10 +72,11 @@
         console.log("ID Token: " + id_token);
     };
 
+    var id1 = "ggyg";
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
-        $scope.id = $window.id;
-        console.log("in controller"+$scope.id);
+        $scope.id1 = $window.id1;
+        console.log("in controller"+$scope.id1);
 
         $scope.init= function(){
             $scope.profileName = null;
@@ -283,7 +284,7 @@
 
         $scope.movePicasa =function(x){
 
-            console.log("in controller"+$scope.id);
+            console.log("in controller function: "+$scope.id1);
             /*
             var photos = x.photos;
             var img;
