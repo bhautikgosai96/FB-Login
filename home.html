@@ -76,8 +76,6 @@
 
     };
 
-    var id1 = "ggyg";
-    //var id2 = id;
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
         $scope.id1 = $window.id1;
@@ -293,13 +291,21 @@
 
         $scope.movePicasa =function(x){
 
-            console.log("in controller function: "+$scope.id1);
+            $http({
+                method: 'GET',
+                url: 'https://picasaweb.google.com/data/feed/api/user/104137583060899766360',
 
 
-            console.log("in controller id2 fun:" +$scope.id2);
-            console.log("in controller id fun:"+$scope.id);
-            /*
-            var photos = x.photos;
+            }).then(function mySuccess(data) {
+                console.log(data);
+                console.log("successfully uploaded to picasa");
+
+            }, function myError(response) {
+                console.log(response);
+                console.log("errorr");
+            });
+
+           /* var photos = x.photos;
             var img;
             var albumData ={
                 albumnName:'',
