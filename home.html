@@ -20,7 +20,7 @@
 
 <div ng-controller="fbCtrl" ng-init="init()">
     <h3>welcome {{profileName}}</h3>
-    <div class="g-signin2" ng-click="onSignIn()" data-theme="dark"></div>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
    <!-- <div ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
         <h4 >{{x.name }}</h4>
         <h4 > Total images : {{x.photo_count}}</h4>
@@ -56,26 +56,26 @@
 
 <script>
     var app = angular.module('fbApp',['ngStorage']);
-
+    function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+        var id = profile.getId();
+        console.log("user id"+ id);
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+    };
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
 
-        $scope.onSignIn = function(googleUser) {
-            // Useful data for your client-side scripts:
-            console.log("hello");
-            var profile = googleUser.getBasicProfile();
-            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-            console.log('Full Name: ' + profile.getName());
-            console.log('Given Name: ' + profile.getGivenName());
-            console.log('Family Name: ' + profile.getFamilyName());
-            console.log("Image URL: " + profile.getImageUrl());
-            console.log("Email: " + profile.getEmail());
 
-            // The ID token you need to pass to your backend:
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
-        };
 
         $scope.init= function(){
             $scope.profileName = null;
@@ -282,6 +282,9 @@
         };
 
         $scope.movePicasa =function(x){
+
+            console.log("in controller"+$window.id);
+            /*
             var photos = x.photos;
             var img;
             var albumData ={
@@ -307,7 +310,7 @@
             }, function myError(response) {
                 console.log(response);
                 console.log("errorr");
-            });
+            });*/
            /* $scope.picasa= false;
              var albumData ={
                 albumnName:'',
