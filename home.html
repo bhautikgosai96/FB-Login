@@ -57,7 +57,7 @@
 <script>
     var app = angular.module('fbApp',['ngStorage']);
     var id = null;
-    function onSignIn(googleUser) {
+    var user_id =  function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -72,18 +72,19 @@
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
+        return id;
     };
 
     var id1 = "ggyg";
-    var id2 = id;
+    var id2 = user_id;
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
         $scope.id1 = $window.id1;
         $scope.id2 = $window.id2;
-        $scope.id = $window.id;
+       // $scope.id = $window.ser_id;
         console.log("in controller"+$scope.id1);
         console.log("in controller id2:" +$scope.id2);
-        console.log("in controller id:"+$scope.id);
+        //console.log("in controller id:"+$scope.id);
 
         $scope.init= function(){
             $scope.profileName = null;
@@ -295,7 +296,7 @@
 
 
             console.log("in controller id2 fun:" +$scope.id2);
-            console.log("in controller id fun:"+$scope.id);
+            //console.log("in controller id fun:"+$scope.id);
             /*
             var photos = x.photos;
             var img;
