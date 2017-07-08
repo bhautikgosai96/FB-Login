@@ -74,8 +74,8 @@
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
-
-        console.log("in controller"+$window.id);
+        $scope.id = $window.id;
+        console.log("in controller"+$scope.id);
 
         $scope.init= function(){
             $scope.profileName = null;
