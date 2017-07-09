@@ -31,7 +31,7 @@ if(isset($albumName) and isset($img)){
         'refresh_token' => null,
     ));
 
-    $callbackUrl = 'http'.(getenv('HTTPS') == 'on' ? 's' : '').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+    $callbackUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
     //echo var_dump($callbackUrl);
     //echo '<script> alert('.var_dump($callbackUrl).');</script>';
     $uploader->authorize($callbackUrl);
