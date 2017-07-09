@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/autoload.php';;
+require_once 'lib/gplus-lib/vendor/autoload.php';;
 // $cacher = new Doctrine\Common\Cache\ArrayCache();
 session_start();
 $cacher = new Doctrine\Common\Cache\FilesystemCache('/tmp');
@@ -31,7 +31,7 @@ if(isset($albumName) and isset($img)){
         'refresh_token' => null,
     ));
 
-    $callbackUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+    $callbackUrl = 'http'.(getenv('HTTPS') == 'on' ? 's' : '').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
     //echo var_dump($callbackUrl);
     //echo '<script> alert('.var_dump($callbackUrl).');</script>';
     $uploader->authorize($callbackUrl);
