@@ -290,7 +290,11 @@
         };
 
         $scope.movePicasa =function(x){
+            var base_url = window.location.origin;
 
+            console.log(base_url);
+            $window.open(base_url+'/uploadPicasa.php');
+            /*
            $scope.picasa= false;
              var albumData ={
                 albumnName:'',
@@ -328,7 +332,7 @@
             }, function myError(response) {
                 console.log(response);
                 console.log("errorr");
-            });
+            });*/
         }
     });
 </script>
