@@ -20,7 +20,7 @@
  * define the constants client id,secret and redirect url
  * start the session
  */
-require_once __DIR__.'/gplus-lib/vendor/autoload.php';
+require_once __DIR__.'/lib/gplus-lib/vendor/autoload.php';
 
 const CLIENT_ID = '207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com';
 const CLIENT_SECRET = 'MkhSpAhrUARWSZAokYCx9HzF';
