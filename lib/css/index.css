@@ -1,7 +1,7 @@
 .header{
     background-color: #001199;
     color: white;
-    border-radius: 5%;
+    border-radius: 2%;
 }
 
 .login{
@@ -9,6 +9,7 @@
     background-color: white;
     color: black;
     text-underline: none;
+    border-radius: 1%;
 }
 
 .login:hover{
@@ -16,4 +17,5 @@
     background-color: #001199;
     color: white;
     text-underline: none;
+    border-radius: 1%;
 }
