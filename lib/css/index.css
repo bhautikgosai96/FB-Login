@@ -6,7 +6,7 @@
 
 .login{
 
-    border-color: #001199;
+    border: 5px solid #001199;
     background-color: white;
     color: #001199;
     text-underline: none;
@@ -16,7 +16,7 @@
 }
 
 .login:hover{
-    border-color: #001199;
+    border: 5px solid #001199;
     background-color: #001199;
     color: white;
     text-underline: none;
