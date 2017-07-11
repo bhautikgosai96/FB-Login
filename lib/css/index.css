@@ -26,13 +26,13 @@
     font-size: 15px;
 }
 
-.loginText{
+.loginText h4{
     text-decoration: none;
     color: #001199;
     font-size: 15px;
 }
 
-.loginText:hover{
+.loginText h4:hover{
     text-decoration: none;
     color: white;
     font-size: 15px;
