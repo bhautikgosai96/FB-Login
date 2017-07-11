@@ -33,10 +33,11 @@ session_write_close();
             </div>
             <br/>
             <div class="row">
-                 <?php echo' <a  href="'.$loginUrl . '" class="btn btn-block btn-social btn-facebook" >';
+                 <div class="col-md-4 login"><?php echo' <a  href="'.$loginUrl . '" class="loginText" >';
                     echo '<i class="fa fa-facebook"></i>';
                     echo ' Sign in with Facebook';
                     echo ' </a> '; ?>
+                 </div>
             </div>
         </div>
     </body>
