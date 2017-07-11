@@ -29,13 +29,14 @@
 .loginText{
     text-decoration: none;
     color: #001199;
-
+    font-size: 15px;
+    height: 50px;
 }
 
 .loginText:hover{
     text-decoration: none;
-
     color: white;
-
+    height: 50px;
+    font-size: 15px;
 }
 
