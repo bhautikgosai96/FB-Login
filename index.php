@@ -28,13 +28,15 @@ session_write_close();
     <body>
         <div>
             <div class="row header">
+                <div class="col-md-offset-1 col-md-10">
                 <h2>PHP Web Engineer Assignment</h2>
                 <h3>Facebook-Albumn Challenge</h3>
+                </div>
             </div>
             <br/>
             <div class="row">
-                 <div class="col-md-4 login"><?php echo' <a  href="'.$loginUrl . '" class="loginText" >';
-                    echo ' <p>Sign in with Facebook</p>';
+                 <div class="col-md-offset-1 col-md-4 login"><?php echo' <a  href="'.$loginUrl . '" class="loginText" >';
+                    echo ' <h4>Sign in with Facebook</h4>';
                     echo ' </a> '; ?>
                  </div>
             </div>
