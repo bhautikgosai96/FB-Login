@@ -15,7 +15,7 @@
     font-size: 15px;
 }
 
-.login:hover{
+/*.login:hover{
 
     border: 1.5px solid #001199;
     background-color: #001199;
@@ -24,7 +24,7 @@
     border-radius: 5px;
     height: 50px;
     font-size: 15px;
-}
+}*/
 
 .loginText{
     text-decoration: none;
@@ -35,6 +35,7 @@
 
 .loginText:hover{
     text-decoration: none;
+    background-color: #001199;
     color: white;
     height: 50px;
     font-size: 15px;
