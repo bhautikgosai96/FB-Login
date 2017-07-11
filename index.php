@@ -35,7 +35,7 @@ session_write_close();
             </div>
             <br/>
             <div class="row">
-                 <div class="col-md-offset-1 col-md-4 login"><?php echo' <a  href="'.$loginUrl . '" class="loginText" >';
+                 <div class="col-md-offset-1 col-md-4 login"><?php echo' <a  href="'.$loginUrl . '" >';
                     echo ' <h4>Sign in with Facebook</h4>';
                     echo ' </a> '; ?>
                  </div>
