@@ -10,7 +10,8 @@
     background-color: white;
     color: #001199;
     text-underline: none;
-    border-radius: 1%;
+    border-radius: 0.5%;
+    height: 50px;
 }
 
 .login:hover{
@@ -19,6 +20,7 @@
     color: white;
     text-underline: none;
     border-radius: 1%;
+    height: 50px;
 }
 
 .logintext{
