@@ -26,14 +26,15 @@ session_write_close();
     </head>
     <body>
         <div class="container">
-            <div class="row">
-                <p>PHP Web Engineer Assignment</p>
-                <p>Facebook-Albumn Challenge</p>
+            <div class="row header">
+                <h2>PHP Web Engineer Assignment</h2>
+                <h3>Facebook-Albumn Challenge</h3>
             </div>
             <div class="row">
-                 <?php echo' <a  href="'.$loginUrl . '">';
+                 <button class="w3-button w3-round-large login"><?php echo' <a  href="'.$loginUrl . '">';
                    echo ' Log in with Facebook';
                    echo ' </a> '; ?>
+                   </button>
             </div>
         </div>
     </body>
