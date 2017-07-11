@@ -23,3 +23,9 @@
     font-size: 15px;
 }
 
+.loginText:hover{
+    text-underline: none;
+    color: #001199;
+    font-size: 15px;
+}
+
