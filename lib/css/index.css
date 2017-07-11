@@ -12,6 +12,7 @@
     text-underline: none;
     border-radius: 0.5%;
     height: 50px;
+    font-size: 15px;
 }
 
 .login:hover{
@@ -21,14 +22,17 @@
     text-underline: none;
     border-radius: 1%;
     height: 50px;
+    font-size: 15px;
 }
 
-.logintext{
+.loginText{
     text-underline: none;
     color: #001199;
+    font-size: 15px;
 }
 
-.logintext{
+.loginText{
     text-underline: none;
     color: white;
+    font-size: 15px;
 }
