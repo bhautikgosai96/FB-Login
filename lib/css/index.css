@@ -6,16 +6,25 @@
 
 .login{
 
-    border: 5px solid #001199;
+    border: 1.5px solid #001199;
     background-color: white;
     color: #001199;
-    text-underline: none;
+
     border-radius: 5px;
     height: 50px;
     font-size: 15px;
 }
 
+.login:hover{
 
+    border: 1.5px solid #001199;
+    background-color: #001199;
+    color: white;
+
+    border-radius: 5px;
+    height: 50px;
+    font-size: 15px;
+}
 
 .loginText{
     text-decoration: none;
@@ -25,7 +34,7 @@
 
 .loginText:hover{
     text-decoration: none;
-    color: #001199;
+    color: white;
     font-size: 15px;
 }
 
