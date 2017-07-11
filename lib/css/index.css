@@ -5,6 +5,7 @@
 }
 
 .login{
+
     border-color: #001199;
     background-color: white;
     color: #001199;
@@ -22,5 +23,10 @@
 
 .logintext{
     text-underline: none;
+    color: #001199;
+}
 
+.logintext{
+    text-underline: none;
+    color: white;
 }
