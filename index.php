@@ -26,7 +26,7 @@ session_write_close();
         <link rel="stylesheet" href="lib/css/index.css">
     </head>
     <body>
-        <div class="container">
+        <div>
             <div class="row header">
                 <h2>PHP Web Engineer Assignment</h2>
                 <h3>Facebook-Albumn Challenge</h3>
