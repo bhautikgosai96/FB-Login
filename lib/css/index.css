@@ -18,13 +18,13 @@
 
 
 .loginText{
-    text-underline: none;
+    text-decoration: none;
     color: #001199;
     font-size: 15px;
 }
 
 .loginText:hover{
-    text-underline: none;
+    text-decoration: none;
     color: #001199;
     font-size: 15px;
 }
