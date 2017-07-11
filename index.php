@@ -34,7 +34,7 @@ session_write_close();
             <br/>
             <div class="row">
                  <div class="col-md-4 w3-border login"><?php echo' <a  href="'.$loginUrl . '" class="loginText" >';
-                    echo ' Sign in with Facebook';
+                    echo ' <p>Sign in with Facebook</p>';
                     echo ' </a> '; ?>
                  </div>
             </div>
