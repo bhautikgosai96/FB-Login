@@ -31,8 +31,9 @@ session_write_close();
                 <h2>PHP Web Engineer Assignment</h2>
                 <h3>Facebook-Albumn Challenge</h3>
             </div>
+            <br/>
             <div class="row">
-                 <button class="w3-button w3-round-large login"><?php echo' <a  href="'.$loginUrl . '">';
+                 <button class="w3-button login"><?php echo' <a  href="'.$loginUrl . '">';
                    echo ' Log in with Facebook';
                    echo ' </a> '; ?>
                    </button>

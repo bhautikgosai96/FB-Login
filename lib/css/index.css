@@ -1,16 +1,19 @@
 .header{
     background-color: #001199;
     color: white;
+    border-radius: 5%;
 }
 
 .login{
     border-color: #001199;
     background-color: white;
     color: black;
+    text-underline: none;
 }
 
 .login:hover{
     border-color: #001199;
     background-color: #001199;
     color: white;
+    text-underline: none;
 }
