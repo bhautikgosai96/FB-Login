@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
 
     <title>Title</title>
 </head>
@@ -20,7 +16,7 @@
 
 <div ng-controller="fbCtrl" ng-init="init()">
     <h3>welcome {{profileName}}</h3>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
    <!-- <div ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
         <h4 >{{x.name }}</h4>
         <h4 > Total images : {{x.photo_count}}</h4>
@@ -56,34 +52,11 @@
 
 <script>
     var app = angular.module('fbApp',['ngStorage']);
-    var id = null;
-    function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("before "+id);
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-        id = profile.getId();
 
-        console.log("user id"+ id);
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
 
-    };
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
-        $scope.id1 = $window.id1;
-        $scope.id2 = $window.id2;
-        $scope.id = $window.id;
-        console.log("in controller"+$scope.id1);
-        console.log("in controller id2:" +$scope.id2);
-        console.log("in controller id:"+$scope.id);
 
         $scope.init= function(){
             $scope.profileName = null;
@@ -290,11 +263,8 @@
         };
 
         $scope.movePicasa =function(x){
-            var base_url = window.location.origin;
 
-            console.log(base_url);
-            $window.open(base_url+'/uploadPicasa.php');
-            /*
+
            $scope.picasa= false;
              var albumData ={
                 albumnName:'',
@@ -332,7 +302,7 @@
             }, function myError(response) {
                 console.log(response);
                 console.log("errorr");
-            });*/
+            });
             //120783235172145
             //2af58b7080bcb06278ad922a787f27a2
         }
