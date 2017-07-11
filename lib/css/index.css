@@ -31,7 +31,7 @@
     font-size: 15px;
 }
 
-.loginText{
+.loginText:hover{
     text-underline: none;
     color: white;
     font-size: 15px;
