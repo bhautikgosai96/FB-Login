@@ -28,18 +28,16 @@ session_write_close();
     <body>
         <div>
             <div class="row ">
-                <div class="col-md-offset-1 col-md-8 header">
-                <h2>PHP Web Engineer Assignment</h2>
-                <h3>Facebook-Albumn Challenge</h3>
-                </div>
+                           <div class="header">
+                           <p style="font-size:2.2em">PHP Web Engineer Assignment</p>
+                           <p style="font-size:1.7em; padding-left: 12%">Facebook-Albumn Challenge</p>
+                           </div>
             </div>
-            <br/>
-            <div class="row">
-                 <button class="col-md-offset-1 col-md-4 login"><?php echo' <a  href="'.$loginUrl . '" class="loginText" >';
-                    echo ' <h4>Sign in with Facebook</h4>';
-                    echo ' </a> '; ?>
-                 </button>
-            </div>
+                       <br/>
+                       <div class="row">
+                            <div class="login"><a  href="'.$loginUrl . '" class="loginText"><p style="font-size:20px;">Sign in with Facebook</p></a>
+                            </div>
+                       </div>
         </div>
     </body>
 </html>
