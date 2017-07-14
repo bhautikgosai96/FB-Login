@@ -36,9 +36,9 @@ session_write_close();
                        <br/>
                        <div class="row">
                             <div class="login">
-                            <?php echo "<a  href="'.$loginUrl . '" class="loginText">";
-                            echo "<p style="font-size:20px;">Sign in with Facebook</p>";
-                            echo "</a>";
+                            <?php echo '<a  href="'.$loginUrl . '" class="loginText">';
+                            echo '<p style="font-size:20px;">Sign in with Facebook</p>';
+                            echo '</a>';
                             ?>
                             </div>
                        </div>
