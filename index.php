@@ -3,7 +3,7 @@
 session_start();
 require_once __DIR__ . '/src/Facebook/autoload.php';
 $fb = new Facebook\Facebook([
-  'app_id' => '120783235172145', // Replace {app-id} with your app i
+  'app_id' => '120783235172145', // Replace {app-id} with your app id
   'app_secret' => '2af58b7080bcb06278ad922a787f27a2',
   'default_graph_version' => 'v2.9',
   ]);
@@ -35,9 +35,7 @@ session_write_close();
             </div>
                        <br/>
                        <div class="row">
-                            <div class="login"><? php
-                            echo "<a  href="'.$loginUrl . '" class="loginText"><p style="font-size:20px;">Sign in with Facebook</p></a>"
-                            ?>
+                            <div class="login"><a  href="'.$loginUrl . '" class="loginText"><p style="font-size:20px;">Sign in with Facebook</p></a>
                             </div>
                        </div>
         </div>
