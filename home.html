@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <title>Title</title>
+    <link rel="stylesheet" href="lib/css/index.css">
+    <title>Albumn</title>
 </head>
 <body ng-app="fbApp">
 
 <div ng-controller="fbCtrl" ng-init="init()">
-    <h3>welcome {{profileName}}</h3>
-
+    <div class="row">
+        <div class="col-md-offset-1">
+            <h3 style="color:#001199">welcome {{profileName}}</h3>
+        </div>
+    </div>
    <!-- <div ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
         <h4 >{{x.name }}</h4>
         <h4 > Total images : {{x.photo_count}}</h4>
