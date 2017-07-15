@@ -32,9 +32,9 @@
                 <div class=" w3-card-4" style="height: 375px;">
                     <img ng-src ="{{ x.picture.url }}" style="width:100%; height:200px;">
                     <div class="w3-container">
-                        <h4 >{{x.name }}</h4>
+                        <h4>Albumn Name: {{x.name }}</h4>
                         <h4 > Total images : {{x.photo_count}}</h4>
-                        <button class="btn" ng-click="slideShow(x.photos)">Show Full Screen</button><br>
+                        <button class="btn" ng-click="slideShow(x.photos)">Show Full Screen</button><br><br>
                         <button class="btn" ng-click="zip(x.photos)">Download</button><br/>
                         <input type="checkbox"
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
@@ -45,11 +45,12 @@
         </div>
     </div>
 </div>
-    <button class="w3-button w3-white w3-border w3-border-blue" ng-click="downloadAll()">Download All Album</button>
-    <button class="w3-button w3-white w3-border w3-border-blue" ng-click="downloadSelectedAll()">Download Selected Album</button>
-    <a ng-show="downloadLink" href="{{downloadLink}}" download>download from here</a>
-    <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>download All Album from here</a>
-    <a ng-show="picasa" href="https://photos.google.com/albums">check here </a>
+    <button class="bigbtn" ng-click="downloadAll()">Download All Album</button><br/><br/>
+    <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>
+    <h4 ng-show="downloadLink || downloadAllLink">Your Downloan Link: </h4>
+    <a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a>
+    <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a>
+
 
     <!--<button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>-->
 

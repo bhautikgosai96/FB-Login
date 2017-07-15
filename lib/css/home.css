@@ -14,12 +14,12 @@
     border: 1.5px solid #001199;
     background-color: white;
     color: #001199;
-    width:90%;
+    width:100%;
 }
 
 .btn:hover{
     border: 1.5px solid #001199;
     background-color: #001199;
     color: white;
-    width:90%;
+    width:100%;
 }
