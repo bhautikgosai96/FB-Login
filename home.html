@@ -162,9 +162,9 @@
                 var base_url = window.location.origin;
                 var str = data.data.slice(1,-1);
                 alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
-                $scope.downloadAllLink= base_url+'/'+str;
+                $scope.downloadLink= base_url+'/'+str;
                 console.log(base_url);
-                console.log($scope.downloadAllLink);
+                console.log($scope.downloadLink);
 
             }, function myError(response) {
                 console.log(response);

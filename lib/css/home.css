@@ -28,12 +28,16 @@
     border: 1.5px solid #001199;
     background-color: white;
     color: #001199;
-    width:100%;
+    width:50%;
+    height:10%;
+    margin-left: 10%;
 }
 
 .bigbtn:hover{
     border: 1.5px solid #001199;
     background-color: #001199;
     color: white;
-    width:100%;
+    width:50%;
+    height: 10%;
+    margin-left: 10%;
 }
