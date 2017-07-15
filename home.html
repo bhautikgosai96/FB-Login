@@ -17,7 +17,7 @@
 <div ng-controller="fbCtrl" ng-init="init()">
     <div class="row">
         <div class="profile">
-            <h3>Welcome {{profileName}}</h3>
+            <p>Welcome {{profileName}}</p>
         </div>
     </div>
     <br/>
@@ -34,9 +34,8 @@
                     <div class="w3-container">
                         <h4 >{{x.name }}</h4>
                         <h4 > Total images : {{x.photo_count}}</h4>
-                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="slideShow(x.photos)">Show Full Screen</button><br>
-                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="zip(x.photos)">Download</button>
-                        <button class="w3-button w3-white w3-border w3-border-blue" ng-click="movePicasa(x)">Add to Picasa</button>
+                        <button class="btn" ng-click="slideShow(x.photos)">Show Full Screen</button><br>
+                        <button class="btn" ng-click="zip(x.photos)">Download</button><br/>
                         <input type="checkbox"
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
