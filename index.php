@@ -45,7 +45,7 @@ session_write_close();
 
                       <div class="row">
                       			<div class="develop">
-                      			<h4>Developed by bhautik gosai</h4>
+                      			<h4>Developed by Bhautik Gosai</h4>
                       			</div>
                       </div>
         </div>
