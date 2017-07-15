@@ -44,6 +44,7 @@
 
         </div>
     </div>
+        <a ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Download Albumn From Here</a>
         <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a><br/><br/>
         <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a><br/><br/>
 
@@ -260,7 +261,7 @@
                 console.log(str);
                 var base_url = window.location.origin;
                 //alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
-                $scope.downloadLink= base_url+'/'+str;
+                $scope.downSingleloadLink= base_url+'/'+str;
                 console.log(base_url);
 
             }, function myError(response) {
