@@ -147,31 +147,35 @@
        };
 
 
-        $scope.downloadSelectedAll = function(){
-          console.log($scope.selectedAlbumnList);
-            $http({
-                method : "POST",
-                url: 'downloadAllAlbum.php',
-                data: $scope.selectedAlbumnList,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(function mySuccess(data) {
-                console.log(data);
-                console.log(data.data);
-                console.log("success");
-                var base_url = window.location.origin;
-                var str = data.data.slice(1,-1);
-                alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
-                $scope.downloadLink= base_url+'/'+str;
-                console.log(base_url);
-                console.log($scope.downloadLink);
+        $scope.downloadSelectedAll = function() {
+            console.log($scope.selectedAlbumnList);
+            if ($scope.selectedAlbumnList.length > 0){
+                $http({
+                    method: "POST",
+                    url: 'downloadAllAlbum.php',
+                    data: $scope.selectedAlbumnList,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                }).then(function mySuccess(data) {
+                    console.log(data);
+                    console.log(data.data);
+                    console.log("success");
+                    var base_url = window.location.origin;
+                    var str = data.data.slice(1, -1);
+                    alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
+                    $scope.downloadLink = base_url + '/' + str;
+                    console.log(base_url);
+                    console.log($scope.downloadLink);
 
-            }, function myError(response) {
-                console.log(response);
-                console.log("error");
-                console.log("errorrr");
-            });
+                }, function myError(response) {
+                    console.log(response);
+                    console.log("error");
+                    console.log("errorrr");
+                });
+        }else{
+                alert('Please select albumn First');
+            }
         };
 
         $scope.downloadAll = function(){
