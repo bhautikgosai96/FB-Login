@@ -29,7 +29,7 @@
     <div class="w3-container">
         <div class="row" style="padding-right: 10%;">
             <div class="col-md-offset-1 col-md-3" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
-                <div class=" w3-card-4" style="height: 375px;">
+                <div class=" w3-card-4" style="height: 400px;">
                     <img ng-src ="{{ x.picture.url }}" style="width:100%; height:200px;">
                     <div class="w3-container">
                         <h4>Albumn Name: {{x.name }}</h4>
@@ -40,16 +40,16 @@
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
                 </div>
-                <br/>
+                <br/><br/>
 
         </div>
     </div>
 </div>
-    <button class="bigbtn" ng-click="downloadAll()">Download All Album</button><br/><br/>
-    <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>
-    <h4 ng-show="downloadLink || downloadAllLink">Your Downloan Link: </h4>
-    <a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a>
-    <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a>
+    <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a><br/><br/>
+    <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a><br/><br/>
+
+   <!-- <a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a>
+    <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a>-->
 
 
     <!--<button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>-->
@@ -92,10 +92,7 @@
             $window.open('slideShow.html');
         };
 
-        $scope.DownloadReady =function(){
 
-            $window.open($scope.downloadLink);
-        };
 
         $scope.selectedAlbumnList = [];
        $scope.selectAlbumn = function(item){
