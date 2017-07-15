@@ -28,16 +28,18 @@
     border: 1.5px solid #001199;
     background-color: white;
     color: #001199;
+    border-radius: 1.5%;
     width:50%;
-    height:10%;
-    margin-left: 10%;
+    height:15%;
+    margin-left: 9%;
 }
 
 .bigbtn:hover{
     border: 1.5px solid #001199;
     background-color: #001199;
     color: white;
+    border-radius: 1.5%;
     width:50%;
-    height: 10%;
-    margin-left: 10%;
+    height: 15%;
+    margin-left: 9%;
 }
