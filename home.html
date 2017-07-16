@@ -64,6 +64,11 @@
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
+        $scope.downloadLink = null;
+        $scope.downSingleloadLink = null;
+        $scope.downloadAllLink = null;
+
+
         $scope.selecetedLink = function(){
             $scope.downloadLink = false;
         };
