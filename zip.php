@@ -50,7 +50,7 @@ foreach($temp as $n){
 
 
 
-echo json_encode("final.zip");
+echo json_encode($filename);
 
 
 
