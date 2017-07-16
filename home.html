@@ -44,9 +44,9 @@
 
         </div>
     </div>
-        <a ng-show="downSingleloadLink" ng- click="singleLink()" href="{{downSingleloadLink}}" download>Download Albumn From Here</a>
-        <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" ng-click="allLink()" href="{{downloadAllLink}}" download>Download All Album from here</a><br/><br/>
-        <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" ng-click="selectedLink()" href="{{downloadLink}}" download>Download Selected Albumn from here</a><br/><br/>
+        <a ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Download Single Albumn From here
+        <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a><br/><br/>
+        <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a><br/><br/>
 
     </div>
 
@@ -64,25 +64,6 @@
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
-        $scope.downloadLink = "dsfdfs";
-        $scope.downSingleloadLink = null;
-        $scope.downloadAllLink = "fdsfs";
-
-
-        $scope.selecetedLink = function(){
-            $scope.downloadLink = false;
-            console.log("After click: "+$scope.downloadLink);
-        };
-
-        $scope.singleLink = function(){
-            $scope.downSingleloadLink = false;
-            console.log("After click: "+$scope.downSingleloadLink);
-        };
-
-        $scope.allLink = function(){
-            $scope.downloadAllLink = false;
-            console.log("After click: "+$scope.downloadAllLink);
-        };
 
         $scope.init= function(){
             $scope.profileName = null;
@@ -118,19 +99,19 @@
         $scope.selectedAlbumnList = [];
        $scope.selectAlbumn = function(item){
 
-           var albumnSelectedData = {
+           var albumnData = {
                albumnName:'',
                image:[]
            };
 
            var albumn = item;
-           albumnSelectedData.albumnName = albumn.name;
+           albumnData.albumnName = albumn.name;
            var j;
            var albumnPhoto = albumn.photos;
 
            for (j = 0; j < albumnPhoto.length; j++) {
 
-               albumnSelectedData.image.push(albumnPhoto[j].images[1].source);
+               albumnData.image.push(albumnPhoto[j].images[1].source);
            }
 
 
@@ -139,13 +120,13 @@
            var index=0;
            var flag = false;
            if($scope.selectedAlbumnList.length==0){
-               $scope.selectedAlbumnList.push(albumnSelectedData);
+               $scope.selectedAlbumnList.push(albumnData);
                console.log($scope.selectedAlbumnList);
            }else{
                for(i=0;i<$scope.selectedAlbumnList.length;i++){
-                    console.log(albumnSelectedData.albumnName);
+                    console.log(albumnData.albumnName);
                    console.log($scope.selectedAlbumnList[i].albumnName);
-                   if(albumnSelectedData.albumnName===$scope.selectedAlbumnList[i].albumnName){
+                   if(albumnData.albumnName===$scope.selectedAlbumnList[i].albumnName){
                        flag = true;
                         index = i;
                        break;
@@ -159,7 +140,7 @@
                    $scope.selectedAlbumnList.splice(index,1);
                    console.log($scope.selectedAlbumnList);
                }else{
-                   $scope.selectedAlbumnList.push(albumnSelectedData);
+                   $scope.selectedAlbumnList.push(albumnData);
                    console.log($scope.selectedAlbumnList);
                }
            }
