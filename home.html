@@ -99,19 +99,19 @@
         $scope.selectedAlbumnList = [];
        $scope.selectAlbumn = function(item){
 
-           var albumnData = {
+           var albumnSelectedData = {
                albumnName:'',
                image:[]
            };
 
            var albumn = item;
-           albumnData.albumnName = albumn.name;
+           albumnSelectedData.albumnName = albumn.name;
            var j;
            var albumnPhoto = albumn.photos;
 
            for (j = 0; j < albumnPhoto.length; j++) {
 
-               albumnData.image.push(albumnPhoto[j].images[1].source);
+               albumnSelectedData.image.push(albumnPhoto[j].images[1].source);
            }
 
 
@@ -120,13 +120,13 @@
            var index=0;
            var flag = false;
            if($scope.selectedAlbumnList.length==0){
-               $scope.selectedAlbumnList.push(albumnData);
+               $scope.selectedAlbumnList.push(albumnSelectedData);
                console.log($scope.selectedAlbumnList);
            }else{
                for(i=0;i<$scope.selectedAlbumnList.length;i++){
-                    console.log(albumnData.albumnName);
+                    console.log(albumnSelectedData.albumnName);
                    console.log($scope.selectedAlbumnList[i].albumnName);
-                   if(albumnData.albumnName===$scope.selectedAlbumnList[i].albumnName){
+                   if(albumnSelectedData.albumnName===$scope.selectedAlbumnList[i].albumnName){
                        flag = true;
                         index = i;
                        break;
@@ -140,7 +140,7 @@
                    $scope.selectedAlbumnList.splice(index,1);
                    console.log($scope.selectedAlbumnList);
                }else{
-                   $scope.selectedAlbumnList.push(albumnData);
+                   $scope.selectedAlbumnList.push(albumnSelectedData);
                    console.log($scope.selectedAlbumnList);
                }
            }
