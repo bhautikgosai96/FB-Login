@@ -44,9 +44,9 @@
 
         </div>
     </div>
-        <a ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Download Albumn From Here</a>
-        <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a><br/><br/>
-        <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a><br/><br/>
+        <a ng-show="downSingleloadLink" ng- click="singleLink()" href="{{downSingleloadLink}}" download>Download Albumn From Here</a>
+        <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" ng-click="allLink()" href="{{downloadAllLink}}" download>Download All Album from here</a><br/><br/>
+        <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" ng-click="selectedLink()" href="{{downloadLink}}" download>Download Selected Albumn from here</a><br/><br/>
 
     </div>
 
@@ -64,6 +64,17 @@
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
+        $scope.selecetedLink = function(){
+            $scope.downloadLink = false;
+        };
+
+        $scope.singleLink = function(){
+            $scope.downSingleloadLink = false;
+        };
+
+        $scope.allLink = function(){
+            $scope.downloadAllLink = false;
+        };
 
         $scope.init= function(){
             $scope.profileName = null;
