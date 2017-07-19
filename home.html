@@ -44,18 +44,12 @@
 
             </div>
          </div>
-        <a ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Single AlbumnDownload link:{{downSingleloadLink}}</a><br/><br/>
+        <a style="margin-left: 10%;" ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Single AlbumnDownload link:{{downSingleloadLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
 
     </div>
 </div>
-   <!-- <a ng-show="downloadLink" href="{{downloadLink}}" download>Download Selected Albumn from here</a>
-    <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>Download All Album from here</a>-->
-
-
-    <!--<button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>-->
-
 
 <script>
     var app = angular.module('fbApp',['ngStorage']);
@@ -64,14 +58,13 @@
 
     app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 
-
+        //fetching user photo and profilename
         $scope.init= function(){
             $scope.profileName = null;
             $scope.albumnList = [];
             $http.get('home.php')
                     .then(function(response){
-                        //alert('Called');
-                        //console.log("hi");
+
                         $scope.data = response.data;
                         $scope.profileName = $scope.data[0];
                         var i;
@@ -79,23 +72,18 @@
                         for(i=1;i<$scope.data.length;i++){
                             $scope.albumnList.push($scope.data[i]);
                         }
-                        //$scope.photo = response.data;
-                        //$scope.photo = $scope.photo.slice(1,-1);
-                        console.log(response);
-                        console.log($scope.profileName);
-                        console.log($scope.albumnList);
-                        //console.log($scope.photo);
                     });
 
         };
 
+        //slideshow of albumn
         $scope.slideShow = function(photo){
             $localStorage.gallery = photo;
             $window.open('slideShow.html');
         };
 
 
-
+        //code for selecting albumn
         $scope.selectedAlbumnList = [];
        $scope.selectAlbumn = function(item){
 
@@ -121,11 +109,10 @@
            var flag = false;
            if($scope.selectedAlbumnList.length==0){
                $scope.selectedAlbumnList.push(albumnData);
-               console.log($scope.selectedAlbumnList);
+
            }else{
                for(i=0;i<$scope.selectedAlbumnList.length;i++){
-                    console.log(albumnData.albumnName);
-                   console.log($scope.selectedAlbumnList[i].albumnName);
+
                    if(albumnData.albumnName===$scope.selectedAlbumnList[i].albumnName){
                        flag = true;
                         index = i;
@@ -134,22 +121,21 @@
                        flag = false;
                    }
                }
-               console.log(flag);
-                console.log(index);
+
                if(flag){
                    $scope.selectedAlbumnList.splice(index,1);
-                   console.log($scope.selectedAlbumnList);
+
                }else{
                    $scope.selectedAlbumnList.push(albumnData);
-                   console.log($scope.selectedAlbumnList);
+
                }
            }
 
        };
 
-
+        //download selected albumn
         $scope.downloadSelectedAll = function() {
-            console.log($scope.selectedAlbumnList);
+
             if ($scope.selectedAlbumnList.length > 0){
                 $http({
                     method: "POST",
@@ -159,29 +145,24 @@
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 }).then(function mySuccess(data) {
-                    console.log(data);
-                    console.log(data.data);
-                    console.log("success");
+
                     var base_url = window.location.origin;
                     var str = data.data.slice(1,-1);
                     alert('Find download link at bottom of page.');
                     $scope.downloadLink = base_url + '/' + str;
-                    console.log(base_url);
-                    console.log($scope.downloadLink);
+
 
                 }, function myError(response) {
                     console.log(response);
-                    console.log("error");
-
                 });
         }else{
-                alert('Please select albumn First');
+                alert('Please, select albumn!!!');
             }
         };
 
+        //download all albumn at one time
         $scope.downloadAll = function(){
 
-            console.log($scope.albumnList);
             var lst = $scope.albumnList;
             var len = lst.length;
 
@@ -191,7 +172,6 @@
             };
 
             var allAlbumnList = [];
-
             var i;
             for(i=0;i<len;i++){
                 var albumnData = {
@@ -200,18 +180,13 @@
                 };
                 var albumn = lst[i];
                 albumnData.albumnName = albumn.name;
-
                 var j;
-                console.log(allAlbumnList);
                 var albumnPhoto = albumn.photos;
 
                     for (j = 0; j < albumnPhoto.length; j++) {
-
                         albumnData.image.push(albumnPhoto[j].images[1].source);
                     }
-                    console.log(albumnData);
                     allAlbumnList.push(albumnData);
-                    console.log(allAlbumnList);
             }
 
 
@@ -224,29 +199,24 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function mySuccess(data) {
-                console.log(data);
-                console.log(data.data);
-                console.log("success");
+
                 var base_url = window.location.origin;
                 var str = data.data.slice(1,-1);
                 alert('Find download link at bottom of page.');
                 $scope.downloadAllLink= base_url+'/'+str;
-                console.log(base_url);
-                console.log($scope.downloadAllLink);
-
             }, function myError(response) {
                 console.log(response);
-                console.log("error");
             });
         };
+
+        //downloading single albumn
         $scope.zip = function(files){
             var image = [];
             for(i=0;i<files.length;i++)
             {
                 image.push( files[i].images[1].source);
-
             }
-            console.log(image);
+
             $http({
                 method : "POST",
                 url: 'zip.php',
@@ -255,25 +225,20 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function mySuccess(data) {
-                console.log(data);
-                console.log(data.data);
+
                 var str = data.data.substr(1,18);
-                console.log(str);
                 var base_url = window.location.origin;
                 alert('Find download link at bottom of page.');
                 $scope.downSingleloadLink= base_url+'/'+str;
-                console.log(base_url);
-
             }, function myError(response) {
                 console.log(response);
-                console.log("error");
             });
         };
 
+        //Moving to picasa
         $scope.movePicasa =function(x){
 
-
-           $scope.picasa= false;
+            $scope.picasa= false;
              var albumData ={
                 albumnName:'',
                 img:[]
@@ -281,14 +246,9 @@
             };
 
             albumData.albumnName =x.name;
-
             var photos = x.photos;
-
             for(j=0;j<photos.length;j++){
-
-
-                    albumData.img.push(photos[j].images[1].source);
-
+                albumData.img.push(photos[j].images[1].source);
             }
             $http({
                 method: 'POST',
@@ -298,21 +258,14 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function mySuccess(data) {
-                console.log(data);
-                console.log("successfully uploaded to picasa");
                 $scope.picasa = true;
-
                 var base_url = window.location.origin;
-
-                console.log(base_url);
                 $window.open(base_url+'/uploadPicasa.php');
 
             }, function myError(response) {
                 console.log(response);
-                console.log("errorr");
+
             });
-            //120783235172145
-            //2af58b7080bcb06278ad922a787f27a2
         }
     });
 </script>

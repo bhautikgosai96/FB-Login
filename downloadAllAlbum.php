@@ -1,10 +1,8 @@
 <?php
 
-$errors = array();
-$data = array();
 
-$postdata = file_get_contents('php://input');
-$request = json_decode($postdata);
+$data = file_get_contents('php://input');
+$request = json_decode($data);
 
 $zip = new ZipArchive();
 
@@ -39,8 +37,6 @@ foreach($request as $k){
 }
 
 $zip->close();
-//echo 'Exist or not'.file_exists($filename);
-// close zip
 
 foreach($temp as $n){
 

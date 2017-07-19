@@ -47,10 +47,7 @@ if(isset($albumName) and isset($img)){
     }
 
 
-    $filename=array($filename);
 
-
-//    $_SESSION['picasaUpload'] =$filename;
 
     session_destroy();
     echo "<script>alert('Album successfully uploaded')</script>";
