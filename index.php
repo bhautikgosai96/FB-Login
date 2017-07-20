@@ -28,18 +28,18 @@ session_write_close();
         <link rel="stylesheet" href="lib/css/index.css">
     </head>
     <body>
-        <div>
+        <div class="container">
             <div class="row ">
                            <div class="header">
-                           <p>PHP Web Engineer Assignment</p>
-                           <p>Facebook-Albumn Challenge</p>
+                           <p style="font-size:2.2em">PHP Web Engineer Assignment</p>
+                           <p style="font-size:1.7em; padding-left: 12%">Facebook-Albumn Challenge</p>
                            </div>
             </div>
                        <br/>
                        <div class="row">
                             <div class="login">
                             <?php echo '<a  href="'.$loginUrl . '" class="loginText">';
-                            echo '<p>Sign in with Facebook</p>';
+                            echo '<p style="font-size:20px;">Sign in with Facebook</p>';
                             echo '</a>';
                             ?>
                             </div>
