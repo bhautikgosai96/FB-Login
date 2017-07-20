@@ -31,15 +31,15 @@ session_write_close();
         <div class="container">
             <div class="row ">
                            <div class="header">
-                           <p style="font-size:2.2em">PHP Web Engineer Assignment</p>
-                           <p style="font-size:1.7em; padding-left: 12%">Facebook-Albumn Challenge</p>
+                           <h3>PHP Web Engineer Assignment</h3>
+                           <h4>Facebook-Albumn Challenge</h4>
                            </div>
             </div>
                        <br/>
                        <div class="row">
                             <div class="login">
                             <?php echo '<a  href="'.$loginUrl . '" class="loginText">';
-                            echo '<p style="font-size:20px;">Sign in with Facebook</p>';
+                            echo '<h5>Sign in with Facebook</h5>';
                             echo '</a>';
                             ?>
                             </div>
