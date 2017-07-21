@@ -31,8 +31,8 @@ session_write_close();
         <div class="container">
             <div class="row ">
                            <div class="header">
-                           <h3>PHP Web Engineer Assignment</h3>
-                           <h4>Facebook-Albumn Challenge</h4>
+                           <h2>PHP Web Engineer Assignment</h2>
+                           <h3>Facebook-Albumn Challenge</h3>
                            </div>
             </div>
                        <br/>
