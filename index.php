@@ -39,7 +39,7 @@ session_write_close();
                        <div class="row">
                             <div class="login">
                             <?php echo '<a  href="'.$loginUrl . '" class="loginText">';
-                            echo '<h5>Sign in with Facebook</h5>';
+                            echo '<h4>Sign in with Facebook</h4>';
                             echo '</a>';
                             ?>
                             </div>
