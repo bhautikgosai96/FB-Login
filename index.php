@@ -31,7 +31,7 @@ session_write_close();
         <div class="container">
             <div class="row ">
                            <div class="header">
-                           <p style="font-size:1.9em">PHP Web Engineer Assignment</p>
+                           <p style="font-size:1.9em; padding-top:5%">PHP Web Engineer Assignment</p>
                            <p style="font-size:1.5em">Facebook-Albumn Challenge</p>
                            </div>
             </div>
