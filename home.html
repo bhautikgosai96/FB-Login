@@ -47,7 +47,7 @@
         <a style="margin-left: 10%;" ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Single AlbumnDownload link:{{downSingleloadLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
-
+        <button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>
     </div>
 </div>
 
@@ -82,6 +82,10 @@
             $window.open('slideShow.html');
         };
 
+        $scope.googlerive = function(){
+
+            $window.open('upload.php');
+        };
 
         //code for selecting albumn
         $scope.selectedAlbumnList = [];
