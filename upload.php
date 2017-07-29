@@ -1,6 +1,6 @@
 <?php
-    require_once '/src/google-api-php-client/src/Client.php';
-    require_once '/src/google-api-php-client/src/Service.php';
+    require_once '/src/google-api-php-client-master/src/google/Client.php';
+    require_once '/src/google-api-php-client-master/src/google/Service.php';
 
     $client = new Google_Client();
     // Get your credentials from the console
