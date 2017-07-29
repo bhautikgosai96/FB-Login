@@ -1,9 +1,10 @@
 
 
 <?php
+    echo "hello";
     require_once '/src/google-api-php-client-master/src/Google/Client.php';
     require_once '/src/google-api-php-client-master/src/Google/Service.php';
-
+    echo "hello1";
     $client = new Google_Client();
     // Get your credentials from the console
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
@@ -16,8 +17,8 @@
     $authUrl = $client->createAuthUrl();
 
     //Request authorization
-    print "Please visit:\n$authUrl\n\n";
-    print "Please enter the auth code:\n";
+    echo "Please visit:\n$authUrl\n\n";
+    echo "Please enter the auth code:\n";
     $authCode = trim(fgets(STDIN));
 
     // Exchange authorization code for access token
