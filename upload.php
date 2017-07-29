@@ -4,8 +4,8 @@
 
     $client = new Google_Client();
     // Get your credentials from the console
-    $client->setClientId('120783235172145');
-    $client->setClientSecret('2af58b7080bcb06278ad922a787f27a2');
+    $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
+    $client->setClientSecret('MkhSpAhrUARWSZAokYCx9HzF');
     $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
