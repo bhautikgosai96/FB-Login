@@ -6,7 +6,7 @@
     // Get your credentials from the console
     $client->setClientId('120783235172145');
     $client->setClientSecret('2af58b7080bcb06278ad922a787f27a2');
-    $client->setRedirectUri('urn:ietf:wg:oauth:2.0:oob');
+    $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
     $service = new Google_DriveService($client);
