@@ -31,7 +31,7 @@
     $folder_name = 'facebook Albumn';
 
     //Insert a file
-    $service = new Google_DriveService($client);
+
     $folder = new Google_DriveFile();
 
     $folder->setTitle($folder_name);
@@ -40,8 +40,8 @@
 
                     'mimeType' => 'application/vnd.google-apps.folder',
                ));
-
-    echo $newFolder;
+    print_r($newFolder);
+    echo "success";
     //$parentId  = $newFolder['id'];
 
 
