@@ -17,22 +17,8 @@ require_once 'google-api-php-client-master/src/Google/autoload.php';
      // Exchange authorization code for access token
      $accessToken = $client->authenticate($authCode);
      $client->setAccessToken($accessToken);
+print_r($client);
 
-
-
-     $folderId = '0B_tnY9E0BlTPOWdjYkVfN0xQS3c';
-     $fileMetadata = new Google_Service_Drive_DriveFile(array(
-       'name' => 'photo.jpg',
-       'parents' => array($folderId)
-     ));
-     $content = file_get_contents('try.jpg');
-     $file = $driveService->files->create($fileMetadata, array(
-       'data' => $content,
-       'mimeType' => 'image/jpeg',
-       'uploadType' => 'multipart',
-       'fields' => 'id'));
-     //printf("File ID: %s\n", $file->id);
-     ptint_r($file);
 ?>
 /*<?php
     echo "hello";
