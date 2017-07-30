@@ -28,5 +28,6 @@ $file = $driveService->files->create($fileMetadata, array(
   'uploadType' => 'multipart',
   'fields' => 'id'));
 printf("File ID: %s\n", $file->id);
+print_r("File ID: %s\n", $file->id);
 
 ?>
