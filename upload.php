@@ -1,25 +1,33 @@
 <?php
 
-//require_once 'google-api-php-client-master/src/Google/autoload.php';
-require_once 'google-api-php-client/src/Google_Client.php';
-    require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
+    require_once 'google-api-php-client-2.2.0/vendor/autoload.php';
+
+    $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+
     $client = new Google_Client();
-    $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
-    $client->setClientSecret('MkhSpAhrUARWSZAokYCx9HzF');
-    $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
-    $client->setScopes(array('https://www.googleapis.com/auth/drive'));
+    $client->setAuthConfig('client_credentials.json');
+    $client->setRedirectUri($redirect_uri);
+    $client->addScope("https://www.googleapis.com/auth/drive");
+    $service = new Google_Service_Drive($client);
 
-    $authUrl = $client->createAuthUrl();
 
-    echo "Please visit:\n$authUrl\n\n";
-    echo "Please enter the auth code:\n";
-    $authCode = trim(fgets(STDIN));
-
-     // Exchange authorization code for access token
-     $accessToken = $client->authenticate($authCode);
-     $client->setAccessToken($accessToken);
-print_r($client);
-
+    if (isset($_GET['code'])) {
+      $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+      $client->setAccessToken($token);
+      // store in the session also
+      $_SESSION['upload_token'] = $token;
+      // redirect back to the example
+      header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+    }
+    // set the access token as part of the client
+    if (!empty($_SESSION['upload_token'])) {
+      $client->setAccessToken($_SESSION['upload_token']);
+      if ($client->isAccessTokenExpired()) {
+        unset($_SESSION['upload_token']);
+      }
+    } else {
+      $authUrl = $client->createAuthUrl();
+    }
 ?>
 /*<?php
     echo "hello";
