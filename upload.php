@@ -27,8 +27,8 @@
 
     //create folder
 
-   /* $folder_mime = "application/vnd.google-apps.folder";
-    $folder_name = 'facebook Albumn';
+   $folder_mime = "application/vnd.google-apps.folder";
+    $folder_name = 'facebook Albumn1';
 
     //Insert a file
 
@@ -43,7 +43,7 @@
     print_r($newFolder);
     echo "success";
     print_r($newFolder['id']);
-    $parentId  = $newFolder['id'];*/
+    $parentId  = $newFolder['id'];
 
     //$localfile = 'try.jpeg';
     $file = new Google_Service_Drive_DriveFile();
