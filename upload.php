@@ -74,7 +74,7 @@ $file = $service->files->create($fileMetadata, array(
   'fields' => 'id'));
 print_r("File ID: %s\n", $file->id);
 
-/*
+
     $authUrl = $client->createAuthUrl();
 
     //Request authorization
@@ -127,5 +127,5 @@ print_r("File ID: %s\n", $file->id);
           'mimeType' => 'image/jpeg',
         ));
 
-    print_r($createdFile);*/
+    print_r($createdFile);
     ?>*/
