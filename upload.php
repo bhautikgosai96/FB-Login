@@ -45,14 +45,20 @@
     print_r($newFolder['id']);
     $parentId  = $newFolder['id'];
 
+    $file = new Google_DriveFile();
 
-       $fileMetadata = new Google_Service_Drive_DriveFile(array(
-         'name' => 'photo.jpg',
-         'parents' => array($parentId)
-       ));
+    $parent = new ParentReference();
+    $parent->setId($parentId);
+    $file->setParents(array($parent));
+
+
+      $file->setTitle('Myfirstphoto');
+      $file->setDescription('My File');
+      $file->setMimeType('image/jpeg');
+
 
      $data = file_get_contents('try.jpg');
-     $createdFile = $service->files->insert($fileMetadata, array(
+     $createdFile = $service->files->insert($file, array(
               'data' => $data,
               'mimeType' => 'image/jpeg',
             ));
