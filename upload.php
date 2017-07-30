@@ -49,7 +49,7 @@
             //Set the Random Filename
             'name' => 'firstphoto',
             //Set the Parent Folder
-            'parents' => array($parentId) // this is the folder id
+            //'parents' => array($parentId) // this is the folder id
         ));
 
         try{
@@ -59,7 +59,7 @@
                 array(
                     'data' => file_get_contents('try.jpg'),
                     'mimeType' => 'image/jpeg',
-                    'uploadType' => 'media'
+
                 )
             );
 
