@@ -53,8 +53,9 @@
     $file->setTitle('photo.jpg');
     $file->setDescription('This is a photo in folder);
     $file->setMimeType('image/jpeg');
-    $data = file_get_contents('try.jpg');
+
     try {
+    $data = file_get_contents('try.jpg');
     return $service->files->insert(
         $file,
         array(
