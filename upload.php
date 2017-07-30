@@ -12,7 +12,7 @@
     $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
     echo "1";
-    $service = new Google_Service_Drive($client);
+
     echo "2";
 
 
@@ -26,7 +26,7 @@
     // Exchange authorization code for access token
     $accessToken = $client->authenticate($authCode);
     $client->setAccessToken($accessToken);
-
+ $service = new Google_Service_Drive($client);
 
 $folderId = '0B_tnY9E0BlTPOWdjYkVfN0xQS3c';
 echo "3";
