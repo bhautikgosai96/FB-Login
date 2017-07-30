@@ -11,26 +11,39 @@
     $client->setClientSecret('MkhSpAhrUARWSZAokYCx9HzF');
     $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
-
+    echo "1";
     $service = new Google_Service_Drive($client);
+    echo "2";
 
 
+    $authUrl = $client->createAuthUrl();
 
+    //Request authorization
+    echo "Please visit:\n$authUrl\n\n";
+    echo "Please enter the auth code:\n";
+    $authCode = trim(fgets(STDIN));
 
+    // Exchange authorization code for access token
+    $accessToken = $client->authenticate($authCode);
+    $client->setAccessToken($accessToken);
 
 
 $folderId = '0B_tnY9E0BlTPOWdjYkVfN0xQS3c';
+echo "3";
+
 $fileMetadata = new Google_Service_Drive_DriveFile(array(
   'name' => 'photo',
   'parents' => array($folderId)
 ));
+echo "4";
 $content = file_get_contents('try.jpg');
+echo "5";
 $file = $service->files->create($fileMetadata, array(
   'data' => $content,
   'mimeType' => 'image/jpeg',
   'uploadType' => 'multipart',
   'fields' => 'id'));
-printf("File ID: %s\n", $file->id);
+print_r("File ID: %s\n", $file->id);
 
 /*
     $authUrl = $client->createAuthUrl();
