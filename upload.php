@@ -42,6 +42,7 @@
                ));
     print_r($newFolder);
     echo "success";
+    print_r($newFolder['id']);
     //$parentId  = $newFolder['id'];
 
 
