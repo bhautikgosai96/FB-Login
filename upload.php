@@ -47,7 +47,7 @@
 
     $file = new Google_DriveFile();
 
-    $parent = new ParentReference();
+    $parent = new Google_Service_Drive_ParentReference();
     $parent->setId($parentId);
     $file->setParents(array($parent));
 
