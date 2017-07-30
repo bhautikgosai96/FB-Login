@@ -27,17 +27,18 @@
 
     //Insert a file
     $file = new Google_DriveFile();
-    $localfile = 'try.jpeg';
-    $title = basename($localfile);
-    $file->setTitle($title);
-    $file->setDescription('My File');
-    $file->setMimeType('image/jpeg');
+    //$localfile = 'try.jpeg';
 
-    $data = file_get_contents($localfile);
+    //$title = basename($localfile);
+    $file->setTitle('My Photo');
+    $file->setDescription('My File');
+    //$file->setMimeType('image/jpeg');
+    $file->setMimeType('text/plain');
+    $data = file_get_contents('test.txt');
 
     $createdFile = $service->files->insert($file, array(
           'data' => $data,
-          'mimeType' => 'image/jpeg',
+          'mimeType' => 'text/plain',
         ));
 
     print_r($createdFile);
