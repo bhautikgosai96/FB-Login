@@ -45,25 +45,31 @@
     print_r($newFolder['id']);
     $parentId  = $newFolder['id'];
 
-    $file = new Google_DriveFile();
+    $fileMetadata = new Google_Service_Drive_DriveFile(array(
+            //Set the Random Filename
+            'name' => 'firstphoto',
+            //Set the Parent Folder
+            'parents' => array($parentId) // this is the folder id
+        ));
 
-    $parent = new Google_Service_Drive_ParentReference();
-    $parent->setId($parentId);
-    $file->setParents(array($parent));
+        try{
+
+            $newFile = $drive_service->files->create(
+                $fileMetadata,
+                array(
+                    'data' => file_get_contents('try.jpg'),
+                    'mimeType' => 'image/jpeg',
+                    'uploadType' => 'media'
+                )
+            );
 
 
-      $file->setTitle('Myfirstphoto');
-      $file->setDescription('My File');
-      $file->setMimeType('image/jpeg');
+        } catch(Exception $e){
 
+            echo 'An error ocurred : ' . $e->getMessage();
 
-     $data = file_get_contents('try.jpg');
-     $createdFile = $service->files->insert($file, array(
-              'data' => $data,
-              'mimeType' => 'image/jpeg',
-            ));
-
-        print_r($createdFile);
+        }
+        print_r($newFile);
     //$localfile = 'try.jpeg';
 
     //$title = basename($localfile);
