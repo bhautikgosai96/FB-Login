@@ -12,7 +12,7 @@
     $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
-    $service = new Google_DriveService($client);
+    $service = new Google_Service_Drive($client);
 
 
 
