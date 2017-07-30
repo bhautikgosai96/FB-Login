@@ -1,5 +1,40 @@
-
 <?php
+
+require_once 'google-api-php-client-master/src/Google/autoload.php';
+
+    $client = new Google_Client();
+    $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
+    $client->setClientSecret('MkhSpAhrUARWSZAokYCx9HzF');
+    $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
+    $client->setScopes(array('https://www.googleapis.com/auth/drive'));
+
+    $authUrl = $client->createAuthUrl();
+
+    echo "Please visit:\n$authUrl\n\n";
+    echo "Please enter the auth code:\n";
+    $authCode = trim(fgets(STDIN));
+
+     // Exchange authorization code for access token
+     $accessToken = $client->authenticate($authCode);
+     $client->setAccessToken($accessToken);
+
+
+
+     $folderId = '0B_tnY9E0BlTPOWdjYkVfN0xQS3c';
+     $fileMetadata = new Google_Service_Drive_DriveFile(array(
+       'name' => 'photo.jpg',
+       'parents' => array($folderId)
+     ));
+     $content = file_get_contents('try.jpg');
+     $file = $driveService->files->create($fileMetadata, array(
+       'data' => $content,
+       'mimeType' => 'image/jpeg',
+       'uploadType' => 'multipart',
+       'fields' => 'id'));
+     //printf("File ID: %s\n", $file->id);
+     ptint_r($file);
+?>
+/*<?php
     echo "hello";
     require_once 'google-api-php-client/src/Google_Client.php';
     require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
@@ -25,8 +60,26 @@
     // Exchange authorization code for access token
     $accessToken = $client->authenticate($authCode);
     $client->setAccessToken($accessToken);
-$service = new Google_DriveService($client);
+ $service = new Google_Service_Drive($client);
 
+$folderId = '0B_tnY9E0BlTPOWdjYkVfN0xQS3c';
+echo "33";
+
+$fileMetadata = new Google_Service_Drive_DriveFile(array(
+  'name' => 'photo',
+  'parents' => array($folderId)
+));
+echo "4";
+$content = file_get_contents('try.jpg');
+echo "5";
+$file = $service->files->create($fileMetadata, array(
+  'data' => $content,
+  'mimeType' => 'image/jpeg',
+  'uploadType' => 'multipart',
+  'fields' => 'id'));
+print_r("File ID: %s\n", $file->id);
+
+/*
     $authUrl = $client->createAuthUrl();
 
     //Request authorization
@@ -66,11 +119,11 @@ $service = new Google_DriveService($client);
     $file->setMimeType('image/jpeg');
     //$file->setMimeType('text/plain');
 
-
+    if ($parentId != null) {
         $parent = new Google_Service_Drive_ParentReference();
         $parent->setId($parentId);
         $file->setParents(array($parent));
-
+      }
 
     //$data = file_get_contents('test.txt');
       $data = file_get_contents('try.jpg');
@@ -79,5 +132,5 @@ $service = new Google_DriveService($client);
           'mimeType' => 'image/jpeg',
         ));
 
-    print_r($createdFile);
-    ?>
+    print_r($createdFile);*/
+    ?>*/
