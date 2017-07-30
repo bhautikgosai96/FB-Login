@@ -1,6 +1,6 @@
 <?php
 
-//require_once 'google-api-php-client-master/src/Google/autoload.php';
+require_once 'google-api-php-client-master/src/Google/autoload.php';
 
     $client = new Google_Client();
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
