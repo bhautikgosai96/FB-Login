@@ -46,12 +46,18 @@
     $parentId  = $newFolder['id'];*/
 
     //$localfile = 'try.jpeg';
-    $file = new Google_DriveFile();
+    $file = new Google_Service_Drive_DriveFile();
     //$title = basename($localfile);
     $file->setTitle('MyPhoto2');
-    //$file->setDescription('My File');
+    $file->setDescription('My File');
     $file->setMimeType('image/jpeg');
     //$file->setMimeType('text/plain');
+
+    if ($parentId != null) {
+        $parent = new Google_Service_Drive_ParentReference();
+        $parent->setId($parentId);
+        $file->setParents(array($parent));
+      }
 
     //$data = file_get_contents('test.txt');
       $data = file_get_contents('try.jpg');
