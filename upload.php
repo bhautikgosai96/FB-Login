@@ -30,13 +30,13 @@
     //$localfile = 'try.jpeg';
 
     //$title = basename($localfile);
-    $file->setTitle('My Photo');
+    $file->setTitle('MyPhoto1');
     $file->setDescription('My File');
     $file->setMimeType('image/jpeg');
     //$file->setMimeType('text/plain');
 
     //$data = file_get_contents('test.txt');
-        $data = 'try.jpeg';
+        $data = file_get_contents('try.jpg');
     $createdFile = $service->files->insert($file, array(
           'data' => $data,
           'mimeType' => 'image/jpeg',
