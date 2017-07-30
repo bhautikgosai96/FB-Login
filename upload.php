@@ -19,15 +19,14 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
 
-$fileMetadata = new Google_Service_Drive_DriveFile(array(
-  'name' => 'photo.jpg'));
-$content = file_get_contents('try.jpg');
-$file = $driveService->files->create($fileMetadata, array(
-  'data' => $content,
+$file = new Google_Service_Drive_DriveFile();
+$file->setTitle("Hello World!");
+$result = $service->files->insert($file, array(
+  'data' => file_get_contents('try.jpg'),
   'mimeType' => 'image/jpeg',
-  'uploadType' => 'multipart',
-  'fields' => 'id'));
-printf("File ID: %s\n", $file->id);
-print_r("File ID: %s\n", $file->id);
+  'uploadType' => 'multipart'
+));
+
+print_r($result);
 
 ?>
