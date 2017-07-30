@@ -43,17 +43,17 @@
     print_r($newFolder);
     echo "success";
     print_r($newFolder['id']);
-    //$parentId  = $newFolder['id'];
+    $parentId  = $newFolder['id'];
 
 
-    /*$service = new Google_DriveService($client);
+    $service = new Google_DriveService($client);
     $file = new Google_DriveFile();
 
-    if ($parentId != null) {
+
         $parent = new Google_ParentReference();
         $parent->setId($parentId);
         $file->setParents(array($parent));
-    }
+
 
     $file->setTitle('photo.jpg');
     $file->setDescription('This is a photo in folder);
@@ -81,5 +81,5 @@
         //  'mimeType' => 'image/jpeg',
         //));
 
-    //print_r($createdFile);*/
+    //print_r($createdFile);
     ?>
