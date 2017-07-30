@@ -17,3 +17,16 @@ if (! isset($_GET['code'])) {
   $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
   header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
+
+$fileMetadata = new Google_Service_Drive_DriveFile(array(
+  'name' => 'photo.jpg'));
+$content = file_get_contents('try.jpg');
+$file = $driveService->files->create($fileMetadata, array(
+  'data' => $content,
+  'mimeType' => 'image/jpeg',
+  'uploadType' => 'multipart',
+  'fields' => 'id'));
+printf("File ID: %s\n", $file->id);
+print_r("File ID: %s\n", $file->id);
+
+?>

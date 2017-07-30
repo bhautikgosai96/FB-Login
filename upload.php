@@ -21,7 +21,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 $fileMetadata = new Google_Service_Drive_DriveFile(array(
   'name' => 'photo.jpg'));
-$content = file_get_contents('files/try.jpg');
+$content = file_get_contents('try.jpg');
 $file = $driveService->files->create($fileMetadata, array(
   'data' => $content,
   'mimeType' => 'image/jpeg',
