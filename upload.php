@@ -8,7 +8,7 @@
     $client->setAuthConfig('client_credentials.json');
     $client->setRedirectUri($redirect_uri);
     $client->addScope("https://www.googleapis.com/auth/drive");
-    $service = new Google_Service_Drive($client);
+
 
 
      if(empty($_GET['code']))
