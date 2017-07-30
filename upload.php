@@ -25,7 +25,7 @@ $fileMetadata = new Google_Service_Drive_DriveFile(array(
   'parents' => array($folderId)
 ));
 $content = file_get_contents('try.jpg');
-$file = $driveService->files->create($fileMetadata, array(
+$file = $service->files->create($fileMetadata, array(
   'data' => $content,
   'mimeType' => 'image/jpeg',
   'uploadType' => 'multipart',
