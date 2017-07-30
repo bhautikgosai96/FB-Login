@@ -1,9 +1,7 @@
 <?php
 
-require_once 'google-api-php-client-master/src/Google/autoload.php';
-require_once 'google-api-php-client-master/src/Google/Client.php';
-require_once 'google-api-php-client-master/src/Google/Service.php';
-
+require_once 'google-api-php-client/src/Google_Client.php';
+    require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
 $client = new Google_Client();
     // Get your credentials from the console
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
@@ -21,7 +19,7 @@ $client = new Google_Client();
         // Exchange authorization code for access token
         $accessToken = $client->authenticate($authCode);
         $client->setAccessToken($accessToken);
-
+$driveService = new Google_Service_Drive($client);
      $folderId = '0B_tnY9E0BlTPOWdjYkVfN0xQS3c';
      $fileMetadata = new Google_Service_Drive_DriveFile(array(
        'name' => 'photo.jpg',
