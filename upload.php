@@ -25,7 +25,7 @@
     // Exchange authorization code for access token
     $accessToken = $client->authenticate($authCode);
     $client->setAccessToken($accessToken);
- $service = new Google_Service_Drive($client);
+$service = new Google_DriveService($client);
 
     $authUrl = $client->createAuthUrl();
 
