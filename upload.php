@@ -27,7 +27,7 @@
 
     //create folder
 
-    $folder_mime = "application/vnd.google-apps.folder";
+   /* $folder_mime = "application/vnd.google-apps.folder";
     $folder_name = 'facebook Albumn';
 
     //Insert a file
@@ -43,7 +43,7 @@
     print_r($newFolder);
     echo "success";
     print_r($newFolder['id']);
-    $parentId  = $newFolder['id'];
+    $parentId  = $newFolder['id'];*/
 
     $fileMetadata = new Google_Service_Drive_DriveFile(array(
             //Set the Random Filename
