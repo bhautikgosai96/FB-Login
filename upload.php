@@ -54,7 +54,7 @@
 
         try{
 
-            $newFile = $drive_service->files->create(
+            $newFile = $service->files->create(
                 $fileMetadata,
                 array(
                     'data' => file_get_contents('try.jpg'),
