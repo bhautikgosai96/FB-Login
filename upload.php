@@ -2,8 +2,8 @@
 
 <?php
     echo "hello";
-    require_once '/src/google-api-php-client-master/src/Google/Client.php';
-    require_once '/src/google-api-php-client-master/src/Google/Service.php';
+    require_once 'google-api-php-client/src/Google_Client.php';
+    require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
     echo "hello1";
     $client = new Google_Client();
     // Get your credentials from the console
@@ -27,17 +27,17 @@
 
     //Insert a file
     $file = new Google_DriveFile();
-    $localfile = '/lib/image/background.jpg';
+    $localfile = 'try.jpg';
     $title = basename($localfile);
     $file->setTitle($title);
     $file->setDescription('My File');
-    $file->setMimeType('image/jpeg');
+    $file->setMimeType('image/jpg');
 
     $data = file_get_contents($localfile);
 
     $createdFile = $service->files->insert($file, array(
           'data' => $data,
-          'mimeType' => 'image/jpeg',
+          'mimeType' => 'image/jpg',
         ));
 
     print_r($createdFile);
