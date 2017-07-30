@@ -36,12 +36,16 @@
 
     $folder->setTitle($folder_name);
     $folder->setMimeType($folder_mime);
-    $newFolder = $service->files->insert($folder);
+    $newFolder = $service->files->insert($folder, array(
 
-    $parentId  = $newFolder['id'];
+                    'mimeType' => 'application/vnd.google-apps.folder',
+               ));
+
+    echo $newFolder;
+    //$parentId  = $newFolder['id'];
 
 
-    $service = new Google_DriveService($client);
+    /*$service = new Google_DriveService($client);
     $file = new Google_DriveFile();
 
     if ($parentId != null) {
@@ -54,17 +58,13 @@
     $file->setDescription('This is a photo in folder);
     $file->setMimeType('image/jpeg');
 
-    try {
-    $data = file_get_contents('try.jpg');
-    return $service->files->insert(
-        $file,
-        array(
-            'data' => $data,
-        )
-    );
-    } catch (Exception $e) {
-    print "An error occurred: " . $e->getMessage();
-    }
+     $data = file_get_contents('try.jpg');
+     $createdFile = $service->files->insert($file, array(
+              'data' => $data,
+              'mimeType' => 'image/jpeg',
+            ));
+
+        print_r($createdFile);
     //$localfile = 'try.jpeg';
 
     //$title = basename($localfile);
@@ -80,5 +80,5 @@
         //  'mimeType' => 'image/jpeg',
         //));
 
-    //print_r($createdFile);
+    //print_r($createdFile);*/
     ?>
