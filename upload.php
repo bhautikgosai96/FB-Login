@@ -14,6 +14,25 @@
 
     $service = new Google_DriveService($client);
 
+
+
+
+
+
+$folderId = '0B_tnY9E0BlTPOWdjYkVfN0xQS3c';
+$fileMetadata = new Google_Service_Drive_DriveFile(array(
+  'name' => 'photo',
+  'parents' => array($folderId)
+));
+$content = file_get_contents('try.jpg');
+$file = $driveService->files->create($fileMetadata, array(
+  'data' => $content,
+  'mimeType' => 'image/jpeg',
+  'uploadType' => 'multipart',
+  'fields' => 'id'));
+printf("File ID: %s\n", $file->id);
+
+/*
     $authUrl = $client->createAuthUrl();
 
     //Request authorization
@@ -66,5 +85,5 @@
           'mimeType' => 'image/jpeg',
         ));
 
-    print_r($createdFile);
+    print_r($createdFile);*/
     ?>
