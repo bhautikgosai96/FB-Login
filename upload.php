@@ -25,22 +25,59 @@
     $accessToken = $client->authenticate($authCode);
     $client->setAccessToken($accessToken);
 
+    //create folder
+
+    $folder_mime = "application/vnd.google-apps.folder";
+    $folder_name = 'facebook Albumn';
+
     //Insert a file
+    $service = new Google_DriveService($client);
     $file = new Google_DriveFile();
+
+    $folder->setTitle($folder_name);
+    $folder->setMimeType($folder_mime);
+    $newFolder = $service->files->insert($folder);
+
+    $parentId  = $newFolder['id'];
+
+
+    $service = new Google_DriveService($client);
+    $file = new Google_DriveFile();
+
+    if ($parentId != null) {
+        $parent = new Google_ParentReference();
+        $parent->setId($parentId);
+        $file->setParents(array($parent));
+    }
+
+    $file->setTitle('photo.jpg');
+    $file->setDescription('This is a photo in folder);
+    $file->setMimeType('image/jpeg');
+    $data = file_get_contents('try.jpg');
+    try {
+    return $service->files->insert(
+        $file,
+        array(
+            'data' => $data;
+        )
+    );
+    } catch (Exception $e) {
+    print "An error occurred: " . $e->getMessage();
+    }
     //$localfile = 'try.jpeg';
 
     //$title = basename($localfile);
-    $file->setTitle('MyPhoto1');
-    $file->setDescription('My File');
-    $file->setMimeType('image/jpeg');
+    //$file->setTitle('MyPhoto1');
+    //$file->setDescription('My File');
+    //$file->setMimeType('image/jpeg');
     //$file->setMimeType('text/plain');
 
     //$data = file_get_contents('test.txt');
-        $data = file_get_contents('try.jpg');
-    $createdFile = $service->files->insert($file, array(
-          'data' => $data,
-          'mimeType' => 'image/jpeg',
-        ));
+      //  $data = file_get_contents('try.jpg');
+    //$createdFile = $service->files->insert($file, array(
+      //    'data' => $data,
+        //  'mimeType' => 'image/jpeg',
+        //));
 
-    print_r($createdFile);
+    //print_r($createdFile);
     ?>
