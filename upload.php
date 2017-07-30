@@ -1,23 +1,19 @@
+
 <?php
-echo "hello";
-    require_once 'google-api-php-client-2.2.0/vendor/autoload.php';
-echo"h1";
-    $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+require_once 'google-api-php-client-2.2.0/vendor/autoload.php';
 
-    $client = new Google_Client();
-    $client->setAuthConfig('client_credentials.json');
-    $client->setRedirectUri($redirect_uri);
-    $client->addScope("https://www.googleapis.com/auth/drive");
+session_start();
 
+$client = new Google_Client();
+$client->setAuthConfig('client_credentials.json');
+$client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
 
-
-     if(empty($_GET['code']))
-            {
-                $client->authenticate();
-            }
-
-      $accessToken = $client->authenticate($_GET['code']);
-             $client->setAccessToken($accessToken);
-
-
-?>
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+  $drive = new Google_Service_Drive($client);
+  $files = $drive->files->listFiles(array())->getItems();
+  echo json_encode($files);
+} else {
+  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php';
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+}
