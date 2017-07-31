@@ -7,20 +7,15 @@ session_start();
 $client = new Google_Client();
 $client->setAuthConfig('client_credentials.json');
 $client->addScope('https://www.googleapis.com/auth/drive');
+$client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
 
-if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-  $client->setAccessToken($_SESSION['access_token']);
-  $file = new Google_Service_Drive_DriveFile();
-  $file->setTitle("Hello World!");
-  $result = $service->files->insert($file, array(
-    'data' => file_get_contents('try.jpg'),
-    'mimeType' => 'image/jpeg',
-    'uploadType' => 'multipart'
-  ));
-
-  print_r($result);
+if (! isset($_GET['code'])) {
+  $auth_url = $client->createAuthUrl();
+  header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
 } else {
-  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php';
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  $redirect_uri = 'https://bhautikng143.herokuapp.com/upload.php';
   header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
 
