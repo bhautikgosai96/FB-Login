@@ -27,7 +27,7 @@ $service = new Google_DriveService($client);
 
         $folder = new Google_DriveFile();
 
-        $folder->setTitle('facebookalbumn');
+        $folder->setTitle('facebook');
         $folder->setMimeType('application/vnd.google-apps.folder');
         $newFolder = $service->files->insert($folder,array(
                    'mimeType' => 'application/vnd.google-apps.folder',
