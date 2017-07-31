@@ -1,11 +1,8 @@
 <?php
 
-    //require_once 'google-api-php-client/src/Google_Client.php';
-    //require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
+    require_once 'google-api-php-client/src/Google_Client.php';
+    require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
 
-    require_once 'google-api-php-client-2.2.0/vendor/autoload.php';
-    require_once 'google-api-php-client-2.2.0/src/Google/Client.php';
-    require_once 'google-api-php-client-2.2.0/src/Google/Service.php';
     $client = new Google_Client();
 
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
@@ -14,8 +11,7 @@
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
 
-$service = new Google_Service_Drive($client);
-
+$service = new Google_DriveService($client);
             $authUrl = $client->createAuthUrl();
 
             //Request authorization
@@ -29,7 +25,7 @@ $service = new Google_Service_Drive($client);
 
 
 
-        $folder = new Google_Service_Drive_DriveFile();
+        $folder = new Google_DriveFile();
 
         $folder->setTitle('albumn');
         $folder->setMimeType('application/vnd.google-apps.folder');
@@ -41,9 +37,17 @@ $service = new Google_Service_Drive($client);
         echo 'success';
         echo $parentId;
 
-        //$file = new Google_DriveFile();
+        $file = new Google_DriveFile();
 
-        //$parent = new Google_ParentReference();
-        //$parent->setId($parentId);
-        //$file->setParents(array($parent));
+        $parent = new Google_ParentReference();
+        $parent->setId($parentId);
+        $file->setParents(array($parent));
+
+        $data = file_get_contents('try.jpg');
+            $createdFile = $service->files->insert($file, array(
+                  'data' => $data,
+                  'mimeType' => 'image/jpeg',
+                ));
+            echo "successsss";
+            print_r($createdFile);
 ?>
