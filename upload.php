@@ -13,6 +13,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $client->setAccessToken($_SESSION['access_token']);
   $drive = new Google_Service_Drive($client);
   $files = $drive->files->listFiles(array())->getItems();
+  echo "success";
   echo json_encode($files);
 } else {
   $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php';
