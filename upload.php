@@ -49,6 +49,8 @@ $service = new Google_DriveService($client);
                  'mimeType' => 'application/vnd.google-apps.folder',
                 ));
         $parentId1 = $newFolder1['id'];
+        echo "successssssssssssssssssssssssssssssss";
+        echo $parentId1;
 
         $file1 = new Google_DriveFile();
 
