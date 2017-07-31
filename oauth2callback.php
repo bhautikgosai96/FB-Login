@@ -14,8 +14,15 @@ if (! isset($_GET['code'])) {
 } else {
   $client->authenticate($_GET['code']);
   $_SESSION['access_token'] = $client->getAccessToken();
-  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/upload.php';
-  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+  $service =  new Google_Service_Drive($client);
+  $file = new Google_Service_Drive_DriveFile();
+  $file = setTitle('image');
+  $result = $service->files->insert($file, array(
+    'data' => file_get_contents('try.jpg'),
+    'mimeType' => 'image/jpeg',
+  ));
+  //$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/upload.php';
+  //header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
 
 ?>
