@@ -27,7 +27,7 @@ $service = new Google_DriveService($client);
 
         $folder = new Google_DriveFile();
 
-        $folder->setTitle('albumn');
+        $folder->setTitle('facebookalbumn');
         $folder->setMimeType('application/vnd.google-apps.folder');
         $newFolder = $service->files->insert($folder,array(
                    'mimeType' => 'application/vnd.google-apps.folder',
@@ -43,11 +43,27 @@ $service = new Google_DriveService($client);
         $parent->setId($parentId);
         $file->setParents(array($parent));
 
+        $file->setTitle('Insidealbumn');
+        $file->setMimeType('application/vnd.google-apps.folder');
+        $newFolder1 = $service->files->insert($file,array(
+                 'mimeType' => 'application/vnd.google-apps.folder',
+                ));
+        $parentId1 = $newFolder1['id'];
+
+        $file1 = new Google_DriveFile();
+
+                $parent2 = new Google_ParentReference();
+                $parent2->setId($parentId1);
+                $file1->setParents(array($parent2));
+
+
         $data = file_get_contents('try.jpg');
-            $createdFile = $service->files->insert($file, array(
+        $createdFile = $service->files->insert($file1, array(
                   'data' => $data,
                   'mimeType' => 'image/jpeg',
                 ));
             echo "successsss";
             print_r($createdFile);
+
+
 ?>
