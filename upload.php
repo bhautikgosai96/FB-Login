@@ -25,7 +25,7 @@
 
     $service = new Google_Service_Drive($client);
 
-    $folder = new Google_Service_Drive_DriveFile();
+    $folder = new Google_DriveFile();
 
     $folder->setTitle('albumn');
     $folder->setMimeType('application/vnd.google-apps.folder');
