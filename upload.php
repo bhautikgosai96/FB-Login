@@ -1,35 +1,37 @@
-
 <?php
-require_once 'google-api-php-client-2.2.0/vendor/autoload.php';
 
-session_start();
+    require_once 'google-api-php-client/src/Google_Client.php';
+    require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
 
-$client = new Google_Client();
-$client->setAuthConfig('client_credentials.json');
-$client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
-$client->setScopes('https://www.googleapis.com/auth/drive');
+    $client = new Google_Client();
 
- $authUrl = $client->createAuthUrl();
-    printf("Open the following link in your browser:\n%s\n", $authUrl);
-    print 'Enter verification code: ';
-    $authCode = trim(fgets(STDIN));
+    $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
+    $client->setClientSecret('MkhSpAhrUARWSZAokYCx9HzF');
+    $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
+    $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
-    // Exchange authorization code for an access token.
-    $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
 
-    $client->setAccessToken($accessToken);
+
+            $authUrl = $client->createAuthUrl();
+
+            //Request authorization
+            print "Please visit:\n$authUrl\n\n";
+            print "Please enter the auth code:\n";
+            $authCode = trim(fgets(STDIN));
+
+            // Exchange authorization code for access token
+            $accessToken = $client->authenticate($authCode);
+            $client->setAccessToken($accessToken);
 
     $service = new Google_Service_Drive($client);
 
-    $fileMetadata = new Google_Service_Drive_DriveFile(array(
-      'name' => 'try.jpg'));
-    $content = file_get_contents('try.jpg');
-    $file = $service->files->create($fileMetadata, array(
-      'data' => $content,
-      'mimeType' => 'image/jpeg',
-      'uploadType' => 'multipart',
-      'fields' => 'id'));
-    printf("File ID: %s\n", $file->id);
+    $folder = new Google_Service_Drive_DriveFile();
 
+    $folder->setTitle('albumn');
+    $folder->setMimeType('application/vnd.google-apps.folder');
+    $newFolder = $service->files->insert($folder);
 
+    $parentId = $newFolder['id'];
+    print_r('success');
+    print_r($parentId);
 ?>
