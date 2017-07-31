@@ -1,8 +1,11 @@
 <?php
 
-    require_once 'google-api-php-client/src/Google_Client.php';
-    require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
+    //require_once 'google-api-php-client/src/Google_Client.php';
+    //require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
 
+    require_once 'google-api-php-client-2.2.0/vendor/autoload.php';
+    require_once 'google-api-php-client-2.2.0/src/Google/Client.php';
+    require_once 'google-api-php-client-2.2.0/src/Google/Service.php';
     $client = new Google_Client();
 
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
@@ -26,7 +29,7 @@ $service = new Google_Service_Drive($client);
 
 
 
-        $folder = new Google_Service_Drive_DriveFile()
+        $folder = new Google_Service_Drive_DriveFile();
 
         $folder->setTitle('albumn');
         $folder->setMimeType('application/vnd.google-apps.folder');
