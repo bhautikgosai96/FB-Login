@@ -29,7 +29,9 @@
 
     $folder->setTitle('albumn');
     $folder->setMimeType('application/vnd.google-apps.folder');
-    $newFolder = $service->files->insert($folder);
+    $newFolder = $service->files->insert($folder,array(
+               'mimeType' => 'application/vnd.google-apps.folder',
+         ));
 
     $parentId = $newFolder['id'];
     print_r('success');
