@@ -11,7 +11,7 @@
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
 
-
+$service = new Google_DriveService($client);
             $authUrl = $client->createAuthUrl();
 
             //Request authorization
@@ -23,7 +23,7 @@
             $accessToken = $client->authenticate($authCode);
             $client->setAccessToken($accessToken);
 
-    $service = new Google_DriveService($client);
+
 
     $folder = new Google_DriveFile();
 
@@ -32,8 +32,8 @@
     $newFolder = $service->files->insert($folder,array(
                'mimeType' => 'application/vnd.google-apps.folder',
          ));
-
+    print_r($newFolder);
     $parentId = $newFolder['id'];
     echo 'success';
-    print_r($parentId);
+    echo $parentId;
 ?>
