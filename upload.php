@@ -6,20 +6,30 @@ session_start();
 
 $client = new Google_Client();
 $client->setAuthConfig('client_credentials.json');
-$client->addScope('https://www.googleapis.com/auth/drive');
+$client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
+$client->setScopes('https://www.googleapis.com/auth/drive');
 
+ $authUrl = $client->createAuthUrl();
+    printf("Open the following link in your browser:\n%s\n", $authUrl);
+    print 'Enter verification code: ';
+    $authCode = trim(fgets(STDIN));
 
-if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-  $client->setAccessToken($_SESSION['access_token']);
-  $drive = new Google_Service_Drive($client);
-  $files = $drive->files->listFiles(array())->getItems();
-  echo "success";
-  echo json_encode($files);
-} else {
-  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php';
-  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
-}
+    // Exchange authorization code for an access token.
+    $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
 
+    $client->setAccessToken($accessToken);
+
+    $service = new Google_Service_Drive($client);
+
+    $fileMetadata = new Google_Service_Drive_DriveFile(array(
+      'name' => 'try.jpg'));
+    $content = file_get_contents('try.jpg');
+    $file = $service->files->create($fileMetadata, array(
+      'data' => $content,
+      'mimeType' => 'image/jpeg',
+      'uploadType' => 'multipart',
+      'fields' => 'id'));
+    printf("File ID: %s\n", $file->id);
 
 
 ?>
