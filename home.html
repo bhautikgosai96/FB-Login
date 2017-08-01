@@ -36,7 +36,7 @@
                         <h4 > Total images : {{x.photo_count}}</h4>
                         <button class="btn" ng-click="slideShow(x.photos)">Show Full Screen</button><br><br>
                         <button class="btn" ng-click="zip(x.photos)">Download</button><br/><br/>
-                        <button class="btn" ng-click="googleDrive(x.photos)">Move to Google Drive</button><br/>
+                        <button class="btn" ng-click="googleDrive(x)">Move to Google Drive</button><br/>
                         <input type="checkbox"
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
@@ -280,7 +280,7 @@
             console.log(x);
             albumData.albumnName =x.name;
             albumData.userName = $rootScope.profileName;
-            var photo = x;
+            var photo = x.photos;
             for(j=0;j<photo.length;j++){
                 albumData.img.push(photo[j].images[1].source);
             }
