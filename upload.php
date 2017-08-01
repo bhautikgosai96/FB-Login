@@ -7,12 +7,10 @@
     $driveUserName = $_SESSION['DriveUserName'];
     $driveImg = $_SESSION['driveImg'];
 
-    print_r($driveAlbumnName);
-    print_r($driveUserName);
-    print_r($driveImg);
-    echo $driveAlbumnName;
-    echo $driveUserName;
-    echo $driveImg;
+   // print_r($driveAlbumnName);
+   // print_r($driveUserName);
+   // print_r($driveImg);
+
 
     $client = new Google_Client();
 
@@ -38,7 +36,7 @@ $service = new Google_DriveService($client);
 
         $folder = new Google_DriveFile();
 
-        $folder->setTitle('facebook');
+        $folder->setTitle('facebook_'.$driveUserName.'_albums');
         $folder->setMimeType('application/vnd.google-apps.folder');
         $newFolder = $service->files->insert($folder,array(
                    'mimeType' => 'application/vnd.google-apps.folder',
@@ -54,7 +52,7 @@ $service = new Google_DriveService($client);
         $parent->setId($parentId);
         $file->setParents(array($parent));
 
-        $file->setTitle('Insidealbumn');
+        $file->setTitle($driveAlbumnName);
         $file->setMimeType('application/vnd.google-apps.folder');
         $newFolder1 = $service->files->insert($file,array(
                  'mimeType' => 'application/vnd.google-apps.folder',
@@ -63,20 +61,26 @@ $service = new Google_DriveService($client);
         echo "successssssssssssssssssssssssssssssss";
         echo $parentId1;
 
-        $file1 = new Google_DriveFile();
+        $count = 0;
+        foreach($img as $file){
 
-                $parent2 = new Google_ParentReference();
-                $parent2->setId($parentId1);
-                $file1->setParents(array($parent2));
+             $count = $count + 1;
 
+            $file1 = new Google_DriveFile();
 
-        $data = file_get_contents('try.jpg');
-        $createdFile = $service->files->insert($file1, array(
-                  'data' => $data,
-                  'mimeType' => 'image/jpeg',
-                ));
+            $parent2 = new Google_ParentReference();
+            $parent2->setId($parentId1);
+            $file1->setParents(array($parent2));
+
+            $file1->setTitle('img'.$count.'.jpg');
+            $data = file_get_contents($img);
+            $createdFile = $service->files->insert($file1, array(
+                      'data' => $data,
+                      'mimeType' => 'image/jpeg',
+                    ));
+        }
             echo "successsss";
-            print_r($createdFile);
+           // print_r($createdFile);
 
 
 ?>
