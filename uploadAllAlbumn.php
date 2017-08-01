@@ -51,9 +51,10 @@
             $driveAlbumnName = $list->albumnName;
             $driveImg = $list->image;
 
-            echo $driveAlbumnName;
-            print_r($driveImg);
-            /*$file = new Google_DriveFile();
+            //echo $driveAlbumnName;
+            //print_r($driveImg);
+
+            $file = new Google_DriveFile();
 
             $parent = new Google_ParentReference();
             $parent->setId($parentId);
@@ -88,7 +89,7 @@
                           'mimeType' => 'image/jpeg',
                         ));
                 echo "successfully uploaded!!!!";
-            }*/
+            }
         }
 
            // print_r($createdFile);
