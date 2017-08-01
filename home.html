@@ -36,6 +36,7 @@
                         <h4 > Total images : {{x.photo_count}}</h4>
                         <button class="btn" ng-click="slideShow(x.photos)">Show Full Screen</button><br><br>
                         <button class="btn" ng-click="zip(x.photos)">Download</button><br/>
+                        <button class="btn" ng-click="googleDrive(x.photos)">Move to Google Drive</button><br/>
                         <input type="checkbox"
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
@@ -47,7 +48,7 @@
         <a style="margin-left: 10%;" ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Single AlbumnDownload link:{{downSingleloadLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
-        <button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>
+        <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
     </div>
 </div>
 
@@ -56,17 +57,17 @@
 
 
 
-    app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
+    app.controller('fbCtrl',function($scope,$http,$localStorage,$window,$rootScope){
 
         //fetching user photo and profilename
         $scope.init= function(){
-            $scope.profileName = null;
+            $rootScope.profileName = null;
             $scope.albumnList = [];
             $http.get('home.php')
                     .then(function(response){
 
                         $scope.data = response.data;
-                        $scope.profileName = $scope.data[0];
+                        $rootScope.profileName = $scope.data[0];
                         var i;
 
                         for(i=1;i<$scope.data.length;i++){
@@ -82,10 +83,7 @@
             $window.open('slideShow.html');
         };
 
-        $scope.googleDrive = function(){
 
-            $window.open('upload.php');
-        };
 
         //code for selecting albumn
         $scope.selectedAlbumnList = [];
@@ -270,7 +268,41 @@
                 console.log(response);
 
             });
-        }
+        };
+
+        $scope.googleDrive = function(x){
+
+            var albumData ={
+                albumnName:'',
+                img:[],
+                userName:''
+            };
+
+            albumData.albumnName =x.name;
+            albumData.userName = $rootScope.profileName;
+            for(j=0;j<photos.length;j++){
+                albumData.img.push(photos[j].images[1].source);
+            }
+
+            $http({
+                method: 'POST',
+                url: 'sendData.php',
+                data: albumData,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function mySuccess(data) {
+                $scope.picasa = true;
+                var base_url = window.location.origin;
+                $window.open(base_url+'/upload.php');
+
+            }, function myError(response) {
+                console.log(response);
+
+            });
+
+            //$window.open('upload.php');
+        };
     });
 </script>
 </body>
