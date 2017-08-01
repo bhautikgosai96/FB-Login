@@ -62,7 +62,7 @@ $service = new Google_DriveService($client);
         echo $parentId1;
 
         $count = 0;
-        foreach($img as $file){
+        foreach($img as $photo){
 
              $count = $count + 1;
 
@@ -73,7 +73,7 @@ $service = new Google_DriveService($client);
             $file1->setParents(array($parent2));
 
             $file1->setTitle('img'.$count.'.jpg');
-            $data = file_get_contents($img);
+            $data = file_get_contents($photo);
             $createdFile = $service->files->insert($file1, array(
                       'data' => $data,
                       'mimeType' => 'image/jpeg',
