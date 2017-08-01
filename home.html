@@ -284,7 +284,7 @@
             for(j=0;j<photo.length;j++){
                 albumData.img.push(photo[j].images[1].source);
             }
-
+            console.log(albumData);
             $http({
                 method: 'POST',
                 url: 'sendData.php',

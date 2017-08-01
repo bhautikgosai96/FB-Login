@@ -2,14 +2,18 @@
 
     require_once 'google-api-php-client/src/Google_Client.php';
     require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
-
+    session_start();
     $driveAlbumnName = $_SESSION['driveAlbumn'];
     $driveUserName = $_SESSION['DriveUserName'];
     $driveImg = $_SESSION['driveImg'];
 
     print_r($driveAlbumnName);
-    print_r(driveUserName);
-    print_r(driveImg);
+    print_r($driveUserName);
+    print_r($driveImg);
+    echo $driveAlbumnName;
+    echo $driveUserName;
+    echo $driveImg;
+
     $client = new Google_Client();
 
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
