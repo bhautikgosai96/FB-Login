@@ -61,18 +61,20 @@ $service = new Google_DriveService($client);
         echo "successssssssssssssssssssssssssssssss";
         echo $parentId1;
 
+        $file1 = new Google_DriveFile();
+
+                    $parent2 = new Google_ParentReference();
+                    $parent2->setId($parentId1);
+                    $file1->setParents(array($parent2));
+
         $count = 0;
         foreach($img as $photo){
 
              $count = $count + 1;
 
-            $file1 = new Google_DriveFile();
 
-            $parent2 = new Google_ParentReference();
-            $parent2->setId($parentId1);
-            $file1->setParents(array($parent2));
 
-            $file1->setTitle('img'.$count.'.jpg');
+            $file1->setTitle('img-'.$count);
             $data = file_get_contents($photo);
             $createdFile = $service->files->insert($file1, array(
                       'data' => $data,
