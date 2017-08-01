@@ -13,7 +13,7 @@ for($i=1;$i<$len;$i++){
 }
 
 
-$_SESSION['driveAlbumnList']=$albumList;
+$_SESSION['driveAlbumnList']=$request;
 $_SESSION['DriveUserName']=$userName;
 
 echo json_encode("Successfully Done!!");
