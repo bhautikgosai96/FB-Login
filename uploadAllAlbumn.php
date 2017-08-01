@@ -41,7 +41,7 @@
         $newFolder = $service->files->insert($folder,array(
                    'mimeType' => 'application/vnd.google-apps.folder',
              ));
-        print_r($newFolder);
+        //print_r($newFolder);
         $parentId = $newFolder['id'];
         echo 'success';
         echo $parentId;
@@ -51,7 +51,9 @@
             $driveAlbumnName = $list->albumnName;
             $driveImg = $list->image;
 
-            $file = new Google_DriveFile();
+            echo $driveAlbumnName;
+            print_r($driveImg);
+            /*$file = new Google_DriveFile();
 
             $parent = new Google_ParentReference();
             $parent->setId($parentId);
@@ -86,7 +88,7 @@
                           'mimeType' => 'image/jpeg',
                         ));
                 echo "successfully uploaded!!!!";
-            }
+            }*/
         }
 
            // print_r($createdFile);
