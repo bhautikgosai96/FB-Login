@@ -318,7 +318,6 @@
 
             var allAlbumnList = [];
 
-            allAlbumnList.push($rootScope.profileName);
 
             var i;
             for(i=0;i<len;i++){
@@ -337,12 +336,15 @@
                 allAlbumnList.push(albumnData);
             }
 
-
+            var allAlbumnData = {
+              albumnList: allAlbumnList,
+              userName: $rootScope.profileName
+            };
 
             $http({
                 method : "POST",
                 url: 'sendAllData.php',
-                data: allAlbumnList,
+                data: allAlbumnData,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
