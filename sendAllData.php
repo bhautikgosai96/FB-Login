@@ -5,7 +5,7 @@ $request = json_decode($data);
 session_start();
 
 $userName = $request[0];
-$len = sizeof($rewuest);
+$len = sizeof($request);
 $albumnList = array();
 
 for($i=1;$i<$len;$i++){
