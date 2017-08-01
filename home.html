@@ -50,6 +50,7 @@
         <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
         <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
         <button class="bigbtn" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button>
+        <button class="bigbtn" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
     </div>
 </div>
 
@@ -356,6 +357,37 @@
             }, function myError(response) {
                 console.log(response);
             });
+        };
+
+        $scope.googleDriveSelectedAlbumn = function() {
+
+
+            var allAlbumnList = $scope.selectedAlbumnList;
+
+            if(allAlbumnList.length>0) {
+                var allAlbumnData = {
+                    albumnList: allAlbumnList,
+                    userName: $rootScope.profileName
+                };
+
+                $http({
+                    method: "POST",
+                    url: 'sendAllData.php',
+                    data: allAlbumnData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                }).then(function mySuccess(data) {
+
+                    var base_url = window.location.origin;
+                    $window.open(base_url + '/uploadAllAlbumn.php');
+
+                }, function myError(response) {
+                    console.log(response);
+                });
+            }else{
+                alert('Please, select albumn!!!');
+            }
         };
     });
 </script>
