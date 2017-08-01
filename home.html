@@ -49,6 +49,7 @@
         <button class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
         <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
+        <button class="bigbtn" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button>
     </div>
 </div>
 
@@ -303,6 +304,56 @@
             });
 
             //$window.open('upload.php');
+        };
+
+        $scope.googleDriveAllAlbumn = function(){
+
+            var lst = $scope.albumnList;
+            var len = lst.length;
+
+            if(len<=0){
+                alert("There is no album.");
+                return;
+            };
+
+            var allAlbumnList = [];
+
+            allAlbumnList.push($rootScope.profileName);
+
+            var i;
+            for(i=0;i<len;i++){
+                var albumnData = {
+                    albumnName:'',
+                    image:[]
+                };
+                var albumn = lst[i];
+                albumnData.albumnName = albumn.name;
+                var j;
+                var albumnPhoto = albumn.photos;
+
+                for (j = 0; j < albumnPhoto.length; j++) {
+                    albumnData.image.push(albumnPhoto[j].images[1].source);
+                }
+                allAlbumnList.push(albumnData);
+            }
+
+
+
+            $http({
+                method : "POST",
+                url: 'sendAllData.php',
+                data: allAlbumnList,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function mySuccess(data) {
+
+                var base_url = window.location.origin;
+                $window.open(base_url+'/uploadAllAlbumn.php');
+
+            }, function myError(response) {
+                console.log(response);
+            });
         };
     });
 </script>

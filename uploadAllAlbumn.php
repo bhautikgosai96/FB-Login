@@ -3,15 +3,15 @@
     require_once 'google-api-php-client/src/Google_Client.php';
     require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
     session_start();
-    $driveAlbumnName = $_SESSION['driveAlbumn'];
+    $driveAlbumnList = $_SESSION['driveAlbumnList'];
     $driveUserName = $_SESSION['DriveUserName'];
-    $driveImg = $_SESSION['driveImg'];
+    //$driveImg = $_SESSION['driveImg'];
 
-   // print_r($driveAlbumnName);
-   // print_r($driveUserName);
+   print_r($driveAlbumnList);
+   print_r($driveUserName);
    // print_r($driveImg);
 
-
+/*
     $client = new Google_Client();
 
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
@@ -82,7 +82,7 @@ $service = new Google_DriveService($client);
                     ));
             echo "successfully uploaded!!!!";
         }
-
+*/
            // print_r($createdFile);
 
 
