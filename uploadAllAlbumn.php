@@ -3,8 +3,8 @@
     require_once 'google-api-php-client/src/Google_Client.php';
     require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
     session_start();
-    //$driveAlbumnList = $_SESSION['driveAlbumnList'];
-    //$driveUserName = $_SESSION['DriveUserName'];
+    $driveAlbumnList = $_SESSION['driveAlbumnList'];
+    $driveUserName = $_SESSION['DriveUserName'];
     //$driveImg = $_SESSION['driveImg'];
 
 //   print_r($driveAlbumnList);
