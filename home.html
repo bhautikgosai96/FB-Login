@@ -280,9 +280,9 @@
 
             albumData.albumnName =x.name;
             albumData.userName = $rootScope.profileName;
-            var photos = x.photos;
-            for(j=0;j<photos.length;j++){
-                albumData.img.push(photos[j].images[1].source);
+            var photo = x.photos;
+            for(j=0;j<photo.length;j++){
+                albumData.img.push(photo[j].images[1].source);
             }
 
             $http({
