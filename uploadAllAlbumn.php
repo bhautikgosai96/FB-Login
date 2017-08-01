@@ -3,15 +3,15 @@
     require_once 'google-api-php-client/src/Google_Client.php';
     require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
     session_start();
-    $driveAlbumnList = $_SESSION['driveAlbumnList'];
-    $driveUserName = $_SESSION['DriveUserName'];
+    //$driveAlbumnList = $_SESSION['driveAlbumnList'];
+    //$driveUserName = $_SESSION['DriveUserName'];
     //$driveImg = $_SESSION['driveImg'];
 
-   print_r($driveAlbumnList);
-   print_r($driveUserName);
+//   print_r($driveAlbumnList);
+  // print_r($driveUserName);
    // print_r($driveImg);
 
-/*
+
     $client = new Google_Client();
 
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
@@ -20,7 +20,7 @@
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
 
-$service = new Google_DriveService($client);
+    $service = new Google_DriveService($client);
             $authUrl = $client->createAuthUrl();
 
             //Request authorization
@@ -46,43 +46,49 @@ $service = new Google_DriveService($client);
         echo 'success';
         echo $parentId;
 
-        $file = new Google_DriveFile();
+        foreach($driveAlbumnList as $list){
 
-        $parent = new Google_ParentReference();
-        $parent->setId($parentId);
-        $file->setParents(array($parent));
+            $driveAlbumnName = $list->albumnName;
+            $driveImg = $list->image;
 
-        $file->setTitle($driveAlbumnName);
-        $file->setMimeType('application/vnd.google-apps.folder');
-        $newFolder1 = $service->files->insert($file,array(
-                 'mimeType' => 'application/vnd.google-apps.folder',
-                ));
-        $parentId1 = $newFolder1['id'];
-        echo "successsssssssss";
-        echo $parentId1;
+            $file = new Google_DriveFile();
 
+            $parent = new Google_ParentReference();
+            $parent->setId($parentId);
+            $file->setParents(array($parent));
 
-
-        $count = 0;
-        foreach($driveImg as $photo){
-
-             $count = $count + 1;
-
-             $file1 = new Google_DriveFile();
-
-             $parent2 = new Google_ParentReference();
-             $parent2->setId($parentId1);
-             $file1->setParents(array($parent2));
-
-            $file1->setTitle('img-'.$count);
-            $data = file_get_contents($photo);
-            $createdFile = $service->files->insert($file1, array(
-                      'data' => $data,
-                      'mimeType' => 'image/jpeg',
+            $file->setTitle($driveAlbumnName);
+            $file->setMimeType('application/vnd.google-apps.folder');
+            $newFolder1 = $service->files->insert($file,array(
+                     'mimeType' => 'application/vnd.google-apps.folder',
                     ));
-            echo "successfully uploaded!!!!";
+            $parentId1 = $newFolder1['id'];
+            echo "successsssssssss";
+            echo $parentId1;
+
+
+
+            $count = 0;
+            foreach($driveImg as $photo){
+
+                 $count = $count + 1;
+
+                 $file1 = new Google_DriveFile();
+
+                 $parent2 = new Google_ParentReference();
+                 $parent2->setId($parentId1);
+                 $file1->setParents(array($parent2));
+
+                $file1->setTitle('img-'.$count);
+                $data = file_get_contents($photo);
+                $createdFile = $service->files->insert($file1, array(
+                          'data' => $data,
+                          'mimeType' => 'image/jpeg',
+                        ));
+                echo "successfully uploaded!!!!";
+            }
         }
-*/
+
            // print_r($createdFile);
 
 
