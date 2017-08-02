@@ -15,6 +15,7 @@
     background-color: white;
     color: #001199;
     width:100%;
+    min-height: 10%;
 }
 
 .btn:hover{
@@ -22,6 +23,7 @@
     background-color: #001199;
     color: white;
     width:100%;
+    min-height: 10%;
 }
 
 .bigbtn{
