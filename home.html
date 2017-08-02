@@ -46,9 +46,15 @@
             </div>
          </div>
         <a style="margin-left: 10%;" ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download><h4>Single AlbumnDownload link: {{downSingleloadLink}}</h4></a><br/><br/>
-        <button  class="btn button2" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download><h4>All Albumn Download Link: {{downloadAllLink}}</h4></a><br/><br/>
-        <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download><h4>Selected Albumn Download Link: {{downloadLink}}</h4></a><br/><br/>
-        <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
+        <button  class="btn button2" ng-click="downloadAll()">Download All Album</button>
+        <div class="link">
+            <a style="color: white;" ng-show="downloadAllLink" href="{{downloadAllLink}}" download><h4>All Albumn Download Link: {{downloadAllLink}}</h4></a><br/><br/>
+        </div>
+        <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button>
+        <div class="link">
+            <a style="color: white;" ng-show="downloadLink" href="{{downloadLink}}" download><h4>Selected Albumn Download Link: {{downloadLink}}</h4></a><br/><br/>
+        </div>
+            <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
         <button class="btn button2" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
     </div>
