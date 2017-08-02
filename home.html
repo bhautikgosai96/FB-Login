@@ -52,10 +52,13 @@
             <a style="margin-left: 10%; text-decoration: none; font-size: 1.1em;"  href="{{downSingleloadLink}}" download><p>Single AlbumnDownload link: {{downSingleloadLink}}</p></a>
         </div>
         <br/><br/>
-        <button  class="btn button2" ng-click="downloadAll()">Download All Album</button>
 
-        <div class="link" ng-show="downloadAllLink">
-            <a style="color: white; text-decoration: none; font-size: 1.1em;"  href="{{downloadAllLink}}" download><p>All Albumn Download Link: {{downloadAllLink}}</p></a>
+        <div class="row">
+            <button  class="col-md-3 btn button2" ng-click="downloadAll()">Download All Album</button>
+
+            <div class="col-md-9 link" ng-show="downloadAllLink">
+                <a style="color: white; text-decoration: none; font-size: 1.1em;"  href="{{downloadAllLink}}" download><p>All Albumn Download Link: {{downloadAllLink}}</p></a>
+            </div>
         </div>
         <br/><br/>
         <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button>
