@@ -10,7 +10,7 @@
     padding-left: 1%;
 }
 
-.btn{
+.button1{
     border: 1.5px solid #001199;
     background-color: white;
     color: #001199;
@@ -19,7 +19,7 @@
     overflow: hidden;
 }
 
-.btn:hover{
+.button1:hover{
     border: 1.5px solid #001199;
     background-color: #001199;
     color: white;
@@ -28,22 +28,22 @@
     overflow: hidden;
 }
 
-.bigbtn{
+.button2{
     border: 1.5px solid #001199;
     background-color: white;
     color: #001199;
     border-radius: 1.5%;
     width:30%;
-
+    height: 15%;
     margin-left: 9%;
 }
 
-.bigbtn:hover{
+.button2:hover{
     border: 1.5px solid #001199;
     background-color: #001199;
     color: white;
     border-radius: 1.5%;
     width:30%;
-
+    height: 15%;
     margin-left: 9%;
 }
