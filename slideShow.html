@@ -15,7 +15,7 @@
 <body ng-app="fbApp" >
 <div class="container" ng-controller="slide">
     <h2>Your Albumn:</h2>
-    <div class="offsetspan6">
+    <div class="offsetspan6" style="height: 100%; width:100%;">
         <carousel interval="interval">
             <slide ng-repeat="slide in image" active="slide.active">
                 <img class="image-circle" ng-src="{{slide}}"    style="margin:auto; width:100%; height: 100%;"/>
