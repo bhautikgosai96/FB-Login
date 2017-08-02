@@ -41,10 +41,10 @@
         $newFolder = $service->files->insert($folder,array(
                    'mimeType' => 'application/vnd.google-apps.folder',
              ));
-        print_r($newFolder);
+       // print_r($newFolder);
         $parentId = $newFolder['id'];
-        echo 'success';
-        echo $parentId;
+       // echo 'success';
+        //echo $parentId;
 
         $file = new Google_DriveFile();
 
@@ -58,8 +58,8 @@
                  'mimeType' => 'application/vnd.google-apps.folder',
                 ));
         $parentId1 = $newFolder1['id'];
-        echo "successsssssssss";
-        echo $parentId1;
+        //echo "successsssssssss";
+        //echo $parentId1;
 
 
 
@@ -80,9 +80,11 @@
                       'data' => $data,
                       'mimeType' => 'image/jpeg',
                     ));
-            echo "successfully uploaded!!!!";
-        }
 
+        }
+         echo "successfully uploaded!!!!";
+                    echo "<br/>";
+                    echo "Now, You can see your albumn in your google drive."
            // print_r($createdFile);
 
 

@@ -43,8 +43,8 @@
              ));
         //print_r($newFolder);
         $parentId = $newFolder['id'];
-        echo 'success';
-        echo $parentId;
+        //echo 'success';
+        //echo $parentId;
 
         foreach($driveAlbumnList as $list){
 
@@ -66,8 +66,8 @@
                      'mimeType' => 'application/vnd.google-apps.folder',
                     ));
             $parentId1 = $newFolder1['id'];
-            echo "successsssssssss";
-            echo $parentId1;
+            //echo "successsssssssss";
+            //echo $parentId1;
 
 
 
@@ -88,10 +88,12 @@
                           'data' => $data,
                           'mimeType' => 'image/jpeg',
                         ));
-                echo "successfully uploaded!!!!";
+
             }
         }
-
+         echo "successfully uploaded!!!!";
+                    echo "<br/>";
+                    echo "Now, You can see your albumn in your google drive."
            // print_r($createdFile);
 
 
