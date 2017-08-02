@@ -34,7 +34,7 @@
     color: white;
     border-radius: 5px;
     width: 70%;
-    height:10%;
+    min-height: 7.5%;
     margin-left: 9%;
 }
 
