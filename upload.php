@@ -19,18 +19,15 @@
     $client->setRedirectUri('https://bhautikng143.herokuapp.com/upload.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
+if (isset($_GET['code']) || (isset($_SESSION['access_token']) && $_SESSION['access_token'])) {
+    if (isset($_GET['code'])) {
+        $client->authenticate($_GET['code']);
+        $_SESSION['access_token'] = $client->getAccessToken();
+    } else{
+        $client->setAccessToken($_SESSION['access_token']);
 
         $service = new Google_DriveService($client);
-            $authUrl = $client->createAuthUrl();
 
-            //Request authorization
-            //print "Please visit:\n$authUrl\n\n";
-            //print "Please enter the auth code:\n";
-            $authCode = trim(fgets(STDIN));
-
-            // Exchange authorization code for access token
-            $accessToken = $client->authenticate($authCode);
-            $client->setAccessToken($accessToken);
 
 
 
@@ -86,6 +83,11 @@
                     echo "<br/>";
                     echo "Now, You can see your albumn in your google drive."
            // print_r($createdFile);
-
+    }
+ } else {
+     $authUrl = $client->createAuthUrl();
+     header('Location: ' . $authUrl);
+     exit();
+ }
 
 ?>
