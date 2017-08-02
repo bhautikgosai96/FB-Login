@@ -42,8 +42,9 @@
     border: 1.5px solid #001199;
     background-color: white;
     color: #001199;
-    border-radius: 2%;
-    width:25%;
+    border-radius: 5px;
+    min-width:100%;
+    min-height: 7.5%;
     margin-left: 9%;
 }
 
@@ -51,7 +52,8 @@
     border: 1.5px solid #001199;
     background-color: #001199;
     color: white;
-    border-radius: 2%;
-    width:25%;
+    border-radius: 5px;
+    min-width:100%;
+    min-height: 7.5%;
     margin-left: 9%;
 }
