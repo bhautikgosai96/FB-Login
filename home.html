@@ -29,7 +29,7 @@
     <div class="w3-container">
         <div class="row" style="padding-left:10%; padding-right: 10%;">
             <div class="col-md-3" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
-                <div class=" w3-card-4" style="height: 450px;">
+                <div class=" w3-card-4" style="height: 470px;">
                     <img ng-src ="{{ x.picture.url }}" style="width:100%; height:200px;">
                     <div class="w3-container">
                         <h4>Albumn Name: {{x.name }}</h4>
@@ -46,10 +46,10 @@
             </div>
          </div>
         <a style="margin-left: 10%;" ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Single AlbumnDownload link:{{downSingleloadLink}}</a><br/><br/>
-        <button  ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
+        <button  class="bigbtn" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
         <button class="bigbtn" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
         <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
-        <button  ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button>
+        <button class="bigbtn" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button><br/><br/>
         <button class="bigbtn" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
     </div>
 </div>
