@@ -33,7 +33,7 @@
     background-color: #00cc00;
     color: white;
     border-radius: 5px;
-    width: 50%;
+    width: 100%;
     min-height: 7.5%;
     margin-left: 9%;
 }
@@ -45,7 +45,6 @@
     border-radius: 5px;
     min-width:100%;
     min-height: 7.5%;
-    margin-left: 9%;
 }
 
 .button2:hover{
@@ -55,5 +54,4 @@
     border-radius: 5px;
     min-width:100%;
     min-height: 7.5%;
-    margin-left: 9%;
 }
