@@ -29,25 +29,25 @@
     <div class="w3-container">
         <div class="row" style="padding-left:10%; padding-right: 10%;">
             <div class="col-md-3" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
-                <div class=" w3-card-4" style="min-height: 470px;">
+                <div class=" w3-card-4" style="min-height: 490px;">
                     <img ng-src ="{{ x.picture.url }}" style="width:100%; height:200px;">
                     <div class="w3-container">
                         <h4>Albumn Name: {{x.name }}</h4>
                         <h4 > Total images : {{x.photo_count}}</h4>
                         <button class="btn button1" ng-click="slideShow(x.photos)">Show Full Screen</button><br><br>
                         <button class="btn button1" ng-click="zip(x.photos)">Download</button><br/><br/>
-                        <button class="btn button1" ng-click="googleDrive(x)">Move to Google Drive</button><br/>
+                        <button class="btn button1" ng-click="googleDrive(x)">Move to Google Drive</button><br/><br/>
                         <input type="checkbox"
-                               ng-click="selectAlbumn(x)"/>Select for multiple albumn download
+                               ng-click="selectAlbumn(x)"/>Select for multiple albumn Download or move to Google Drive
                     </div>
                 </div>
                 <br/><br/>
 
             </div>
          </div>
-        <a style="margin-left: 10%;" ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Single AlbumnDownload link:{{downSingleloadLink}}</a><br/><br/>
-        <button  class="btn button2" ng-click="downloadAll()">Download All Album</button> <a ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
-        <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><a ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
+        <a style="margin-left: 10%; background-color: #80b3ff;" ng-show="downSingleloadLink" href="{{downSingleloadLink}}" download>Single AlbumnDownload link:{{downSingleloadLink}}</a><br/><br/>
+        <button  class="btn button2" ng-click="downloadAll()">Download All Album</button> <a style="background-color: #80b3ff;" ng-show="downloadAllLink" href="{{downloadAllLink}}" download>All Albumn Download Link:{{downloadAllLink}}</a><br/><br/>
+        <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><a style="background-color: #80b3ff;" ng-show="downloadLink" href="{{downloadLink}}" download>Selected Albumn Download Link:{{downloadLink}}</a><br/><br/>
         <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
         <button class="btn button2" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
