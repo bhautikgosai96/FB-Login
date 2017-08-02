@@ -20,9 +20,8 @@
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
 
 
-            $service = new Google_DriveService($client);
-
-       /*     $authUrl = $client->createAuthUrl();
+        $service = new Google_DriveService($client);
+            $authUrl = $client->createAuthUrl();
 
             //Request authorization
             print "Please visit:\n$authUrl\n\n";
@@ -32,76 +31,57 @@
             // Exchange authorization code for access token
             $accessToken = $client->authenticate($authCode);
             $client->setAccessToken($accessToken);
-        */
 
-        if (isset($_GET['code'])) {
-          $client->authenticate($_GET['code']);
-          $_SESSION['access_token'] = $client->getAccessToken();
-          header('Location: ' . filter_var('https://bhautikng143.herokuapp.com/upload.php', FILTER_SANITIZE_URL));
-          exit;
+
+
+        $folder = new Google_DriveFile();
+
+        $folder->setTitle('facebook_'.$driveUserName.'_albums');
+        $folder->setMimeType('application/vnd.google-apps.folder');
+        $newFolder = $service->files->insert($folder,array(
+                   'mimeType' => 'application/vnd.google-apps.folder',
+             ));
+        print_r($newFolder);
+        $parentId = $newFolder['id'];
+        echo 'success';
+        echo $parentId;
+
+        $file = new Google_DriveFile();
+
+        $parent = new Google_ParentReference();
+        $parent->setId($parentId);
+        $file->setParents(array($parent));
+
+        $file->setTitle($driveAlbumnName);
+        $file->setMimeType('application/vnd.google-apps.folder');
+        $newFolder1 = $service->files->insert($file,array(
+                 'mimeType' => 'application/vnd.google-apps.folder',
+                ));
+        $parentId1 = $newFolder1['id'];
+        echo "successsssssssss";
+        echo $parentId1;
+
+
+
+        $count = 0;
+        foreach($driveImg as $photo){
+
+             $count = $count + 1;
+
+             $file1 = new Google_DriveFile();
+
+             $parent2 = new Google_ParentReference();
+             $parent2->setId($parentId1);
+             $file1->setParents(array($parent2));
+
+            $file1->setTitle('img-'.$count);
+            $data = file_get_contents($photo);
+            $createdFile = $service->files->insert($file1, array(
+                      'data' => $data,
+                      'mimeType' => 'image/jpeg',
+                    ));
+            echo "successfully uploaded!!!!";
         }
-
-        //if we have access_token continue, or else get login URL for user
-        if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-          $client->setAccessToken($_SESSION['access_token']);
-
-
-          $folder = new Google_DriveFile();
-
-                  $folder->setTitle('facebook_'.$driveUserName.'_albums');
-                  $folder->setMimeType('application/vnd.google-apps.folder');
-                  $newFolder = $service->files->insert($folder,array(
-                             'mimeType' => 'application/vnd.google-apps.folder',
-                       ));
-                  print_r($newFolder);
-                  $parentId = $newFolder['id'];
-                  echo 'success';
-                  echo $parentId;
-
-                  $file = new Google_DriveFile();
-
-                  $parent = new Google_ParentReference();
-                  $parent->setId($parentId);
-                  $file->setParents(array($parent));
-
-                  $file->setTitle($driveAlbumnName);
-                  $file->setMimeType('application/vnd.google-apps.folder');
-                  $newFolder1 = $service->files->insert($file,array(
-                           'mimeType' => 'application/vnd.google-apps.folder',
-                          ));
-                  $parentId1 = $newFolder1['id'];
-                  echo "successsssssssss";
-                  echo $parentId1;
-
-
-
-                  $count = 0;
-                  foreach($driveImg as $photo){
-
-                       $count = $count + 1;
-
-                       $file1 = new Google_DriveFile();
-
-                       $parent2 = new Google_ParentReference();
-                       $parent2->setId($parentId1);
-                       $file1->setParents(array($parent2));
-
-                      $file1->setTitle('img-'.$count);
-                      $data = file_get_contents($photo);
-                      $createdFile = $service->files->insert($file1, array(
-                                'data' => $data,
-                                'mimeType' => 'image/jpeg',
-                              ));
-                      echo "successfully uploaded!!!!";
-                  }
-
-        } else {
-          $authUrl = $client->createAuthUrl();
-        }
-
-
-
-
 
            // print_r($createdFile);
 
