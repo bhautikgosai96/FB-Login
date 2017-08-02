@@ -34,9 +34,9 @@
                     <div class="w3-container">
                         <h4>Albumn Name: {{x.name }}</h4>
                         <h4 > Total images : {{x.photo_count}}</h4>
-                        <button class="w3-round button1" ng-click="slideShow(x.photos)">Show Full Screen</button><br><br>
-                        <button class="w3-round button1" ng-click="zip(x.photos)">Download</button><br/><br/>
-                        <button class="w3-round button1" ng-click="googleDrive(x)">Move to Google Drive</button><br/>
+                        <button class="w3-button w3-round" ng-click="slideShow(x.photos)">Show Full Screen</button><br><br>
+                        <button class="w3-button w3-round" ng-click="zip(x.photos)">Download</button><br/><br/>
+                        <button class="w3-button w3-round" ng-click="googleDrive(x)">Move to Google Drive</button><br/>
                         <input type="checkbox"
                                ng-click="selectAlbumn(x)"/>Select for multiple albumn download
                     </div>
