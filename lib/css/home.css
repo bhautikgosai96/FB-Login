@@ -29,23 +29,7 @@
     overflow: hidden;
 }
 
-.w3-button{
-    border: 1.5px solid #001199;
-    background-color: white;
-    color: #001199;
-    width:100%;
-    min-height: 20%;
-    overflow: hidden;
-}
 
-.w3-button:hover{
-    border: 1.5px solid #001199;
-    background-color: #001199;
-    color: white;
-    width:100%;
-    min-height: 20%;
-    overflow: hidden;
-}
 .button2{
     border: 1.5px solid #001199;
     background-color: white;
