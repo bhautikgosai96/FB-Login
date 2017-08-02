@@ -33,7 +33,7 @@
     background-color: #00cc00;
     color: white;
     border-radius: 5px;
-    width: 100%;
+    min-width: 80%;
     min-height: 7.5%;
 
 }
