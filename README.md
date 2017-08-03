@@ -16,8 +16,7 @@ $fb = new Facebook\Facebook([
       'app_id' => $app_id, // Replace {app-id} with your app id
       'app_secret' =>$app_sec ,
       'default_graph_version' =>$g_v
-
-      ]);
+       ]);
 
 In this project, application needs user's permissions to get access of user's album data.
 Application is making a call to Facebook Graph API to get necessary data.
