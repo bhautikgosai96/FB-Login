@@ -264,38 +264,6 @@
             });
         };
 
-        //Moving to picasa
-        $scope.movePicasa =function(x){
-
-            $scope.picasa= false;
-             var albumData ={
-                albumnName:'',
-                img:[]
-
-            };
-
-            albumData.albumnName =x.name;
-            var photos = x.photos;
-            for(j=0;j<photos.length;j++){
-                albumData.img.push(photos[j].images[1].source);
-            }
-            $http({
-                method: 'POST',
-                url: 'sendAlbumn.php',
-                data: albumData,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(function mySuccess(data) {
-                $scope.picasa = true;
-                var base_url = window.location.origin;
-                $window.open(base_url+'/uploadPicasa.php');
-
-            }, function myError(response) {
-                console.log(response);
-
-            });
-        };
 
         $scope.googleDrive = function(x){
 
