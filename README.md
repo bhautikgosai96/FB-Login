@@ -90,6 +90,6 @@ code:
 
 
 
-#Develop By;- Bhautik Gosai
-Github Profile:- https://github.com/bhautikgosai96
+#Develop By:- Bhautik Gosai
+#Github Profile:- https://github.com/bhautikgosai96
 
