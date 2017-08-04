@@ -17,7 +17,7 @@
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
     $client->setClientSecret('MkhSpAhrUARWSZAokYCx9HzF');
     $client->setRedirectUri('https://bhautikng143.herokuapp.com/uploadAllAlbumn.php');
-    $client->setScopes(array('https://www.googleapis.com/auth/drive'));
+    $client->setScopes(array('https://www.googleapis.com/auth/drive.file'));
 
 
     $service = new Google_DriveService($client);
