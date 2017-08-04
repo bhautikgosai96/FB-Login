@@ -33,9 +33,9 @@ require_once 'fbConfig.php';
 
         // User profile picture
             try{
-            		$requestPicture = $fb->get('/me/picture?redirect=false');
+            		//$requestPicture = $fb->get('/me/picture?redirect=false');
             		$requestProfile = $fb->get('/me');
-            		$picture = $requestPicture->getGraphUser();
+            		//$picture = $requestPicture->getGraphUser();
             		$profile = $requestProfile->getGraphUser();
             	}catch(Facebook\Exceptions\FacebookResponseException $e) {
 
