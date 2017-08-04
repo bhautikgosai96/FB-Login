@@ -40,7 +40,7 @@ require_once 'fbConfig.php';
             	}catch(Facebook\Exceptions\FacebookResponseException $e) {
 
             		// When Graph returns an error
-            		echo 'Graph returned an error: ' . $e->getMessage();					//  Profile Picture
+            		echo 'Graph returned an error: ' . $e->getMessage();
             		session_destroy();
 
             		// redirecting user back to app login page
