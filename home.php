@@ -14,6 +14,7 @@ require_once 'fbConfig.php';
 
   $fb->setDefaultAccessToken($session);
 
+      //user albumn
       try {
       $response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url},name');
 

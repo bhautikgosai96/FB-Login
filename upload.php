@@ -7,11 +7,6 @@
     $driveUserName = $_SESSION['DriveUserName'];
     $driveImg = $_SESSION['driveImg'];
 
-   // print_r($driveAlbumnName);
-   // print_r($driveUserName);
-   // print_r($driveImg);
-
-
     $client = new Google_Client();
 
     $client->setClientId('207582988644-ukqtahmngraq5963p19mi5u91t3kvf4r.apps.googleusercontent.com');
@@ -21,18 +16,16 @@
 
 
         $service = new Google_DriveService($client);
-            $authUrl = $client->createAuthUrl();
+        $authUrl = $client->createAuthUrl();
 
-            //Request authorization
-            //print "Please visit:\n$authUrl\n\n";
-            //print "Please enter the auth code:\n";
-            $authCode = trim(fgets(STDIN));
+        //Request authorization
+        //print "Please visit:\n$authUrl\n\n";
+        //print "Please enter the auth code:\n";
+        $authCode = trim(fgets(STDIN));
 
-            // Exchange authorization code for access token
-            $accessToken = $client->authenticate($authCode);
-            $client->setAccessToken($accessToken);
-
-
+        // Exchange authorization code for access token
+        $accessToken = $client->authenticate($authCode);
+        $client->setAccessToken($accessToken);
 
         $folder = new Google_DriveFile();
 
@@ -41,10 +34,8 @@
         $newFolder = $service->files->insert($folder,array(
                    'mimeType' => 'application/vnd.google-apps.folder',
              ));
-       // print_r($newFolder);
+
         $parentId = $newFolder['id'];
-       // echo 'success';
-        //echo $parentId;
 
         $file = new Google_DriveFile();
 
@@ -58,10 +49,6 @@
                  'mimeType' => 'application/vnd.google-apps.folder',
                 ));
         $parentId1 = $newFolder1['id'];
-        //echo "successsssssssss";
-        //echo $parentId1;
-
-
 
         $count = 0;
         foreach($driveImg as $photo){
@@ -83,9 +70,8 @@
 
         }
          echo "successfully uploaded!!!!";
-                    echo "<br/>";
-                    echo "Now, You can see your albumn in your google drive."
-           // print_r($createdFile);
+         echo "<br/>";
+         echo "Now, You can see your albumn in your google drive.";
 
-
+session_write_close();
 ?>

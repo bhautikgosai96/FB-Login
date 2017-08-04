@@ -28,17 +28,17 @@
     </div>-->
     <div class="w3-container">
         <div class="row" style="padding-left:10%; padding-right: 10%;">
-            <div class="col-md-3" ng-repeat="x in albumnList" ng-if="x.photo_count > 0">
+            <div class="col-md-3" ng-repeat="list in albumnList" ng-if="list.photo_count > 0">
                 <div class=" w3-card-4" style="min-height: 490px;">
-                    <img ng-src ="{{ x.picture.url }}" style="width:100%; height:200px;">
+                    <img ng-src ="{{ list.picture.url }}" style="width:100%; height:200px;">
                     <div class="w3-container">
-                        <h4>Albumn Name: {{x.name }}</h4>
-                        <h4 > Total images : {{x.photo_count}}</h4>
-                        <button class="btn button1" ng-click="slideShow(x.photos)">Show Full Screen</button><br><br>
-                        <button class="btn button1" ng-click="zip(x.photos)">Download</button><br/><br/>
-                        <button class="btn button1" ng-click="googleDrive(x)">Move to Google Drive</button><br/><br/>
+                        <h4>Albumn Name: {{list.name }}</h4>
+                        <h4 > Total images : {{list.photo_count}}</h4>
+                        <button class="btn button1" ng-click="slideShow(list.photos)">Show Full Screen</button><br><br>
+                        <button class="btn button1" ng-click="zip(list.photos)">Download</button><br/><br/>
+                        <button class="btn button1" ng-click="googleDrive(list)">Move to Google Drive</button><br/><br/>
                         <input type="checkbox"
-                               ng-click="selectAlbumn(x)"/>Select for multiple albumn Download or move to Google Drive
+                               ng-click="selectAlbumn(list)"/>Select for multiple albumn Download or move to Google Drive
                     </div>
                 </div>
                 <br/><br/>
@@ -264,7 +264,7 @@
             });
         };
 
-
+        //move one albumn to google drive
         $scope.googleDrive = function(x){
 
             var albumData ={
@@ -300,6 +300,7 @@
             //$window.open('upload.php');
         };
 
+        //move all albumn to google drive
         $scope.googleDriveAllAlbumn = function(){
 
             var lst = $scope.albumnList;
@@ -352,6 +353,7 @@
             });
         };
 
+        //move selected albumn to google drive
         $scope.googleDriveSelectedAlbumn = function() {
 
 
