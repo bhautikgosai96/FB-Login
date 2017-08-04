@@ -31,11 +31,11 @@ require_once 'fbConfig.php';
 
        $graphEdge = $response->getGraphEdge()->AsArray();
 
-        // User profile picture
+        // User's username
             try{
-            		//$requestPicture = $fb->get('/me/picture?redirect=false');
+
             		$requestProfile = $fb->get('/me');
-            		//$picture = $requestPicture->getGraphUser();
+
             		$profile = $requestProfile->getGraphUser();
             	}catch(Facebook\Exceptions\FacebookResponseException $e) {
 
