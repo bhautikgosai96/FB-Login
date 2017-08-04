@@ -2,10 +2,15 @@
 
     require_once 'google-api-php-client/src/Google_Client.php';
     require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
-
     session_start();
     $driveAlbumnList = $_SESSION['driveAlbumnList'];
     $driveUserName = $_SESSION['DriveUserName'];
+    //$driveImg = $_SESSION['driveImg'];
+
+//   print_r($driveAlbumnList);
+  // print_r($driveUserName);
+   // print_r($driveImg);
+
 
     $client = new Google_Client();
 
@@ -36,12 +41,18 @@
         $newFolder = $service->files->insert($folder,array(
                    'mimeType' => 'application/vnd.google-apps.folder',
              ));
+        //print_r($newFolder);
         $parentId = $newFolder['id'];
+        //echo 'success';
+        //echo $parentId;
 
         foreach($driveAlbumnList as $list){
 
             $driveAlbumnName = $list->albumnName;
             $driveImg = $list->image;
+
+            //echo $driveAlbumnName;
+            //print_r($driveImg);
 
             $file = new Google_DriveFile();
 
@@ -55,11 +66,16 @@
                      'mimeType' => 'application/vnd.google-apps.folder',
                     ));
             $parentId1 = $newFolder1['id'];
+            //echo "successsssssssss";
+            //echo $parentId1;
+
+
 
             $count = 0;
             foreach($driveImg as $photo){
 
-                 $count = $count + 1
+                 $count = $count + 1;
+
                  $file1 = new Google_DriveFile();
 
                  $parent2 = new Google_ParentReference();
@@ -76,9 +92,9 @@
             }
         }
          echo "successfully uploaded!!!!";
-         echo "<br/>";
-         echo "Now, You can see your albumn in your google drive."
+                    echo "<br/>";
+                    echo "Now, You can see your albumn in your google drive."
+           // print_r($createdFile);
 
-session_write_close();
 
 ?>
