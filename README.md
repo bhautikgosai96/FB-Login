@@ -74,6 +74,15 @@ code:
                             'mimeType' => 'image/jpeg',
                           ));
 
+#Run the test cases
+
+To run test cases,You have to first install PHPUnit.
+Download from here: https://phar.phpunit.de/phpunit.phar
+After installation, go to project directory and run this command in terminal
+
+phpunit tests/
+
+
 #Third Party library:
 
 1. Facebook PHP sdk V5
