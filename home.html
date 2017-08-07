@@ -257,7 +257,7 @@
 
                 var str = data.data.substr(1,18);
                 var base_url = window.location.origin;
-                alert('Find download link at bottom of page.');
+                //alert('Find download link at bottom of page.');
                 $scope.downSingleloadLink= base_url+'/'+str;
                 $window.open($scope.downSingleloadLink);
             }, function myError(response) {
