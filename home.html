@@ -48,7 +48,7 @@
 
     </div>
     <div class="row" style="margin-left:10%; margin-right: 10%;">
-        <div class="row">
+        <!--<div class="row">
             <div class="link" ng-show="downSingleloadLink">
                 <a style="color: white; text-decoration: none; font-size: 1.1em;"   href="{{downSingleloadLink}}" download><p>Single AlbumnDownload link: {{downSingleloadLink}}</p></a>
             </div>
@@ -72,8 +72,10 @@
                 <a style="color: white; text-decoration: none; font-size: 1.1em;" href="{{downloadLink}}" download><p>Selected Albumn Download Link: {{downloadLink}}</p></a>
             </div>
         </div>
-        <br/><br/>
+        <br/><br/>-->
         <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
+        <button  class="btn button2" ng-click="downloadAll()">Download All Album</button><br/><br/>
+        <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
     </div>
@@ -177,9 +179,9 @@
 
                     var base_url = window.location.origin;
                     var str = data.data.slice(1,-1);
-                    alert('Find download link at bottom of page.');
+                    //alert('Find download link at bottom of page.');
                     $scope.downloadLink = base_url + '/' + str;
-
+                    $window.open($scope.downloadLink);
 
                 }, function myError(response) {
                     console.log(response);
@@ -231,8 +233,9 @@
 
                 var base_url = window.location.origin;
                 var str = data.data.slice(1,-1);
-                alert('Find download link at bottom of page.');
+                //alert('Find download link at bottom of page.');
                 $scope.downloadAllLink= base_url+'/'+str;
+                $window.open($scope.downloadAllLink);
             }, function myError(response) {
                 console.log(response);
             });
