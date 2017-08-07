@@ -259,6 +259,7 @@
                 var base_url = window.location.origin;
                 alert('Find download link at bottom of page.');
                 $scope.downSingleloadLink= base_url+'/'+str;
+                $window.open($scope.downSingleloadLink);
             }, function myError(response) {
                 console.log(response);
             });
@@ -354,6 +355,8 @@
         };
 
         //move selected albumn to google drive
+
+
         $scope.googleDriveSelectedAlbumn = function() {
 
 
