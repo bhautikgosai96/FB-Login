@@ -43,7 +43,7 @@ if ($fb->next($photos)) {
 		$photos_array = $photos->asArray();
 		$all_photos = array_merge($photos_array, $all_photos);
 	}
-	        // User's username
+	        // User's  username
             try{
 
             		$requestProfile = $fb->get('/me');
