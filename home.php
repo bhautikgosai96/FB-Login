@@ -23,7 +23,7 @@ try {
       echo 'Facebook SDK returned an error: ' . $e->getMessage();
       exit;
       }
-    $lst= $response->getGraphObject();
+    $lst= $response->getGraphEdge()->AsArray();
 echo json_encode($lst);
 ?>
 
