@@ -246,6 +246,7 @@
         //downloading single albumn
         $scope.zip = function(files){
             var image = [];
+            console.log(files);
             for(i=0;i<files.length;i++)
             {
                 image.push( files[i].images[1].source);
