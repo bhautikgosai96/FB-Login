@@ -17,7 +17,7 @@ require_once 'fbConfig.php';
       //user albumn
       try {
       $response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url},name');
-        $photos = $response->getGraphEdge();
+        //$photos = $response->getGraphEdge();
       } catch(Facebook\Exceptions\FacebookResponseException $e) {
 
       // When Graph returns an error
@@ -30,8 +30,8 @@ require_once 'fbConfig.php';
       exit;
       }
 
-       //$graphEdge = $response->getGraphEdge()->AsArray();
-$all_photos = array();
+       $graphEdge = $response->getGraphEdge()->AsArray();
+/*$all_photos = array();
 if ($fb->next($photos)) {
 		$photos_array = $photos->asArray();
 		$all_photos = array_merge($photos_array, $all_photos);
@@ -42,7 +42,7 @@ if ($fb->next($photos)) {
 	} else {
 		$photos_array = $photos->asArray();
 		$all_photos = array_merge($photos_array, $all_photos);
-	}
+	}*/
 	        // User's  username
             try{
 
@@ -71,7 +71,7 @@ if ($fb->next($photos)) {
 
             $lst[0] = $name;
 
-            $lst = array_merge($lst,$all_photos);
+            $lst = array_merge($lst,$graphEdge);
             echo json_encode($lst);
 
 ?>
