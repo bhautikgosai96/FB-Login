@@ -16,7 +16,7 @@ require_once 'fbConfig.php';
 
       //user albumn
       try {
-      $response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url},name&limit=3');
+      $response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url},name&limit=100');
         $photos = $response->getGraphEdge();
       } catch(Facebook\Exceptions\FacebookResponseException $e) {
 
