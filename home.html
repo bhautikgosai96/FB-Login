@@ -94,7 +94,7 @@
             $rootScope.albumnList = [];
             $http.get('home.php')
                     .then(function(response){
-
+                        console.log(response);
                         $scope.data = response.data;
                         $rootScope.profileName = $scope.data[0];
                         var i;
