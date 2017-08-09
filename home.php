@@ -34,7 +34,7 @@ try {
 
 
         try {
-              $response1 = $fb->get('\''/$albumnId.'/photos?fields=source&limit=500');
+              $response1 = $fb->get('\''.$albumnId.'/photos?fields=source&limit=500');
                 //$photos = $response->getGraphEdge();
               } catch(Facebook\Exceptions\FacebookResponseException $e) {
 
