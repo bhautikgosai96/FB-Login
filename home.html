@@ -86,7 +86,7 @@
 
 
 
-    app.controller('fbCtrl',function($scope,$http,$localStorage,$window,$rootScope){
+    app.controller('fbCtrl',function($scope,$http,$localStorage,$sessionStorage,$window,$rootScope){
 
         //fetching user photo and profilename
         $scope.init= function(){
@@ -108,7 +108,8 @@
 
         //slideshow of albumn
         $scope.slideShow = function(photo){
-            $localStorage.gallery = photo;
+            //$localStorage.gallery = photo;
+            $sessionStorage.gallery = photo;
             $window.open('slideShow.html');
         };
 
