@@ -31,8 +31,8 @@
 
     app.controller('slide',function($scope,$http,$localStorage,$sessionStorage,$window){
         $scope.image = [];
-        $scope.photo = $localStorage.gallery;
-        //$scope.photo = $sessionStorage.gallery;
+       // $scope.photo = $localStorage.gallery;
+        $scope.photo = $sessionStorage.gallery;
         for(i=0;i<$scope.photo.length;i++)
         {
             $scope.image.push( $scope.photo[i].images[1].source);

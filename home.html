@@ -108,8 +108,8 @@
 
         //slideshow of albumn
         $scope.slideShow = function(photo){
-            $localStorage.gallery = photo;
-           // $sessionStorage.gallery = photo;
+            //$localStorage.gallery = photo;
+           $sessionStorage.gallery = photo;
             $window.open('slideShow.html');
         };
 
