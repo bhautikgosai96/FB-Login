@@ -27,11 +27,10 @@ try {
 
     $all_array = array();
 
-    $final_array = json_encode($lst);
-    foreach($final_array as $x){
+    foreach($lst as $oneAlbumn){
 
 
-            $albumnId = $x->id;
+            $albumnId = $oneAlbumn->id;
 
             array_push($all_array,$albumnId);
 
