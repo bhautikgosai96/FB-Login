@@ -96,7 +96,9 @@
                     .then(function(response){
                         console.log(response);
                         console.log(response.data);
+
                         $scope.data = response.data;
+                        console.log("Finally got full Albumn"+$scope.data.length);
                         $rootScope.profileName = $scope.data[0];
                         var i;
 
