@@ -17,9 +17,9 @@
 
     <div class="offsetspan6" style="height: 100%; width:100%;">
         <carousel interval="interval">
-            <slide ng-repeat="slide in photo" active="slide.active">
+            <slide ng-repeat="slide in image" active="slide.active">
                 <img class="image-circle" ng-src="{{slide}}"    style="margin:auto; width:100%; height: 100%;"/>
-                {{slide.images.source}}
+                {{slide}}
             </slide>
         </carousel>
     </div>
@@ -35,12 +35,13 @@
         $scope.photo = $sessionStorage.gallery;
 
         console.log($scope.photo);
-        /*for(i=0;i<$scope.photo.length;i++)
+
+        for(i=0;i<$scope.photo.length;i++)
         {
-            $scope.image.push( $scope.photo[i].images[1].source);
+            $scope.image.push( $scope.photo[i].source);
 
         }
-        console.log($scope.image);*/
+        console.log($scope.image);
         $scope.interval = 2000;
 
 
