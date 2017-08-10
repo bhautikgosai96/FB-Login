@@ -25,16 +25,16 @@ try {
       }
     $lst= $response->getGraphEdge()->AsArray();
 
-    $all_array = array();
+
 
     print_r($lst);
     $len = sizeof($lst);
 
 
-
+$final = array();
 
   for($i = 0; $i<$len; $i++){
-
+    $all_photos = array();
 
             $albumnId = $lst[$i]["id"];
 
@@ -53,19 +53,30 @@ try {
                                     echo 'Facebook SDK returned an error: ' . $e->getMessage();
                                     exit;
                                     }
-                              $lst1= $response1->getGraphEdge();
-                              print_r($lst1);
+                              $photos = $response1->getGraphEdge();
+                              if ($fb->next($photos)) {
+                              		$photos_array = $photos->asArray();
+                              		$all_photos = array_merge($photos_array, $all_photos);
+                              		while ($photos = $fb->next($photos)) {
+                              			$photos_array = $photos->asArray();
+                              			$all_photos = array_merge($photos_array, $all_photos);
+                              		}
+                              	} else {
+                              		$photos_array = $photos->asArray();
+                              		$all_photos = array_merge($photos_array, $all_photos);
+                              	}
+                              print_r($all_photos);
                               echo "<br/>";
-
+                              echo sizeof($all_photos);
                               echo "<br/>";
-                     $all_array = array_push($all_array,$lst1);
+                     array_push($final,$all_photos);
         }
 
 
 
 
-echo json_encode($all_array);
-echo sizeof($all_array);
+echo json_encode($final);
+echo sizeof($final);
 ?>
 
 
