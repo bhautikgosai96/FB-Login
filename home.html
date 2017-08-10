@@ -78,6 +78,7 @@
         <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
+        <button class="btn button2" ng-click="test()">test</button>
     </div>
 </div>
 
@@ -109,6 +110,9 @@
 
         };
 
+        $scope.test = function(){
+          $window.open('home.php');
+        };
         //slideshow of albumn
         $scope.slideShow = function(photo){
             //$localStorage.gallery = photo;

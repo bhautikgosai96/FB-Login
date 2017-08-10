@@ -27,6 +27,7 @@ try {
 
     $all_array = array();
 
+    print_r($lst);
     foreach($lst as $oneAlbumn){
 
 
