@@ -102,7 +102,7 @@
             $rootScope.facebookAlbumn = [];
             $('#spinner').show();
             $http.get('home.php')
-                    .then(function(response){
+                    .then(function mySuccess(response){
                         //console.log(response);
                         //console.log(response.data);
 
@@ -144,6 +144,10 @@
                         for(i=1;i<$scope.data.length;i++){
                             $rootScope.albumnList.push($scope.data[i]);
                         }
+                    },function myError(response) {
+                        $('#spinner').hide();
+                        alert(response.data);
+                        console.log(response);
                     });
 
         };
@@ -225,10 +229,10 @@
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
-                }).then(function mySuccess(data) {
+                }).then(function mySuccess(response) {
 
                     var base_url = window.location.origin;
-                    var str = data.data.slice(1,-1);
+                    var str = response.data.slice(1,-1);
                     //alert('Find download link at bottom of page.');
                     $scope.downloadLink = base_url + '/' + str;
                     $('#spinner').hide();
@@ -283,10 +287,10 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            }).then(function mySuccess(data) {
+            }).then(function mySuccess(response) {
 
                 var base_url = window.location.origin;
-                var str = data.data.slice(1,-1);
+                var str = response.data.slice(1,-1);
                 //alert('Find download link at bottom of page.');
                 $scope.downloadAllLink= base_url+'/'+str;
                 $('#spinner').hide();
@@ -316,9 +320,9 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            }).then(function mySuccess(data) {
+            }).then(function mySuccess(response) {
 
-                var str = data.data.substr(1,18);
+                var str = response.data.substr(1,18);
                 var base_url = window.location.origin;
                 //alert('Find download link at bottom of page.');
                 $scope.downSingleloadLink= base_url+'/'+str;
