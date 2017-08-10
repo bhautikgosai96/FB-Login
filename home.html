@@ -15,6 +15,7 @@
 <body ng-app="fbApp">
 
 <div ng-controller="fbCtrl" ng-init="init()">
+    <div class="alert alert-info" ng-show="loading">Loading</div>
     <div class="row">
         <div class="profile">
             <p>Welcome {{profileName}}</p>
@@ -140,6 +141,15 @@
                     });
 
         };
+
+        $scope.$on('LOAD',function(){
+            $scope.loading = true;
+        });
+
+        $scope.$on('UNLOAD',function(){
+            $scope.loading = false;
+        });
+
 
         $scope.test = function(){
           $window.open('home.php');
@@ -290,6 +300,7 @@
                 image.push( files[i].source);
             }
 
+            $scope.$emit('LOAD')
             $http({
                 method : "POST",
                 url: 'zip.php',
@@ -304,6 +315,7 @@
                 //alert('Find download link at bottom of page.');
                 $scope.downSingleloadLink= base_url+'/'+str;
                 $window.open($scope.downSingleloadLink);
+                $scope.$emit('UNLOAD')
             }, function myError(response) {
                 console.log(response);
             });
