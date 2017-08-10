@@ -28,10 +28,11 @@ try {
     $all_array = array();
 
     print_r($lst);
-    foreach($lst as $oneAlbumn){
+    $len = sizeof($lst);
+    for($i = 0; $i<$len; $i++){
 
 
-            $albumnId = $oneAlbumn->id;
+            $albumnId = $lst[$i]["id"];
 
             array_push($all_array,$albumnId);
 
