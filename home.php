@@ -27,7 +27,7 @@ try {
 
 
 
-    print_r($lst);
+   // print_r($lst);
     $len = sizeof($lst);
 
 
@@ -65,18 +65,45 @@ $final = array();
                               		$photos_array = $photos->asArray();
                               		$all_photos = array_merge($photos_array, $all_photos);
                               	}
-                              print_r($all_photos);
-                              echo "<br/>";
-                              echo sizeof($all_photos);
-                              echo "<br/>";
+                             // print_r($all_photos);
+                              //echo "<br/>";
+                              //echo sizeof($all_photos);
+                              //echo "<br/>";
                      array_push($final,$all_photos);
         }
 
 
+// User's  username
+            try{
 
+            		$requestProfile = $fb->get('/me');
 
-echo json_encode($final);
-echo sizeof($final);
+            		$profile = $requestProfile->getGraphUser();
+            	}catch(Facebook\Exceptions\FacebookResponseException $e) {
+
+            		// When Graph returns an error
+            		echo 'Graph returned an error: ' . $e->getMessage();
+            		session_destroy();
+
+            		// redirecting user back to app login page
+            		header("Location: ./");
+            		exit;
+            	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+
+            		// When validation fails or other local issues
+            		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            		exit;
+            	}
+
+            $name = $profile['name'];
+
+            $albumn_list = array();
+
+            $albumn_list[0] = $name;
+            $albumn_list[1] = $lst;
+            $albumn_list[2] = $final;
+echo json_encode($albumn_list);
+echo sizeof($albumn_list);
 ?>
 
 
