@@ -137,3 +137,13 @@ if ($fb->next($photos)) {
 
                           $all_array = array_merge($all_array,array($obj))
 
+
+
+  for($i = 0; $i<$len; $i++){
+
+
+            $albumnId = $lst[$i]["id"];
+            echo '\''.$albumnId.'/photos?fields=source&limit=500'.'\'';
+
+
+        }
