@@ -164,13 +164,13 @@
            };
 
            var albumn = item;
-           albumnData.albumnName = albumn.name;
+           albumnData.albumnName = albumn.albumnName;
            var j;
-           var albumnPhoto = albumn.photos;
+           var albumnPhoto = albumn.image;
 
            for (j = 0; j < albumnPhoto.length; j++) {
 
-               albumnData.image.push(albumnPhoto[j].images[1].source);
+               albumnData.image.push(albumnPhoto[j].source);
            }
 
 
