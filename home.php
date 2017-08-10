@@ -103,7 +103,7 @@ $final = array();
             $albumn_list[1] = $lst;
             $albumn_list[2] = $final;
 echo json_encode($albumn_list);
-echo sizeof($albumn_list);
+
 ?>
 
 

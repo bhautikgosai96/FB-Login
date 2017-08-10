@@ -101,7 +101,14 @@
                         $scope.data = response.data;
                         console.log("Finally got full Albumn"+$scope.data.length);
                         $rootScope.profileName = $scope.data[0];
+                        $rootscope.finalAlbumnList = $scope.data[1];
+                        $rootScope.finalPhotoList = $scope.data[2];
                         var i;
+
+                        console.log($rootScope.profileName);
+                        console.log($rootscope.finalAlbumnList);
+                        console.log($rootscope.finalPhotoList);
+
 
                         for(i=1;i<$scope.data.length;i++){
                             $rootScope.albumnList.push($scope.data[i]);
