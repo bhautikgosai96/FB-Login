@@ -41,7 +41,7 @@ try {
             echo $link;
              try {
                                                //$response1 = $fb->get('936566536385825/photos?fields=source&limit=500');
-                                                $response1 = $fb->get("'".$link."'");
+                                                $response1 = $fb->get(\'.$link.\');
                                                  //$photos = $response->getGraphEdge();
                                                } catch(Facebook\Exceptions\FacebookResponseException $e) {
 
