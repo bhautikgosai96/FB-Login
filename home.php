@@ -38,7 +38,7 @@ try {
 
             $albumnId = $lst[$i]["id"];
 
-    try {
+ try {
                                     //$response1 = $fb->get('527185053990644/photos?fields=source&limit=500');
                                      $response1 = $fb->get($albumnId.'/photos?fields=source&limit=500');
                                       //$photos = $response->getGraphEdge();
@@ -53,10 +53,10 @@ try {
                                     echo 'Facebook SDK returned an error: ' . $e->getMessage();
                                     exit;
                                     }
-                              $lst1= $response1->getGraphEdge()->AsArray();
+                              $lst1= $response1->getGraphEdge();
                               print_r($lst1);
                               echo "<br/>";
-                              echo sizeof($lst1);
+
                               echo "<br/>";
                      $all_array = array_push($all_array,$lst1);
         }
