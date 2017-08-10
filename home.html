@@ -93,23 +93,40 @@
         $scope.init= function(){
             $rootScope.profileName = null;
             $rootScope.albumnList = [];
+            $rootScope.facebookAlbumn = [];
             $http.get('home.php')
                     .then(function(response){
-                        console.log(response);
-                        console.log(response.data);
+                        //console.log(response);
+                        //console.log(response.data);
 
                         $scope.data = response.data;
-                        console.log("Finally got full Albumn"+$scope.data.length);
+                        //console.log("Finally got full Albumn"+$scope.data.length);
                         $rootScope.profileName = $scope.data[0];
                         $rootScope.finalAlbumnList = $scope.data[1];
                         $rootScope.finalPhotoList = $scope.data[2];
                         var i;
 
-                        console.log($rootScope.profileName);
-                        console.log($rootScope.finalAlbumnList);
-                        console.log($rootScope.finalPhotoList);
+                        //console.log($rootScope.profileName);
+                        //console.log($rootScope.finalAlbumnList);
+                        //console.log($rootScope.finalPhotoList);
 
 
+                        for(i=0; i<$rootScope.finalAlbumnList.length;i++){
+
+                            var facebookAlbumnData = {
+                                albumnName:'',
+                                image:[],
+                                photos_count:''
+                            };
+
+                            facebookAlbumnData.albumnName = $rootScope.finalAlbumnList[i].name;
+                            facebookAlbumnData.photos_count = $rootScope.finalAlbumnList[i].count;
+                            facebookAlbumnData.image = $rootScope.finalPhotoList[i];
+
+                            $rootScope.facebookAlbumn.push(facebookAlbumnData);
+                        }
+
+                        console.log($rootScope.facebookAlbumn);
                         for(i=1;i<$scope.data.length;i++){
                             $rootScope.albumnList.push($scope.data[i]);
                         }
