@@ -19,7 +19,7 @@
         <carousel interval="interval">
             <slide ng-repeat="slide in photo" active="slide.active">
                 <img class="image-circle" ng-src="{{slide}}"    style="margin:auto; width:100%; height: 100%;"/>
-                {{slide}}
+                {{slide.images.source}}
             </slide>
         </carousel>
     </div>
@@ -33,6 +33,8 @@
         $scope.image = [];
        // $scope.photo = $localStorage.gallery;
         $scope.photo = $sessionStorage.gallery;
+
+        console.log($scope.photo);
         /*for(i=0;i<$scope.photo.length;i++)
         {
             $scope.image.push( $scope.photo[i].images[1].source);
