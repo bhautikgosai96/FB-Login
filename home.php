@@ -36,7 +36,7 @@ try {
 
             $albumnId = $lst[$i]["id"];
 
-
+             $albumnId = (string)$albumnId;
              try {
                                                //$response1 = $fb->get('936566536385825/photos?fields=source&limit=500');
                                                 $response1 = $fb->get('\''.$albumnId.'/photos?fields=source&limit=500'.'\'');
