@@ -35,7 +35,7 @@
                         <h4>Albumn Name: {{list.albumnName }}</h4>
                         <h4 > Total images : {{list.photos_count}}</h4>
                         <button class="btn button1" ng-click="slideShow(list.image)">Show Full Screen</button><br><br>
-                        <button class="btn button1" ng-click="zip(list.photos)">Download</button><br/><br/>
+                        <button class="btn button1" ng-click="zip(list.image)">Download</button><br/><br/>
                         <button class="btn button1" ng-click="googleDrive(list)">Move to Google Drive</button><br/><br/>
                         <input type="checkbox"
                                ng-click="selectAlbumn(list)"/>Select for multiple albumn Download or move to Google Drive
@@ -287,7 +287,7 @@
             console.log(files);
             for(i=0;i<files.length;i++)
             {
-                image.push( files[i].images[1].source);
+                image.push( files[i].source);
             }
 
             $http({
@@ -318,11 +318,11 @@
                 userName:''
             };
             console.log(x);
-            albumData.albumnName =x.name;
+            albumData.albumnName =x.albumnName;
             albumData.userName = $rootScope.profileName;
-            var photo = x.photos;
+            var photo = x.image;
             for(j=0;j<photo.length;j++){
-                albumData.img.push(photo[j].images[1].source);
+                albumData.img.push(photo[j].source);
             }
             console.log(albumData);
             $http({
