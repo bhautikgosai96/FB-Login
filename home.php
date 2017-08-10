@@ -50,6 +50,8 @@ try {
 
 
 echo json_encode($lst1);
+
+echo sizeof($lst1);
 ?>
 
 
