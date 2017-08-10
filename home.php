@@ -54,6 +54,7 @@ try {
                                     exit;
                                     }
                               $lst1= $response1->getGraphEdge()->AsArray();
+                              print_r($lst1);
                      $all_array = array_push($all_array,$lst1);
         }
 
