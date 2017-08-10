@@ -234,7 +234,7 @@
         //download all albumn at one time
         $scope.downloadAll = function(){
 
-            var lst = $rootScope.albumnList;
+            var lst = $rootScope.facebookAlbumn;
             var len = lst.length;
 
             if(len<=0){
@@ -250,12 +250,12 @@
                     image:[]
                 };
                 var albumn = lst[i];
-                albumnData.albumnName = albumn.name;
+                albumnData.albumnName = albumn.albumnName;
                 var j;
-                var albumnPhoto = albumn.photos;
+                var albumnPhoto = albumn.image;
 
                     for (j = 0; j < albumnPhoto.length; j++) {
-                        albumnData.image.push(albumnPhoto[j].images[1].source);
+                        albumnData.image.push(albumnPhoto[j].source);
                     }
                     allAlbumnList.push(albumnData);
             }
@@ -348,7 +348,7 @@
         //move all albumn to google drive
         $scope.googleDriveAllAlbumn = function(){
 
-            var lst = $rootScope.albumnList;
+            var lst = $rootScope.facebookAlbumn;
             var len = lst.length;
 
             if(len<=0){
@@ -366,12 +366,12 @@
                     image:[]
                 };
                 var albumn = lst[i];
-                albumnData.albumnName = albumn.name;
+                albumnData.albumnName = albumn.albumnName;
                 var j;
-                var albumnPhoto = albumn.photos;
+                var albumnPhoto = albumn.image;
 
                 for (j = 0; j < albumnPhoto.length; j++) {
-                    albumnData.image.push(albumnPhoto[j].images[1].source);
+                    albumnData.image.push(albumnPhoto[j].source);
                 }
                 allAlbumnList.push(albumnData);
             }
