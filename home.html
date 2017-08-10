@@ -100,6 +100,7 @@
             $rootScope.profileName = null;
             $rootScope.albumnList = [];
             $rootScope.facebookAlbumn = [];
+            $('#spinner').show();
             $http.get('home.php')
                     .then(function(response){
                         //console.log(response);
@@ -138,7 +139,7 @@
 
                             $rootScope.facebookAlbumn.push(facebookAlbumnData);
                         }
-
+                        $('#spinner').hide();
                         console.log($rootScope.facebookAlbumn);
                         for(i=1;i<$scope.data.length;i++){
                             $rootScope.albumnList.push($scope.data[i]);
@@ -217,6 +218,8 @@
         $scope.downloadSelectedAll = function() {
 
             if ($scope.selectedAlbumnList.length > 0){
+
+                $('#spinner').show();
                 $http({
                     method: "POST",
                     url: 'downloadAllAlbum.php',
@@ -230,6 +233,7 @@
                     var str = data.data.slice(1,-1);
                     //alert('Find download link at bottom of page.');
                     $scope.downloadLink = base_url + '/' + str;
+                    $('#spinner').hide();
                     $window.open($scope.downloadLink);
 
                 }, function myError(response) {
@@ -243,6 +247,7 @@
         //download all albumn at one time
         $scope.downloadAll = function(){
 
+            $('#spinner').show();
             var lst = $rootScope.facebookAlbumn;
             var len = lst.length;
 
@@ -284,6 +289,7 @@
                 var str = data.data.slice(1,-1);
                 //alert('Find download link at bottom of page.');
                 $scope.downloadAllLink= base_url+'/'+str;
+                $('#spinner').hide();
                 $window.open($scope.downloadAllLink);
             }, function myError(response) {
                 console.log(response);
