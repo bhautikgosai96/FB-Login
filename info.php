@@ -171,3 +171,12 @@ if ($fb->next($photos)) {
                                    echo sizeof($lst1);
                                    echo "<br/>";
                           $all_array = array_push($all_array,$lst1);
+
+
+
+
+      foreach($temp as $n){
+
+      	unlink($n);
+      	//removing file from server
+      }

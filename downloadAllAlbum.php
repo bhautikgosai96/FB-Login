@@ -38,11 +38,7 @@ foreach($request as $k){
 
 $zip->close();
 
-foreach($temp as $n){
 
-	unlink($n);
-	//removing file from server
-}
 
 echo json_encode($filename);
 
