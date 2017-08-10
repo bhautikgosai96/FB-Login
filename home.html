@@ -235,6 +235,8 @@
                     $window.open($scope.downloadLink);
 
                 }, function myError(response) {
+                    $('#spinner').hide();
+                    alert(response.data);
                     console.log(response);
                 });
         }else{
@@ -290,6 +292,8 @@
                 $('#spinner').hide();
                 $window.open($scope.downloadAllLink);
             }, function myError(response) {
+                $('#spinner').hide();
+                alert(response.data);
                 console.log(response);
             });
         };
@@ -323,6 +327,8 @@
 
 
             }, function myError(response) {
+                $('#spinner').hide();
+                alert(response.data);
                 console.log(response);
             });
         };
