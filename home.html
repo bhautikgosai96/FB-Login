@@ -124,7 +124,7 @@
                             facebookAlbumnData.photos_count = $rootScope.finalAlbumnList[i].count;
                             facebookAlbumnData.image = $rootScope.finalPhotoList[i];
 
-                            if(facebookAlbumnData.photos_count=0){
+                            if(facebookAlbumnData.photos_count==0){
                                 facebookAlbumnData.picture = "";
                             }else{
                                 facebookAlbumnData.picture = $rootScope.finalPhotoList[i][0].source;
