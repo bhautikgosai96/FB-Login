@@ -53,14 +53,14 @@ try {
                                                exit;
                                                }
                                          $lst1= $response1->getGraphEdge()->AsArray();
-
+                                $all_array = array_push($all_array,$lst1);
         }
 
 
 
 
-echo json_encode($lst1);
-
+echo json_encode($all_array);
+echo sizeof($all_array);
 ?>
 
 
