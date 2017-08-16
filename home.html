@@ -220,7 +220,7 @@
         $scope.downloadSelectedAll = function() {
 
             if ($scope.selectedAlbumnList.length > 0){
-
+                console.log($scope.selectedAlbumnList);
                 $('#spinner').show();
                 $http({
                     method: "POST",
