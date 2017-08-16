@@ -253,7 +253,7 @@
                 }).then(function mySuccess(response) {
 
                     console.log(response.data);
-
+                    $('#spinner').hide();
                 }, function myError(response) {
                     $('#spinner').hide();
                     alert(response.data);
@@ -276,6 +276,7 @@
                     $window.open($scope.downloadLink);
                         */
                     console.log(response.data);
+                    $('#spinner').hide();
                 }, function myError(response) {
                     $('#spinner').hide();
                     alert(response.data);
