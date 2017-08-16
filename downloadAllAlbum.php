@@ -41,7 +41,7 @@ $zip->close();
 
 
 
-//echo json_encode($filename);
+echo json_encode($filename);
 
 
 
