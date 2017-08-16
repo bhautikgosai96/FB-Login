@@ -1,6 +1,6 @@
 <?php
 
-set_time_limit (1000);
+ini_set('max_execution_time', 3600);
 
 $data = file_get_contents('php://input');
 $request = json_decode($data);
