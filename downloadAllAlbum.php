@@ -1,6 +1,6 @@
 <?php
 
-set_time_limit (3600);
+set_time_limit (300);
 
 $data = file_get_contents('php://input');
 $request = json_decode($data);
