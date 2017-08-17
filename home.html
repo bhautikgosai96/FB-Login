@@ -81,7 +81,8 @@
         <br/><br/>-->
         <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
         <button  class="btn button2" ng-click="downloadAll()">Download All Album</button><br/><br/>
-        <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>
+        <!--<button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>-->
+        <button class=" btn button2" on-click="selectedAlbumn()">Download Selected Album</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
 
@@ -89,6 +90,19 @@
 </div>
 
 <script>
+
+    function selectedAlbumn () {
+        $.ajax({
+            url:"https://bhautikng143.herokuapp.com/downloadAllAlbumn.php", //the page containing php script
+            type: "post", //request type,
+            dataType: 'json',
+            data: $window.albumnFinalList,
+            success:function(result){
+
+                console.log(result);
+            }
+        });
+    }
     var app = angular.module('fbApp',['ngStorage','angular-loading-bar']);
 
 
@@ -215,6 +229,8 @@
            }
 
        };
+
+       $window.albumnFinalList = $scope.selectedAlbumnList;
 
         //download selected albumn
         $scope.downloadSelectedAll = function() {
