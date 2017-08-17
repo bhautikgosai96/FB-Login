@@ -120,7 +120,10 @@
                 console.log(result);
                 var base_url = window.location.origin;
                 var downloadLink = base_url + '/' + result;
-                window.location = downloadLink;
+                var link=document.createElement('a');
+                link.href=downloadLink;
+                link.download='file.zip';
+                link.click();
             }
         });
     });
