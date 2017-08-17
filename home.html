@@ -114,7 +114,7 @@
             url:"https://bhautikng143.herokuapp.com/downloadAllAlbumn.php", //the page containing php script
             type: "post", //request type,
             dataType: 'json',
-            data: {image:['try.jpeg'],albumnName:'myphoto'},
+            data: [{image:['try.jpeg'],albumnName:'myphoto'}],
             success:function(result){
 
                 console.log(result);
