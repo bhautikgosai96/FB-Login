@@ -258,7 +258,7 @@
                 }).then(function mySuccess(response) {
 
                     console.log(response.data);
-                    $window.open("https://bhautikng143.herokuapp.com/downloadAllAlbum.php");
+                    //$window.open("https://bhautikng143.herokuapp.com/downloadAllAlbum.php");
                     $scope.index=true;
 
                     $http({
@@ -273,7 +273,7 @@
                         var str = response.data.slice(1,-1);
                     //alert('Find download link at bottom of page.');
                     $scope.downloadLink = base_url + '/' + str;
-                    $('#spinner').hide();
+
                     $window.open($scope.downloadLink);
 
                         console.log(response);
