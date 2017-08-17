@@ -2,9 +2,10 @@
 
 set_time_limit(0);
 
-$data = file_get_contents('php://input');
-$request = json_decode($data);
-//$request = $_SESSION['data'];
+//$data = file_get_contents('php://input');
+//$request = json_decode($data);
+$request = $_SESSION['data'];
+print_r($request);
 $zip = new ZipArchive();
 
 $filename = 'zip-'.time().'.zip';

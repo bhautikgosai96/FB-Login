@@ -81,8 +81,7 @@
         <br/><br/>-->
         <!--<button class="bigbtn" ng-click="googleDrive()">upload to google drive</button>-->
         <button  class="btn button2" ng-click="downloadAll()">Download All Album</button><br/><br/>
-        <!--<button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>-->
-        <button class=" btn button2" id="buttoncall" on-click="selectedAlbumn()">Download Selected Album</button><br/><br/>
+        <button class=" btn button2" ng-click="downloadSelectedAll()">Download Selected Album</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveAllAlbumn()">Move All Albumn to google drive</button><br/><br/>
         <button class="btn button2" ng-click="googleDriveSelectedAlbumn()">Move Selected Albumn to google drive</button>
 
@@ -91,42 +90,7 @@
 
 <script>
 
-    /*function selectedAlbumn() {
 
-        $('#spinner').show();
-        $.ajax({
-            url:"https://bhautikng143.herokuapp.com/downloadAllAlbumn.php", //the page containing php script
-            type: "post", //request type,
-            dataType: 'json',
-            data: $window.albumnFinalList,
-            success:function(result){
-
-                console.log(result);
-                $('#spinner').hide();
-            }
-        });
-    }*/
-
-    $("#buttoncall").click(function() {
-
-
-        $.ajax({
-            url:"https://bhautikng143.herokuapp.com/downloadAllAlbum.php", //the page containing php script
-            type: "post", //request type,
-            dataType: 'json',
-            data: [{image:['try.jpeg'],albumnName:'myphoto'}],
-            success:function(result){
-
-                console.log(result);
-                var base_url = window.location.origin;
-                var downloadLink = base_url + '/' + result;
-                var link=document.createElement('a');
-                link.href=downloadLink;
-                link.download='file.zip';
-                link.click();
-            }
-        });
-    });
     var app = angular.module('fbApp',['ngStorage','angular-loading-bar']);
 
 
@@ -293,6 +257,7 @@
                 }).then(function mySuccess(response) {
 
                     console.log(response.data);
+                    $window.open("https://bhautikng143.herokuapp.com/downloadAllAlbumn.php");
                     $('#spinner').hide();
                 }, function myError(response) {
                     $('#spinner').hide();
