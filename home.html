@@ -118,7 +118,9 @@
             success:function(result){
 
                 console.log(result);
-
+                var base_url = window.location.origin;
+                var downloadLink = base_url + '/' + result;
+                $window.open(downloadLink);
             }
         });
     });
