@@ -227,7 +227,7 @@
                 $scope.index = false;
                 console.log($scope.selectedAlbumnList);
                 $('#spinner').show();
-               /* $http({
+               $http({
                     method: "POST",
                     url: 'downloadAllAlbum.php',
                     data: $scope.selectedAlbumnList,
@@ -243,47 +243,6 @@
                     $('#spinner').hide();
                     $window.open($scope.downloadLink);
 
-                }, function myError(response) {
-                    $('#spinner').hide();
-                    alert(response.data);
-                    console.log(response);
-                });*/
-                $http({
-                    method: "POST",
-                    url: 'putData.php',
-                    data: $scope.selectedAlbumnList,
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                }).then(function mySuccess(response) {
-
-                    console.log(response.data);
-                    //$window.open("https://bhautikng143.herokuapp.com/downloadAllAlbum.php");
-                    $scope.index=true;
-
-                    $http({
-                        method: "POST",
-                        url: 'downloadAllAlbum.php',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                    }).then(function mySuccess(response) {
-
-                        var base_url = window.location.origin;
-                        var str = response.data.slice(1,-1);
-                    //alert('Find download link at bottom of page.');
-                    $scope.downloadLink = base_url + '/' + str;
-
-                    $window.open($scope.downloadLink);
-
-                        console.log(response);
-                        $('#spinner').hide();
-                    }, function myError(response) {
-                        $('#spinner').hide();
-                        alert(response.data);
-                        console.log(response);
-                    });
-                    $('#spinner').hide();
                 }, function myError(response) {
                     $('#spinner').hide();
                     alert(response.data);
