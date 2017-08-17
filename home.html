@@ -260,14 +260,7 @@
                     console.log(response.data);
                     $window.open("https://bhautikng143.herokuapp.com/downloadAllAlbum.php");
                     $scope.index=true;
-                    $('#spinner').hide();
-                }, function myError(response) {
-                    $('#spinner').hide();
-                    alert(response.data);
-                    console.log(response);
-                });
 
-                if($scope.index) {
                     $http({
                         method: "POST",
                         url: 'script.php',
@@ -290,7 +283,16 @@
                         alert(response.data);
                         console.log(response);
                     });
-                }
+                    $('#spinner').hide();
+                }, function myError(response) {
+                    $('#spinner').hide();
+                    alert(response.data);
+                    console.log(response);
+                });
+
+
+
+
         }else{
                 alert('Please, select albumn!!!');
             }
