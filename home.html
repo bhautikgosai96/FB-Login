@@ -92,6 +92,8 @@
 <script>
 
     function selectedAlbumn () {
+
+        $('#spinner').show();
         $.ajax({
             url:"https://bhautikng143.herokuapp.com/downloadAllAlbumn.php", //the page containing php script
             type: "post", //request type,
@@ -100,6 +102,7 @@
             success:function(result){
 
                 console.log(result);
+                $('#spinner').hide();
             }
         });
     }
