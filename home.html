@@ -118,9 +118,9 @@
             success:function(result){
 
                 console.log(result);
-
-                var downloadLink = 'https://bhautikng143.herokuapp.com' + '/' + result;
-                $window.open(downloadLink);
+                var base_url = window.location.origin;
+                var downloadLink = base_url + '/' + result;
+                window.location = downloadLink;
             }
         });
     });
