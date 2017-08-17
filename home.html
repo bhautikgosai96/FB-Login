@@ -106,14 +106,16 @@
             }
         });
     }*/
+    var data1 = $window.albumnFinalList;
 
-    $("#buttoncall").click(function(e) {
+    $("#buttoncall").click(function() {
+        console.log(data1);
         $('#spinner').show();
         $.ajax({
             url:"https://bhautikng143.herokuapp.com/downloadAllAlbumn.php", //the page containing php script
             type: "post", //request type,
             dataType: 'json',
-            data: $window.albumnFinalList,
+            data: data1,
             success:function(result){
 
                 console.log(result);
