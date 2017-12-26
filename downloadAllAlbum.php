@@ -10,7 +10,7 @@ $request = $r->album;
 //print_r($request);
 $zip = new ZipArchive();
 
-if($filename==null){
+if($filename == 'new'){
     $filename = 'zip-'.time().'.zip';
     if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
         die ("Could not open archive");
