@@ -42,7 +42,7 @@ if($filename == 'new'){
     }
 
     $zip->close();
-
+echo json_encode($filename);
 }else{
 
     if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
@@ -75,10 +75,10 @@ if($filename == 'new'){
         }
 
         $zip->close();
-
+echo json_encode($filename);
 }
 
-echo json_encode($filename);
+
 
 
 
