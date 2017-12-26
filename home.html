@@ -262,13 +262,13 @@
 
                         console.log($rootScope.fn);
                         console.log(i);
-                        if(flag1) {
+
                             var base_url = window.location.origin;
                             //alert('Find download link at bottom of page.');
                             $scope.downloadLink = base_url + '/' + $rootScope.fn;
                             //$('#spinner').hide();
                             $window.open($scope.downloadLink);
-                        }
+
                     }, function myError(response) {
                         //$('#spinner').hide();
                         alert(response.data);
