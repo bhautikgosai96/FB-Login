@@ -226,8 +226,49 @@
             if ($scope.selectedAlbumnList.length > 0){
                 $scope.index = false;
                 console.log($scope.selectedAlbumnList);
+
+                var imagefile = {
+                     album : [],
+                     filename : null
+                 };
+
                 $('#spinner').show();
-               $http({
+                $rootScope.fn = null;
+                for(i=0; i<$scope.selectedAlbumnList.length; i++){
+
+                    imagefile.album = $scope.selectedAlbumnList[i];
+                    imagefile.filename = $rootScope.fn;
+                    $http({
+                        method: "POST",
+                        url: 'downloadAllAlbum.php',
+                        data: imagefile,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    }).then(function mySuccess(response) {
+
+                        //var base_url = window.location.origin;
+                        $rootScope.fn = response.data.slice(1,-1);
+                        //alert('Find download link at bottom of page.');
+                        //$scope.downloadLink = base_url + '/' + str;
+                        //$('#spinner').hide();
+                        //$window.open($scope.downloadLink);
+
+                    }, function myError(response) {
+                        //$('#spinner').hide();
+                        alert(response.data);
+                        console.log(response);
+                    });
+                }
+
+                var base_url = window.location.origin;
+                $rootScope.fn = response.data.slice(1,-1);
+                //alert('Find download link at bottom of page.');
+                $scope.downloadLink = base_url + '/' + $rootScope.fn;
+                //$('#spinner').hide();
+                $window.open($scope.downloadLink);
+
+                /*$http({
                     method: "POST",
                     url: 'downloadAllAlbum.php',
                     data: $scope.selectedAlbumnList,
@@ -247,7 +288,7 @@
                     $('#spinner').hide();
                     alert(response.data);
                     console.log(response);
-                });
+                });*/
 
 
 

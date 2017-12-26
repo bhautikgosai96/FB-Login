@@ -1,47 +1,82 @@
 <?php
 
-ini_set('max_execution_time', 600);
-ignore_user_abort();
+
 
 $data = file_get_contents('php://input');
-$request = json_decode($data);
+$r = json_decode($data);
+$filename = $r->filename;
+$request = $r->album;
 //$request = $_SESSION['data'];
 //print_r($request);
 $zip = new ZipArchive();
 
-$filename = 'zip-'.time().'.zip';
-if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
-    die ("Could not open archive");
+if($filename==null){
+    $filename = 'zip-'.time().'.zip';
+    if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
+        die ("Could not open archive");
 
 
-$temp=[];
+    $temp=[];
 
-foreach($request as $k){
+    foreach($request as $k){
 
-    $img=$k->image;
-    $aName=$k->albumnName;
+        $img=$k->image;
+        $aName=$k->albumnName;
 
 
-    $count = 0;
+        $count = 0;
 
-    foreach($img as $i){
-       $download_file = file_get_contents($i);
-        $count = $count + 1;
-        $name = $aName."-".$count.".jpg";
-        array_push($temp,$name);
-        file_put_contents($name,$download_file);
+        foreach($img as $i){
+           $download_file = file_get_contents($i);
+            $count = $count + 1;
+            $name = $aName."-".$count.".jpg";
+            array_push($temp,$name);
+            file_put_contents($name,$download_file);
 
-        $zip->addFile($name,$aName.'/'.$name);
+            $zip->addFile($name,$aName.'/'.$name);
+
+        }
+
+        $zip->addFile($aName);
 
     }
 
-    $zip->addFile($aName);
+    $zip->close();
+
+}else{
+
+    if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
+            die ("Could not open archive");
+
+
+        $temp=[];
+
+        foreach($request as $k){
+
+            $img=$k->image;
+            $aName=$k->albumnName;
+
+
+            $count = 0;
+
+            foreach($img as $i){
+               $download_file = file_get_contents($i);
+                $count = $count + 1;
+                $name = $aName."-".$count.".jpg";
+                array_push($temp,$name);
+                file_put_contents($name,$download_file);
+
+                $zip->addFile($name,$aName.'/'.$name);
+
+            }
+
+            $zip->addFile($aName);
+
+        }
+
+        $zip->close();
 
 }
-
-$zip->close();
-
-
 
 echo json_encode($filename);
 
