@@ -240,10 +240,11 @@
                     console.log(i);
                     console.log($scope.selectedAlbumnList[i]);
                 }
+                var f1 = "new";
                 for(i=0; i<$scope.selectedAlbumnList.length; i++){
 
                     imagefile.album = $scope.selectedAlbumnList[i];
-                    imagefile.filename = $rootScope.fn;
+                    imagefile.filename = f1;
                     console.log(imagefile);
 
 
@@ -258,14 +259,14 @@
                     }).then(function mySuccess(response) {
 
                         //var base_url = window.location.origin;
-                        $rootScope.fn = response.data.slice(1, -1);
+                        f1 = response.data.slice(1, -1);
 
-                        console.log($rootScope.fn);
+                        console.log(f1);
                         console.log(i);
 
                         var base_url = window.location.origin;
                         //alert('Find download link at bottom of page.');
-                        $scope.downloadLink = base_url + '/' + $rootScope.fn;
+                        $scope.downloadLink = base_url + '/' + f1;
                         //$('#spinner').hide();
                         $window.open($scope.downloadLink);
 
