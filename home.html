@@ -227,10 +227,7 @@
                 $scope.index = false;
 
 
-                var imagefile = {
-                     album : {},
-                     filename : ''
-                 };
+
                 $rootScope.fn = 'new';
                // $('#spinner').show();
 
@@ -239,6 +236,11 @@
 
                 var f1 = "new";
                 for(j=0; j<$scope.selectedAlbumnList.length; j++){
+
+                    var imagefile = {
+                        album : {},
+                        filename : ''
+                    };
 
                     console.log(j);
                     imagefile.album = $scope.selectedAlbumnList[j];
