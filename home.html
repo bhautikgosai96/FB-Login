@@ -241,14 +241,15 @@
                     console.log($scope.selectedAlbumnList[i]);
                 }
                 var f1 = "new";
-                for(i=0; i<$scope.selectedAlbumnList.length; i++){
+                for(j=0; j<$scope.selectedAlbumnList.length; j++){
 
-                    imagefile.album = $scope.selectedAlbumnList[i];
+                    imagefile.album = $scope.selectedAlbumnList[j];
+                    console.log($scope.selectedAlbumnList[j])
                     imagefile.filename = f1;
                     console.log(imagefile);
 
 
-                    console.log("outside "+i);
+                    console.log("outside "+j);
                     $http({
                         method: "POST",
                         url: 'downloadAllAlbum.php',
@@ -262,7 +263,7 @@
                         f1 = response.data.slice(1, -1);
 
                         console.log(f1);
-                        console.log(i);
+                        console.log(j);
 
                         var base_url = window.location.origin;
                         //alert('Find download link at bottom of page.');
