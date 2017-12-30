@@ -1,7 +1,5 @@
 <?php
 
-
-
 $data = file_get_contents('php://input');
 $r = json_decode($data);
 $filename = $r->filename;
@@ -45,7 +43,9 @@ if($filename == 'new'){
 echo json_encode($filename);
 }else{
 
-    $zip->open($filename, ZipArchive::CREATE)
+    if($zip->open($filename, ZipArchive::CREATE)!=TRUE)
+            die ("Could not open archive");
+
 
         $temp=[];
 
