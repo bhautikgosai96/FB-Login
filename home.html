@@ -232,7 +232,7 @@
                      filename : ''
                  };
                 //$rootScope.fn = 'new';
-                $('#spinner').show();
+               // $('#spinner').show();
 
                 var flag1 = 0;
                 $rootscope.check = 0;
@@ -249,7 +249,7 @@
                         console.log(flag1);
                     }
 
-                if($rootScope.check==1) {
+
                     $http({
                         method: "POST",
                         url: 'downloadAllAlbum.php',
@@ -276,9 +276,7 @@
                         alert(response.data);
                         console.log(response);
                     });
-                }else{
-                    wait();
-                }
+
 
                 }
 
