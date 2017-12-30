@@ -225,7 +225,7 @@
 
             if ($scope.selectedAlbumnList.length > 0){
                 $scope.index = false;
-                console.log($scope.selectedAlbumnList);
+
 
                 var imagefile = {
                      album : {},
@@ -236,21 +236,20 @@
 
                 var flag1 = 0;
                 //console.log("selecetd album list "+$scope.selectedAlbumnList);
-                for(i=0; i<$scope.selectedAlbumnList.length; i++){
-                    console.log(i);
-                    console.log($scope.selectedAlbumnList[i]);
-                }
+
                 var f1 = "new";
                 for(j=0; j<$scope.selectedAlbumnList.length; j++){
 
+                    console.log(j);
                     imagefile.album = $scope.selectedAlbumnList[j];
-                    console.log($scope.selectedAlbumnList[j])
+                    console.log($scope.selectedAlbumnList[j]);
+                    console.log(image.albumn);
                     imagefile.filename = f1;
                     console.log(imagefile);
 
 
-                    console.log("outside "+j);
-                    $http({
+
+                  /*  $http({
                         method: "POST",
                         url: 'downloadAllAlbum.php',
                         data: imagefile,
@@ -275,7 +274,7 @@
                         //$('#spinner').hide();
                         alert(response.data);
                         console.log(response);
-                    });
+                    });*/
 
 
                 }
