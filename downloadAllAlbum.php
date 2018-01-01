@@ -5,8 +5,6 @@ ignore_user_abort(true);
 // don't let the script time out
 set_time_limit(0);
 
-// start output buffering
-ob_start();
 
 // If you need to return data to the browser, run that code
 // here. For example, you can process the credit card and
@@ -51,23 +49,6 @@ foreach($request as $k){
 $zip->close();
 
 
-usleep(1500000); // do some stuff...
-
-
-
-// now force PHP to output to the browser...
-$size = ob_get_length();
-header("Content-Length: $size");
-header('Connection: close');
-ob_end_flush();
-ob_flush();
-flush(); // yes, you need to call all 3 flushes!
-if (session_id()) session_write_close();
-
-// everything after this will be executed in the background.
-// the user can leave the page, hit the stop button, whatever.
-
-usleep(120000000); // do some stuff
 
 echo json_encode($filename);
 
