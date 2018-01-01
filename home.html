@@ -227,24 +227,36 @@
                 $scope.index = false;
 
                 var f1="new";
-                for(j=0; j<$scope.selectedAlbumnList.length; j++)
-                {
+                $scope.selectedAlbumnList.forEach(function (t) {
                     var imagefile = {
                         album : {},
                         filename : ''
                     };
-
-
-                    imagefile.album = $scope.selectedAlbumnList[j];
+                    imagefile.album = t;
                     imagefile.filename = f1;
-                    console.log(imagefile);
 
-                   f1 = postCall(imagefile);
-                    console.log("return filename - ");
-                    console.log(f1.data);
-                    console.log(f1.value);
-                    console.log(f1.data.value);
-                }
+                   f1 = $http({
+                        method: "POST",
+                        url: 'downloadAllAlbum.php',
+                        data: imagefile,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    }).then(function mySuccess(response) {
+
+                        //var base_url = window.location.origin;
+                        var str = response.data.slice(1,-1);
+                        //alert('Find download link at bottom of page.');
+                        //$scope.downloadLink = base_url + '/' + str;
+                        //$('#spinner').hide();
+                        //$window.open($scope.downloadLink);
+                        return str;
+                    }, function myError(response) {
+                        //$('#spinner').hide();
+                        alert(response.data);
+                        console.log(response);
+                    });
+                });
                 //old method
                 /*$rootScope.fn = 'new';
                // $('#spinner').show();
