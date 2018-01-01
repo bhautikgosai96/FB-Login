@@ -240,7 +240,8 @@
                     console.log(imagefile);
 
                    f1 = postCall(imagefile);
-                    console.log("return filename - "+f1);
+                    console.log("return filename - ");
+                    console.log(f1);
                 }
                 //old method
                 /*$rootScope.fn = 'new';
@@ -336,11 +337,11 @@
         };
 
         function postCall(sendData){
-            var deferred = $q.defer();
+            //var deferred = $q.defer();
 
             console.log(sendData);
 
-            $http({
+            return $http({
                 method: "POST",
                 url: 'downloadAllAlbum.php',
                 data: sendData,
@@ -353,9 +354,9 @@
                 var str = response.data;
                 //alert('Find download link at bottom of page.');
                 //$scope.downloadLink = base_url + '/' + str;
-                deferred.resolve(str);
+               // deferred.resolve(str);
                 //$window.open($scope.downloadLink);
-                return deferred.promise;
+                //return deferred.promise;
             }, function myError(response) {
 
                 alert(response.data);
