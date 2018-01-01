@@ -235,7 +235,7 @@
                     imagefile.album = t;
                     imagefile.filename = f1;
 
-                   f1 = $http({
+                   $http({
                         method: "POST",
                         url: 'downloadAllAlbum.php',
                         data: imagefile,
@@ -250,7 +250,7 @@
                         //$scope.downloadLink = base_url + '/' + str;
                         //$('#spinner').hide();
                         //$window.open($scope.downloadLink);
-                        return str;
+                        f1 = str;
                     }, function myError(response) {
                         //$('#spinner').hide();
                         alert(response.data);
