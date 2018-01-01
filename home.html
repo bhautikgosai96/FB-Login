@@ -226,12 +226,27 @@
             if ($scope.selectedAlbumnList.length > 0){
                 $scope.index = false;
 
+                var f1="new";
+                for(j=0; j<$scope.selectedAlbumnList.length; j++)
+                {
+                    var imagefile = {
+                        album : {},
+                        filename : ''
+                    };
 
 
-                $rootScope.fn = 'new';
+                    imagefile.album = $scope.selectedAlbumnList[j];
+                    imagefile.filename = f1;
+                    console.log(imagefile);
+
+                   f1 = postCall(imagefile);
+                    console.log("return filename - "+f1);
+                }
+                //old method
+                /*$rootScope.fn = 'new';
                // $('#spinner').show();
 
-                var flag1 = 0;
+
                 //console.log("selecetd album list "+$scope.selectedAlbumnList);
 
                 var f1 = "new";
@@ -277,7 +292,7 @@
                     });
 
 
-                }
+                }*/
 
 
 
@@ -319,6 +334,37 @@
                 alert('Please, select albumn!!!');
             }
         };
+
+        function postCall(sendData){
+            var deferred = $q.defer();
+
+            console.log(sendData);
+
+            $http({
+                method: "POST",
+                url: 'downloadAllAlbum.php',
+                data: sendData,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function mySuccess(response) {
+
+                var base_url = window.location.origin;
+                var str = response.data.slice(1,-1);
+                //alert('Find download link at bottom of page.');
+                //$scope.downloadLink = base_url + '/' + str;
+                deferred.resolve("response file name"+str);
+                //$window.open($scope.downloadLink);
+
+            }, function myError(response) {
+
+                alert(response.data);
+                console.log(response);
+            });
+
+            return deferred.promise;
+
+        }
 
         //download all albumn at one time
         $scope.downloadAll = function(){
