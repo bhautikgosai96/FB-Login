@@ -241,7 +241,9 @@
 
                    f1 = postCall(imagefile);
                     console.log("return filename - ");
-                    console.log(f1);
+                    console.log(f1.data);
+                    console.log(f1.value);
+                    console.log(f1.data.value);
                 }
                 //old method
                 /*$rootScope.fn = 'new';
@@ -341,7 +343,7 @@
 
             console.log(sendData);
 
-            $http({
+            return $http({
                 method: "POST",
                 url: 'downloadAllAlbum.php',
                 data: sendData,
