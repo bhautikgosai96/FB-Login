@@ -355,14 +355,14 @@
                 //$scope.downloadLink = base_url + '/' + str;
                 deferred.resolve(str);
                 //$window.open($scope.downloadLink);
-
+                return deferred.promise;
             }, function myError(response) {
 
                 alert(response.data);
                 console.log(response);
             });
 
-            return deferred.promise;
+
 
         }
 
