@@ -226,73 +226,13 @@
             if ($scope.selectedAlbumnList.length > 0){
                 $scope.index = false;
 
-                var f1="new";
 
-                //old method
-                $rootScope.fn = 'new';
                 $('#spinner').show();
 
 
-                //console.log("selecetd album list "+$scope.selectedAlbumnList);
-
-               /* var f1 = "new";
-                for(j=0; j<$scope.selectedAlbumnList.length; j++){
-
-                    var imagefile = {
-                        album : {},
-                        filename : ''
-                    };
-
-                    console.log("j"+j);
-                    imagefile.album = $scope.selectedAlbumnList[j];
-                    imagefile.filename = f1;
-                    console.log(imagefile);
-
-
-
-                  $http({
-                        method: "POST",
-                        url: 'downloadAllAlbum.php',
-                        data: imagefile,
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                    }).then(function mySuccess(response) {
-
-                        //var base_url = window.location.origin;
-                        f1 = response.data.slice(1, -1);
-
-                        console.log(f1);
-                        console.log(j);
-
-                        var base_url = window.location.origin;
-                        //alert('Find download link at bottom of page.');
-                        $scope.downloadLink = base_url + '/' + f1;
-                        //$('#spinner').hide();
-                        $window.open($scope.downloadLink);
-
-                    }, function myError(response) {
-                        //$('#spinner').hide();
-                        alert(response.data);
-                        console.log(response);
-                    });
-
-
-                }*/
-
-
-                /* if(flag1) {
-                     var base_url = window.location.origin;
-                     //$rootScope.fn = response.data.slice(1,-1);
-                     //alert('Find download link at bottom of page.');
-                     $scope.downloadLink = base_url + '/' + $rootScope.finalvalue;
-                     //$('#spinner').hide();
-                     $window.open($scope.downloadLink);
-                 }*/
-
                  $http({
                      method: "POST",
-                     url: 'downloadAllAlbum.php',
+                     url: 'bg.php',
                      data: $scope.selectedAlbumnList,
                      headers: {
                          'Content-Type': 'application/x-www-form-urlencoded'
@@ -300,11 +240,13 @@
                  }).then(function mySuccess(response) {
 
                      var base_url = window.location.origin;
-                     var str = response.data.slice(1,-1);
+                     var str = response.data;
                      //alert('Find download link at bottom of page.');
-                     $scope.downloadLink = base_url + '/' + str;
+                     //$scope.downloadLink = base_url + '/' + str;
                      $('#spinner').hide();
-                     $window.open($scope.downloadLink);
+                     console.log("output");
+                     console.log(str);
+                     //$window.open($scope.downloadLink);
 
                  }, function myError(response) {
                      $('#spinner').hide();
@@ -320,37 +262,7 @@
             }
         };
 
-        function postCall(sendData){
-            //var deferred = $q.defer();
 
-            console.log(sendData);
-
-            return $http({
-                method: "POST",
-                url: 'downloadAllAlbum.php',
-                data: sendData,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(function mySuccess(response) {
-
-                var base_url = window.location.origin;
-                var str = response.data.slice(1,-1);
-                //alert('Find download link at bottom of page.');
-                //$scope.downloadLink = base_url + '/' + str;
-               // deferred.resolve(str);
-                //$window.open($scope.downloadLink);
-                //return deferred.promise;
-                return str;
-            }, function myError(response) {
-
-                alert(response.data);
-                console.log(response);
-            });
-
-
-
-        }
 
         //download all albumn at one time
         $scope.downloadAll = function(){

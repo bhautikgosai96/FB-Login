@@ -1,19 +1,15 @@
 <?php
 
-ignore_user_abort(true);
 
-// don't let the script time out
-set_time_limit(0);
-
-
-// If you need to return data to the browser, run that code
-// here. For example, you can process the credit card and
-// then tell the user that their account has been approved.
-
-$data = file_get_contents('php://input');
-$request = json_decode($data);
+//$data = file_get_contents('php://input');
+//$request = json_decode($data);
 //$request = $_SESSION['data'];
 //print_r($request);
+
+session_start();
+
+$request= $_GET['album'];
+
 $zip = new ZipArchive();
 
 $filename = 'zip-'.time().'.zip';
