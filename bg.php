@@ -5,8 +5,8 @@ $data = file_get_contents('php://input');
 $r = json_decode($data);
 $_SESSION['album'] = $r;
 
-$WshShell = new COM("WScript.Shell");
-$oExec = $WshShell->Run("phpe -f https://bhautikng143.herokuapp.com/downloadAllAlbum.php", 0, false);
+
+$oExec = exec("php https://bhautikng143.herokuapp.com/downloadAllAlbum.php > /dev/null &");
 
 echo json_encode($oExec);
 
