@@ -6,7 +6,7 @@ $r = json_decode($data);
 $_SESSION['album'] = $r;
 
 
-$oExec = exec("php https://bhautikng143.herokuapp.com/downloadAllAlbum.php > /dev/null &");
+$oExec = exec("php downloadAllAlbum.php > /dev/null &");
 
 echo json_encode($oExec);
 
