@@ -6,7 +6,7 @@ $r = json_decode($data);
 $_SESSION['album'] = $r;
 
 $path = "/app/php/bin/php";
-$output = shell_exec("/app/php/bin/php -n -s downloadAllAlbum.php");
+$output = shell_exec("php downloadAllAlbum.php");
 
 echo json_encode($output);
 
