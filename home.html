@@ -240,13 +240,13 @@
                  }).then(function mySuccess(response) {
 
                      var base_url = window.location.origin;
-                     var str = response.data;
+                     var str = response.data.slice(-2,2);
                      //alert('Find download link at bottom of page.');
-                     //$scope.downloadLink = base_url + '/' + str;
+                     $scope.downloadLink = base_url + '/' + str;
                      $('#spinner').hide();
                      console.log("output");
                      console.log(str);
-                     //$window.open($scope.downloadLink);
+                     $window.open($scope.downloadLink);
 
                  }, function myError(response) {
                      $('#spinner').hide();
