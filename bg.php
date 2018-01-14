@@ -5,9 +5,9 @@ $data = file_get_contents('php://input');
 $r = json_decode($data);
 $_SESSION['album'] = $r;
 
+$path = shell_exec("whereis php");
+$output = shell_exec(sprintf("%s downloadAllAlbum.php", $path));
 
-$oExec = exec("php downloadAllAlbum.php > /dev/null &");
-
-echo json_encode($oExec);
+echo json_encode($output);
 
 ?>
