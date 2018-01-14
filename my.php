@@ -2,10 +2,9 @@
 
 session_start();
 
-$request= $_POST['album'];
+$request= $_SESSION['album'];
 
 echo "This is my.php";
-echo "fjkhk";
 echo $request;
-echo $_POST['album']."last";
+
 ?>
