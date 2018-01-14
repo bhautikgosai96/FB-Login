@@ -2,7 +2,7 @@
 
 session_start();
 
-$request= $_GET['album'];
+$request= $_POST['album'];
 
 echo "This is my.php";
 echo $request;
