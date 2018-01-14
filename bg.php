@@ -8,6 +8,6 @@ $_SESSION['album'] = $r;
 $path = shell_exec("whereis php");
 $output = shell_exec(sprintf("%s downloadAllAlbum.php", $path));
 
-echo json_encode($output);
+echo json_encode($path);
 
 ?>
