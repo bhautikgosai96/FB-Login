@@ -8,7 +8,7 @@
 
 session_start();
 
-$request= $_GET['album'];
+$request= stripslashes($argv[1]);
 
 $zip = new ZipArchive();
 
