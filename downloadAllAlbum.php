@@ -1,14 +1,14 @@
 <?php
 
-
+session_start();
 //$data = file_get_contents('php://input');
 //$request = json_decode($data);
-//$request = $_SESSION['data'];
+$request = $_SESSION['data'];
 //print_r($request);
 
-session_start();
 
-$request= stripslashes($argv[1]);
+
+
 
 $zip = new ZipArchive();
 
