@@ -7,7 +7,7 @@ session_start();
 $myArray = [1,2,3,4];
 
 //$path = "/app/php/bin/php";
-$output = shell_exec('php my.php'.escapeshellarg(serialize($myArray)));
+$output = shell_exec('php my.php'.escapeshellarg($myArray));
 
 echo json_encode($output);
 

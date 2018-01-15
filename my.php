@@ -3,7 +3,7 @@
 session_start();
 $request= $_SESSION["album"];
 
-$r = unserialize($argv[1]);
+$r = escapeshellarg($myArray);
 echo $r;
 echo "This is my.php";
 echo $r;
