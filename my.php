@@ -2,7 +2,8 @@
 
 session_start();
 $request= $_SESSION["album"];
-$r = stripslashes($argv[1]);
+$r = $_SESSION['data'];
+echo $r;
 echo "This is my.php";
 echo $r;
 
