@@ -2,7 +2,7 @@
 
 session_start();
 $request= $_SESSION["album"];
-$r = $GLOBALS['data'];
+$r = $_SESSION['data'];
 echo $r;
 echo "This is my.php";
 echo $r;
