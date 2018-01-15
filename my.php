@@ -2,7 +2,8 @@
 
 session_start();
 $request= $_SESSION["album"];
-$r = $_SESSION['data'];
+
+$r = unserialize($argv[1]);
 echo $r;
 echo "This is my.php";
 echo $r;
