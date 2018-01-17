@@ -6,7 +6,7 @@ session_start();
 
 $myArray = [1,2,3,4];
 
-$pass_album = escapeshellarg(myArray);
+$pass_album = escapeshellarg($myArray);
 
 
 //$command = "/usr/bin/php /home/[mydir]/send-mail-fork.php {$pass_subject} {$pass_message} {$pass_footer} 2> /dev/null &";
