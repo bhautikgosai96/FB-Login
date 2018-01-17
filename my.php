@@ -5,7 +5,7 @@ session_start();
 
 $r = $argv[1];
 echo $r;
-print_r($r);
+print_r($r,true);
 foreach($r as $i){
     echo $i;
 }
