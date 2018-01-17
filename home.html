@@ -242,9 +242,10 @@
                      var base_url = window.location.origin;
                      var str = response.data;
                      var f = str.slice(3,-3);
+                     var t = str.slice(1,-1);
 
                      //alert('Find download link at bottom of page.');
-                     $scope.downloadLink = base_url + '/' + f;
+                     $scope.downloadLink = base_url + '/' + t;
                      $('#spinner').hide();
                      console.log("output");
                      console.log(str);
