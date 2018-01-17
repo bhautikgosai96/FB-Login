@@ -4,7 +4,7 @@ session_start();
 //$data = file_get_contents('php://input');
 //$r = json_decode(file_get_contents('php://input'));
 
-$myArray = array("a","b","c");
+$myArray = array(1,2,3,4);
 
 //$pass_album = escapeshellarg($myArray);
 
