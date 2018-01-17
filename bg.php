@@ -14,8 +14,8 @@ $myArray = array(1,2,3,4);
 //$status = exec($command);
 
 //$path = "/app/php/bin/php";
-$output = shell_exec("php downloadAllAlbum.php $r");
+$output = shell_exec("php my.php $r");
 
-echo json_encode($r);
+echo json_encode($output);
 
 ?>

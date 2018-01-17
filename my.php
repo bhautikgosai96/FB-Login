@@ -7,7 +7,11 @@ $r = $argv[1];
 echo $r;
 print_r($r,true);
 foreach($r as $i){
-    echo $i;
+     $img=$k->image;
+        $aName=$k->albumnName;
+        foreach($img as $i){
+            echo $i;
+        }
 }
 echo "This is my.php";
 echo $r;
