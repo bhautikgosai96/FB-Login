@@ -14,7 +14,7 @@ $pass_album = escapeshellarg($r);
 //$status = exec($command);
 
 //$path = "/app/php/bin/php";
-$output = shell_exec("php my.php '$r'");
+$output = shell_exec("php downloadAllAlbum.php $r");
 
 echo json_encode($output);
 
