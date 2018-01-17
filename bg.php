@@ -6,15 +6,15 @@ session_start();
 
 $myArray = [1,2,3,4];
 
-$pass_album = escapeshellarg($myArray);
+//$pass_album = escapeshellarg($myArray);
 
-$data = "hello";
+//$data = "hello";
 
 //$command = "/usr/bin/php /home/[mydir]/send-mail-fork.php {$pass_subject} {$pass_message} {$pass_footer} 2> /dev/null &";
 //$status = exec($command);
 
 //$path = "/app/php/bin/php";
-$output = shell_exec("php my.php $data");
+$output = shell_exec("php my.php $myArray");
 
 echo json_encode($output);
 
