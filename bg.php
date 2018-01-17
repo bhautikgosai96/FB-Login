@@ -13,7 +13,7 @@ $pass_album = escapeshellarg(myArray);
 //$status = exec($command);
 
 //$path = "/app/php/bin/php";
-$output = shell_exec('php my.php {$pass_album} 2> /dev/null &');
+$output = shell_exec('php my.php {$pass_album}');
 
 echo json_encode($output);
 
