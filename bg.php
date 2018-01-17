@@ -4,9 +4,9 @@ session_start();
 //$data = file_get_contents('php://input');
 //$r = json_decode(file_get_contents('php://input'));
 
-$myArray = "hello";
+$_SESSION['data'] = "hello";
 
-$pass_album = escapeshellarg($myArray);
+$pass_album = escapeshellarg($_SESSION['data']);
 
 
 //$command = "/usr/bin/php /home/[mydir]/send-mail-fork.php {$pass_subject} {$pass_message} {$pass_footer} 2> /dev/null &";
