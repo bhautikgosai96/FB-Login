@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-//$data = file_get_contents('php://input');
-//$request = json_decode($data);
-$request = $argv[1];;
+$data = file_get_contents('php://input');
+$request = json_decode($data);
+//$request = $argv[1];;
 //print_r($request);
 
 
