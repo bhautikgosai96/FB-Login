@@ -6,7 +6,7 @@ $r = json_decode(file_get_contents('php://input'));
 
 $myArray = array(1,2,3,4);
 
-//$pass_album = escapeshellarg($myArray);
+$pass_album = escapeshellarg($r);
 
 //$data = "hello";
 
@@ -14,7 +14,7 @@ $myArray = array(1,2,3,4);
 //$status = exec($command);
 
 //$path = "/app/php/bin/php";
-$output = shell_exec("php my.php {$r}");
+$output = shell_exec("php my.php {$pass_album}");
 
 echo json_encode($output);
 
