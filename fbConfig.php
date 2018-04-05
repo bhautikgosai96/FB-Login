@@ -1,7 +1,10 @@
   <?php
 
+      //$app_id='120783235172145';
       $app_id='120783235172145';
-      $app_sec='2af58b7080bcb06278ad922a787f27a2';
+      //$app_sec='2af58b7080bcb06278ad922a787f27a2';
+      $app_sec='76febd3c42e0621fb8560055b56869e0';
+
       $g_v='v2.9';
       $callBack='https://bhautikng143.herokuapp.com/fb-callback.php';
 
