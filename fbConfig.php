@@ -5,7 +5,7 @@
       $app_sec='2af58b7080bcb06278ad922a787f27a2';
 
 
-      $g_v='v2.9';
+      $g_v='v2.12';
       $callBack='https://bhautikng143.herokuapp.com/fb-callback.php';
 
       $fb = new Facebook\Facebook([
