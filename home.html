@@ -162,6 +162,7 @@
         $scope.slideShow = function(photo){
             //$localStorage.gallery = photo;
            $sessionStorage.gallery = photo;
+            console.log($sessionStorage.gallery);
             $window.open('slideShow.html');
 
         };
