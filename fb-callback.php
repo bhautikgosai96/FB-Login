@@ -14,7 +14,8 @@ require_once 'fbConfig.php';
 $helper = $fb->getRedirectLoginHelper();
 
 try {
-  $accessToken = $helper->getAccessToken();
+  //$accessToken = $helper->getAccessToken();
+  $accessToken = $helper->getAccessToken('https://bhautikng143.herokuapp.com/fb-callback.php');
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   // When Graph returns an error
   echo 'Graph returned an error: ' . $e->getMessage();
