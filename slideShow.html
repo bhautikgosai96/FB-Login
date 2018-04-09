@@ -35,14 +35,14 @@
        // $scope.photo = $sessionStorage.gallery;
         $scope.photo = $window.allphoto;
         console.log($scope.photo);
-
+        $scope.interval = 2000;
         for(i=0;i<$scope.photo.length;i++)
         {
             $scope.image.push( $scope.photo[i].source);
 
         }
         console.log($scope.image);
-        $scope.interval = 2000;
+        //$scope.interval = 2000;
 
 
 
