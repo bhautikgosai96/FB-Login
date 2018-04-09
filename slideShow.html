@@ -31,9 +31,9 @@
 
     app.controller('slide',function($scope,$http,$localStorage,$sessionStorage,$window){
         $scope.image = [];
-       $scope.photo = $localStorage.gallery;
+       //$scope.photo = $localStorage.gallery;
        // $scope.photo = $sessionStorage.gallery;
-
+        $scope.photo = allphoto;
         console.log($scope.photo);
 
         for(i=0;i<$scope.photo.length;i++)
